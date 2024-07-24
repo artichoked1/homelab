@@ -1,6 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ./helm-repos/bjw-s.yaml
-- ./helm-repos/longhorn.yaml
+  - ./helm-repos/bjw-s.yaml
+  - ./helm-repos/longhorn.yaml
+  - ./helm-repos/cert-manager.yaml
 namespace: flux-system
