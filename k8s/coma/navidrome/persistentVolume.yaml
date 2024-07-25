@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/Main/Music
+    server: 192.168.188.143
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
