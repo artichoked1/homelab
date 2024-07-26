@@ -4,6 +4,7 @@ metadata:
   name: media-pvc
   namespace: navidrome
 spec:
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
