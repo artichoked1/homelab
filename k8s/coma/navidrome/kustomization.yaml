@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./navidrome.yaml
-  - ./persistentVolume.yaml
   - ./pv.yaml
+  - ./pvc.yaml
 namespace: navidrome
