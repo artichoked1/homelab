@@ -21,6 +21,31 @@ spec:
 
         containers:
           main:
+            env:
+              ND_BASEURL: "https://music.artichoke.cc"
+              ND_LASTFM_ENABLED: "true"
+              ND_LASTFM_APIKEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: navidrome-lastfm-token
+                    key: key
+              ND_LASTFM_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: navidrome-lastfm-token
+                    key: shared-secret
+              ND_LISTENBRAINZ_ENABLED: "true"
+              ND_SPOTIFY_ID:
+                valueFrom:
+                  secretKeyRef:
+                    name: navidrome-spotify-token
+                    key: client-id
+              ND_SPOTIFY_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: navidrome-spotify-token
+                    key: client-secret
+
             image:
               repository: deluan/navidrome
               tag: latest

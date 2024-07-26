@@ -6,4 +6,5 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./ingress.yaml
+  - ./secrets.yaml
 namespace: navidrome
