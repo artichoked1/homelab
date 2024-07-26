@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: navidrome
   namespace: navidrome
-  annotions:
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   rules:
@@ -18,6 +18,6 @@ spec:
                 port:
                   number: 4533
   tls:
-  - hosts:
-    - "music.artichokenetwork.com"
-    secretName: artichokenetwork-cert
+    - hosts:
+        - "music.artichokenetwork.com"
+      secretName: artichokenetwork-cert
