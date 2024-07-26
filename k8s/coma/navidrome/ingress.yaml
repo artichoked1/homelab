@@ -31,5 +31,6 @@ spec:
     - hosts:
         - "music.artichokenetwork.com"
       secretName: artichokenetwork-cert
+    - hosts:
         - "music.artichoke.cc"
       secretName: artichoke-cc-cert
