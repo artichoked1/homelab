@@ -37,6 +37,7 @@ spec:
       data:
         storageClass: local-path
         accessMode: ReadWriteOnce
+        size: 1Gi
         globalMounts:
           - path: /data
       media:
