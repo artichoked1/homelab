@@ -36,6 +36,7 @@ spec:
     persistence:
       data:
         storageClass: local-path
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /data
       media:
