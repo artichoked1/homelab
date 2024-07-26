@@ -17,7 +17,19 @@ spec:
                 name: navidrome
                 port:
                   number: 4533
+    - host: "music.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: navidrome
+                port:
+                  number: 4533
   tls:
     - hosts:
         - "music.artichokenetwork.com"
       secretName: artichokenetwork-cert
+        - "music.artichoke.cc"
+      secretName: artichoke-cc-cert
