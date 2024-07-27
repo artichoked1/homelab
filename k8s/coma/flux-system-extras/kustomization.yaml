@@ -6,4 +6,5 @@ resources:
   - ./helm-repos/cert-manager.yaml
   - ./helm-repos/hashicorp.yaml
   - ./helm-repos/external-secrets.yaml
+  - ./helm-repos/redis-operator.yaml
 namespace: flux-system
