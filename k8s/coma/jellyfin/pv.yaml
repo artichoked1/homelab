@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-music-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/Main/Music
+    server: 192.168.188.143
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-movies-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/Media/Movies
+    server: 192.168.188.143
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-tvshows-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/Media/TV-Shows
+    server: 192.168.188.143
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
