@@ -1,7 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-dependsOn:
-  - name: overlay
 resources:
   - ./namespace.yaml
   - ./test-resource.yaml
@@ -10,3 +8,5 @@ spec:
     substituteFrom:
       - kind: Secret
         name: test-secret
+  dependsOn:
+    - name: overlay
