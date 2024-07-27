@@ -1,7 +1,0 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: CM
-  namespace: test-ns
-data:
-  foo: ${TEST_KEY}
