@@ -11,6 +11,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: redis-operator
-        namespace: redis-operator
+        namespace: flux-system
       version: 3.3.0
   interval: 1m0s
