@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: redis-operator
+  namespace: redis-operator
+spec:
+  chart:
+    spec:
+      chart: redis-operator
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: redis-operator
+        namespace: redis-operator
+      version: 3.3.0
+  interval: 1m0s
