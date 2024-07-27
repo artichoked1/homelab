@@ -5,4 +5,5 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./jellyfin.yaml
+  - ./ingress.yaml
 namespace: jellyfin
