@@ -51,9 +51,6 @@ spec:
         storageTemplate:
           enabled: true
           template: "{{y}}/{{album}}/{{ext}}/{{filename}}"
-        machineLearning:
-          enabled: true
-          url: "http://192.168.188.167:3003"
 
     # Dependencies
 
