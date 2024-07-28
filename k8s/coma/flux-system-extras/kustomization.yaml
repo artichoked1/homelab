@@ -8,4 +8,6 @@ resources:
   - ./helm-repos/external-secrets.yaml
   - ./helm-repos/redis-operator.yaml
   - ./helm-repos/ot-helm.yaml
+
+  - ./helm-repos/flux-webhook.yaml
 namespace: flux-system
