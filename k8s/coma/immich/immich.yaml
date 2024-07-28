@@ -1,0 +1,96 @@
+## This chart relies on the common library chart from bjw-s
+## You can find it at https://github.com/bjw-s/helm-charts/tree/main/charts/library/common
+## Refer there for more detail about the supported values
+
+# These entries are shared between all the Immich components
+
+env:
+  REDIS_HOSTNAME: "main-cluster-leader.redis-clusters.svc.cluster.local"
+  DB_HOSTNAME: "immich-postgres-rw.databases.svc.cluster.local"
+  DB_USERNAME:
+    valueFrom:
+      secretKeyRef:
+        name: immich-postgres-auth
+        key: username
+  DB_DATABASE_NAME: "immich"
+  DB_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: immich-postgres-auth
+        key: password
+  IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+
+image:
+  tag: v1.106.1
+
+immich:
+  metrics:
+    enabled: true
+  persistence:
+    library:
+      existingClaim: immich-import-pvc
+
+  # configuration is immich-config.json converted to yaml
+  # ref: https://immich.app/docs/install/config-file/
+  #
+  configuration:
+    trash:
+      enabled: false
+      days: 30
+    storageTemplate:
+      enabled: true
+      template: "{{y}}/{{album}}/{{ext}}/{{filename}}"
+    machineLearning:
+      enabled: true
+      url: "http://uberfastpc.artichokenetwork.org:3003"
+
+# Dependencies
+
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+# Immich components
+
+server:
+  enabled: true
+  image:
+    repository: ghcr.io/immich-app/immich-server
+    pullPolicy: IfNotPresent
+  ingress:
+    main:
+      enabled: false
+      annotations:
+        # proxy-body-size is set to 0 to remove the body limit on file uploads
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      hosts:
+        - host: immich.local
+          paths:
+            - path: "/"
+      tls: []
+
+machine-learning:
+  enabled: true
+  image:
+    repository: ghcr.io/immich-app/immich-machine-learning
+    pullPolicy: IfNotPresent
+  env:
+    TRANSFORMERS_CACHE: /cache
+  persistence:
+    cache:
+      enabled: true
+      size: 10Gi
+      # Optional: Set this to pvc to avoid downloading the ML models every start.
+      type: emptyDir
+      accessMode: ReadWriteMany
+      storageClass: longhorn
+
+persistence:
+  existing-photos:
+    enabled: true
+    type: pvc
+    mountPath: /existing-photos
+    readOnly: true
+    existingClaim: immich-nsfiles-pvc
