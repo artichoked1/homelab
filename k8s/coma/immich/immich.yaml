@@ -6,11 +6,11 @@ metadata:
 spec:
   chart:
     spec:
-      chart: app-template
+      chart: immich
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: bjw-s
+        name: immich
         namespace: flux-system
       version: 3.2.1
   interval: 1m0s
