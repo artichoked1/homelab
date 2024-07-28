@@ -8,6 +8,7 @@ resources:
   - ./helm-repos/external-secrets.yaml
   - ./helm-repos/redis-operator.yaml
   - ./helm-repos/ot-helm.yaml
+  - ./helm-repos/immich.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
