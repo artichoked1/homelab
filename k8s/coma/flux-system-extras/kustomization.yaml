@@ -9,5 +9,8 @@ resources:
   - ./helm-repos/redis-operator.yaml
   - ./helm-repos/ot-helm.yaml
 
-  - ./helm-repos/flux-webhook.yaml
+  - ./flux-webhook/ingress.yaml
+  - ./flux-webhook/token-secret.yaml
+  - ./flux-webhook/receiver.yaml
+
 namespace: flux-system
