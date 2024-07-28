@@ -15,6 +15,3 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  securityContext:
-    runAsUser: 1000
-    fsGroup: 1000
