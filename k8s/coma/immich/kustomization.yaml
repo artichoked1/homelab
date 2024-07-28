@@ -5,3 +5,4 @@ resources:
   - ./secrets.yaml
   - ./pv.yaml
   - ./pvc.yaml
+  - ./immich.yaml
