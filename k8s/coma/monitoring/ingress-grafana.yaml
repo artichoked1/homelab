@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: monitoring
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "grafana.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: prometheus-stack-grafana
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - "grafana.artichoke.cc"
+      secretName: artichoke-cc-cert
