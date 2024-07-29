@@ -10,6 +10,7 @@ resources:
   - ./helm-repos/ot-helm.yaml
   - ./helm-repos/immich.yaml
   - ./helm-repos/prometheus-community.yaml
+  - ./helm-repos/authentik.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
