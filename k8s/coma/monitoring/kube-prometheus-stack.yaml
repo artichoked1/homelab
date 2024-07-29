@@ -18,4 +18,28 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
-  # values:
+  values:
+    grafana:
+      persistence:
+        enabled: true
+        size: 1Gi
+    prometheus:
+      prometheusSpec:
+        storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 50Gi
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 10Gi
