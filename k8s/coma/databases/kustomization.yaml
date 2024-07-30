@@ -8,3 +8,6 @@ resources:
 
   - ./authentik/secrets.yaml
   - ./authentik/database.yaml
+
+  - ./main/database.yaml
+  - ./main/secrets.yaml

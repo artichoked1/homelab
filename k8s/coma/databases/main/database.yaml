@@ -1,0 +1,11 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: main-postgres
+spec:
+  instances: 3
+  superuserSecret:
+    name: main-postgres-superuser-auth
+  storage:
+    size: 2Gi
+    storageClass: local-path
