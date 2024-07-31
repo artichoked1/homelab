@@ -31,7 +31,7 @@ spec:
               CMD_URL_ADDPORT: "false"
               CMD_PORT: "3000"
               CMD_ALLOW_EMAIL_REGISTER: "true"
-              CMD_PROTOCOL_USESSL: "true"
+              CMD_PROTOCOL_USESSL: "false"
               CMD_DB_DIALECT: "postgres"
               CMD_DB_URL:
                 valueFrom:
