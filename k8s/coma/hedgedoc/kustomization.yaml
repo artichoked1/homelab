@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./secrets.yaml
+  - ./ingress.yaml
   - ./hedgedoc.yaml
