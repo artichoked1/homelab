@@ -1,0 +1,70 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mailu
+  namespace: mailu
+spec:
+  chart:
+    spec:
+      chart: mailu
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: mailu
+        namespace: flux-system
+      version: 2.1.0
+  interval: 1m0s
+  values:
+    domain: artichoke.cc
+    hostnames:
+      - mail.artichoke.cc
+      - imap.artichoke.cc
+      - smtp.artichoke.cc
+      - admin.artichoke.cc
+      - webmail.artichoke.cc
+    externalDatabase:
+      enabled: true
+      database: mailu
+      username: mailu
+      existingSecret: mailu-postgres-auth
+      host: main-postgres-rw.databases.svc.cluster.local
+      port: 5432
+      type: postgresql
+    global:
+      database:
+        roundcube:
+          database: roundcube
+          username: mailu
+          existingSecret: mailu-postgres-auth
+          existingSecretPasswordKey: password
+    externalRedis:
+      enabled: true
+      host: "main.redis-clusters.svc.cluster.local"
+    front:
+      externalService:
+        enabled: true
+        type: LoadBalancer
+      hostPort:
+        enabled: false
+      updateStrategy:
+        type: Recreate
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: acme-issuer
+      extraTls: null
+      realIpFrom: 10.43.0.0/12
+    initialAccount:
+      domain: artichoke.cc
+      enabled: true
+      mode: ifmissing
+      password: password
+      username: admin
+    persistence:
+      single_pvc: false
+    # postfix:
+    #   persistence:
+    #     storageClass: hdd-array-local
+    redis:
+      enabled: false
+    subnet: 10.43.0.0/12
+    timezone: Australia/Adelaide
