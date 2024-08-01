@@ -71,7 +71,7 @@ spec:
         size: 1Gi
     dovecot:
       persistence:
-        size: 1Gi
+        size: 4Gi
     admin:
     redis:
       enabled: false
