@@ -57,8 +57,9 @@ spec:
       domain: artichoke.cc
       enabled: true
       mode: ifmissing
-      password: password
       username: admin
+      existingSecret: mailu-initial-account
+      existingSecretPasswordKey: initial-account-password
     persistence:
       single_pvc: false
     # postfix:
