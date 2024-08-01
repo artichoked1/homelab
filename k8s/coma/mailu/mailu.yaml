@@ -51,7 +51,7 @@ spec:
         type: Recreate
     ingress:
       annotations:
-        cert-manager.io/cluster-issuer: acme-issuer
+        cert-manager.io/cluster-issuer: letsencrypt-production
       extraTls: null
       realIpFrom: 10.43.0.0/12
     initialAccount:
