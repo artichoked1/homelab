@@ -63,9 +63,9 @@ spec:
       existingSecretPasswordKey: initial-account-password
     persistence:
       single_pvc: false
-    # postfix:
-    #   persistence:
-    #     storageClass: hdd-array-local
+    postfix:
+      persistence:
+        size: 2Gi
     redis:
       enabled: false
     subnet: 10.43.0.0/12
