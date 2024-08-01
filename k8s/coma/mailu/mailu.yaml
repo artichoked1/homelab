@@ -44,7 +44,7 @@ spec:
       host: "main.redis-clusters.svc.cluster.local"
     front:
       podLabels:
-        traefik.http.services.front.loadbalancer.server.port: 80
+        - "traefik.http.services.front.loadbalancer.server.port=80"
       externalService:
         enabled: true
         type: LoadBalancer
