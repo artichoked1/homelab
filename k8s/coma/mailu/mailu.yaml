@@ -26,6 +26,7 @@ spec:
     externalDatabase:
       enabled: true
       database: mailu
+
       username: mailu
       existingSecret: mailu-postgres-auth
       host: main-postgres-rw.databases.svc.cluster.local
@@ -42,6 +43,8 @@ spec:
       enabled: true
       host: "main.redis-clusters.svc.cluster.local"
     front:
+      podLabels:
+        traefik.http.services.front.loadbalancer.server.port: 80
       externalService:
         enabled: true
         type: LoadBalancer
