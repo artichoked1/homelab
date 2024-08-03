@@ -58,7 +58,7 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
       extraTls: null
-      realIpFrom: 10.32.0.0/12
+      realIpFrom: 10.42.0.0/12
     initialAccount:
       domain: artichoke.cc
       enabled: true
@@ -82,5 +82,5 @@ spec:
         size: 1Gi
     redis:
       enabled: false
-    subnet: 10.32.0.0/12
+    subnet: 10.42.0.0/12
     timezone: Australia/Adelaide
