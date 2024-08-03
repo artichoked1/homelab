@@ -54,7 +54,7 @@ spec:
         type: Recreate
     ingress:
       enabled: false
-        existingSecret: mailu-certs
+      existingSecret: mailu-certs
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
       extraTls: null

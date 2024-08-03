@@ -4,7 +4,7 @@ metadata:
   name: mailu-certs
   namespace: mailu
 spec:
-  secretName: mailu-certificates
+  secretName: mailu-certs
   dnsNames:
     - artichoke.cc
     - mail.artichoke.cc
