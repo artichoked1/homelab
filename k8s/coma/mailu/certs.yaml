@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mailu-certs
+  namespace: mailu
+spec:
+  secretName: mailu-certs
+  dnsNames:
+    - artichoke.cc
+    - mail.artichoke.cc
+    - smtp.artichoke.cc
+    - imap.artichoke.cc
+    - pop3.artichoke.cc
+    - webmail.artichoke.cc
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
