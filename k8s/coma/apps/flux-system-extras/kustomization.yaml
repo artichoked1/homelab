@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./helm-repos/bjw-s.yaml
+  - ./helm-repos/longhorn.yaml
+  - ./helm-repos/cert-manager.yaml
+  - ./helm-repos/hashicorp.yaml
+  - ./helm-repos/external-secrets.yaml
+  - ./helm-repos/redis-operator.yaml
+  - ./helm-repos/ot-helm.yaml
+  - ./helm-repos/immich.yaml
+  - ./helm-repos/prometheus-community.yaml
+  - ./helm-repos/authentik.yaml
+  - ./helm-repos/mailu.yaml
+
+  - ./flux-webhook/ingress.yaml
+  - ./flux-webhook/token-secret.yaml
+  - ./flux-webhook/receiver.yaml
+
+namespace: flux-system
