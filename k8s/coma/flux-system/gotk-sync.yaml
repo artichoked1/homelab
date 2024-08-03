@@ -20,8 +20,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./k8s/coma
-  prune: true
+  path: ./k8s/coma/cluster-settings
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
