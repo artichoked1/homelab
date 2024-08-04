@@ -34,7 +34,7 @@ spec:
         password: ${AUTHENTIK_POSTGRES_PASS}
         port: 5432
       redis:
-        host: main.redis-clusters.svc.local
+        host: main.redis-clusters.svc.cluster.local
     server:
       metrics:
         enabled: true
