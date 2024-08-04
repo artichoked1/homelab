@@ -12,6 +12,7 @@ spec:
     - imap.artichoke.cc
     - pop3.artichoke.cc
     - webmail.artichoke.cc
+    - nikolaipatrick.com
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
