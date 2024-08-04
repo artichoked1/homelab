@@ -16,6 +16,8 @@ spec:
   interval: 1m0s
   values:
     authentik:
+      bootstrap_token: test
+      bootstrap_password: test
       secret_key: ${AUTHENTIK_SECRET_KEY}
       error_reporting:
         enabled: true
