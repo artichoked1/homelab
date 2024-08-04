@@ -17,6 +17,4 @@ resources:
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml
 
-  - ./secrets/cluster-secrets.yaml
-
 namespace: flux-system
