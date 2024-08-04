@@ -21,12 +21,5 @@ spec:
           port: 443
           scheme: https
           serversTransport: skip-tls
-    - kind: Rule
-      match: Path(`/`.well-known/mta-sts.txt) && Host(`mail.artichoke.cc`)
-      middlewares:
-        - name: mta-sts-text
-      services:
-        - name: dummy-service
-          port: 80
   tls:
     secretName: mailu-certs

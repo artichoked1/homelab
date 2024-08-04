@@ -6,4 +6,3 @@ resources:
   - ./mailu.yaml
   - ./certs.yaml
   - ./ingressroute.yaml
-  - ./mta-sts-middleware.yaml
