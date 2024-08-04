@@ -1,0 +1,32 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mailu
+  namespace: mailu
+  annotations:
+    # traefik.ingress.kubernetes.io/router.insecureSkipVerify: 'true'
+    # traefik.ingress.kubernetes.io/service.serversscheme: https
+    traefik.ingress.kubernetes.io/router.insecureSkipVerify: "true"
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: >-
+        Host(`mail.artichoke.cc`) || Host(`smtp.artichoke.cc`) || 
+        Host(`imap.artichoke.cc`)
+      services:
+        - name: mailu-front
+          port: 443
+          scheme: https
+          serversTransport: skip-tls
+    - kind: Rule
+      match: Path(`/`.well-known/mta-sts.txt) && Host(`mail.artichoke.cc`)
+      middlewares:
+        - name: mta-sts-text
+      services:
+        - name: dummy-service
+          port: 80
+  tls:
+    secretName: mailu-certs

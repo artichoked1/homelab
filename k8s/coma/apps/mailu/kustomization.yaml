@@ -5,3 +5,5 @@ resources:
   - ./secrets.yaml
   - ./mailu.yaml
   - ./certs.yaml
+  - ./ingressroute.yaml
+  - ./mta-sts-middleware.yaml
