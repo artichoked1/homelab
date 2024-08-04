@@ -14,8 +14,6 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  resources:
-    - ./k8s/coma/secrets/cluster-secrets.yaml
   postBuild:
     substituteFrom:
       - kind: Secret
