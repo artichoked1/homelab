@@ -17,3 +17,26 @@ spec:
   values:
     authentik:
       secret_key: ""
+      error_reporting:
+        enabled: true
+      email:
+        host: smtp.artichoke.cc
+        port: 465
+        username: ${NOREPLY_EMAIL}
+        password: ${AUTHENTIK_NOREPLY_EMAIL_PASS}
+        use_tls: false
+        use_ssl: true
+        from: ${NOREPLY_EMAIL}
+      postgresql:
+        host: authentik-postgres-rw.databases.svc.cluster.local
+        name: authentik
+        user: authentik
+        password: ${AUTHENTIK_POSTGRES_PASS}
+        port: 5432
+      redis:
+        host: main.redis-clusters.svc.local
+    server:
+      metrics:
+        enabled: true
+      serviceMonitor:
+        enabled: true
