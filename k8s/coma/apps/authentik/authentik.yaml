@@ -16,7 +16,7 @@ spec:
   interval: 1m0s
   values:
     authentik:
-      secret_key: ""
+      secret_key: ${AUTHENTIK_SECRET_KEY}
       error_reporting:
         enabled: true
       email:
