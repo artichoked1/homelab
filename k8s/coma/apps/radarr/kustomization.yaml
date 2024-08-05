@@ -6,4 +6,3 @@ resources:
   - ./pvc.yaml
   - ./radarr.yaml
   - ./ingress.yaml
-  - ./configmap.yaml
