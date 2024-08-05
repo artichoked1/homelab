@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+  namespace: qbittorrent
+spec:
+  rules:
+    - host: "qbittorrent.coma.artichoke.network"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: qbittorrent-webui
+                port:
+                  number: 8080
