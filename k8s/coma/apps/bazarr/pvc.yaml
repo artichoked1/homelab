@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bazarr-tvshows-pvc
+  namespace: bazarr
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: bazarr-tvshows-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bazarr-movies-pvc
+  namespace: bazarr
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: bazarr-movies-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bazarr-torrents-pvc
+  namespace: bazarr
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: bazarr-torrents-pv

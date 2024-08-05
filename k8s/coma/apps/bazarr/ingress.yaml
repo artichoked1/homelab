@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bazarr
+  namespace: bazarr
+spec:
+  rules:
+    - host: "bazarr.coma.artichoke.network"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: sonarr
+                port:
+                  number: 6767
