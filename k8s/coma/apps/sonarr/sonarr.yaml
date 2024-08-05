@@ -21,9 +21,11 @@ spec:
 
         containers:
           main:
+            env:
+              TZ: Australia/Adelaide
             image:
-              repository: lscr.io/linuxserver/radarr
-              tag: latest
+              repository: lscr.io/linuxserver/sonarr
+              tag: 4.0.8
               pullPolicy: IfNotPresent
 
     service:
@@ -31,7 +33,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 7878
+            port: 8989
 
     persistence:
       data:
@@ -40,11 +42,11 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /config
-      movies:
-        existingClaim: radarr-movies-pvc
+      tvshows:
+        existingClaim: sonarr-tvshows-pvc
         globalMounts:
-          - path: /movies
+          - path: /tvshows
       torrents:
-        existingClaim: radarr-torrents-pvc
+        existingClaim: sonarr-torrents-pvc
         globalMounts:
           - path: /downloads
