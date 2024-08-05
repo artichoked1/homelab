@@ -44,3 +44,7 @@ spec:
         existingClaim: radarr-movies-pvc
         globalMounts:
           - path: /movies
+      torrents:
+        existingClaim: radarr-torrents-pvc
+        globalMounts:
+          - path: /torrents

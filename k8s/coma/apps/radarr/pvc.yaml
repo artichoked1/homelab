@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: radarr-tvshows-pvc
+  name: radarr-torrents-pvc
   namespace: radarr
 spec:
   storageClassName: ""
@@ -24,4 +24,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: radarr-tvshows-pv
+  volumeName: radarr-torrents-pv
