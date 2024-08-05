@@ -14,4 +14,4 @@ spec:
               service:
                 name: bazarr
                 port:
-                  number: 8989
+                  number: 6767
