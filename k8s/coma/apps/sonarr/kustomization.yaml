@@ -5,3 +5,4 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./ingress.yaml
+  - ./sonarr.yaml
