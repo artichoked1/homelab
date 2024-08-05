@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sonarr-tvshows-pvc
-  namespace: radarr
+  namespace: sonarr
 spec:
   storageClassName: ""
   accessModes:
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sonarr-torrents-pvc
-  namespace: radarr
+  namespace: sonarr
 spec:
   storageClassName: ""
   accessModes:
