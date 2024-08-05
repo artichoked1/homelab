@@ -12,6 +12,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: sonarr
+                name: bazarr
                 port:
                   number: 6767
