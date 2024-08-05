@@ -40,4 +40,7 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /config
-      
+      movies:
+        existingClaim: radarr-movies-pvc
+        globalMounts:
+          - path: /movies
