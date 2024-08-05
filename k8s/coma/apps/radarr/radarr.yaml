@@ -47,4 +47,4 @@ spec:
       torrents:
         existingClaim: radarr-torrents-pvc
         globalMounts:
-          - path: /torrents
+          - path: /downloads
