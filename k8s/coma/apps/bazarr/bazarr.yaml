@@ -33,7 +33,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 8989
+            port: 6767
 
     persistence:
       data:
