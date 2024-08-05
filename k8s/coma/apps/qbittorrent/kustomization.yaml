@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./pv.yaml
   - ./pvc.yaml
+  - ./qbittorrent.yaml
