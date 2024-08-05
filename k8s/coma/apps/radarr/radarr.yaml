@@ -20,8 +20,6 @@ spec:
         strategy: Recreate
 
         containers:
-          env:
-            TZ: Australia/Adelaide
           main:
             image:
               repository: lscr.io/linuxserver/radarr
