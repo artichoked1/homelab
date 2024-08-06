@@ -1,0 +1,67 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tdarr-master
+  namespace: tdarr
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+
+        containers:
+          main:
+            env:
+              TZ: Australia/Adelaide
+              serverIP: 0.0.0.0
+              serverPort: 8266
+              webUIPort: 8265
+              internalNode: true
+              inContainer: true
+              ffmpegVersion: 6
+              nodeName: Coma
+            image:
+              repository: ghcr.io/haveagitgat/tdarr
+              tag: 2.23.01
+              pullPolicy: IfNotPresent
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8265
+
+    persistence:
+      data:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /app/server
+          - path: /app/configs
+          - path: /app/logs
+      temp:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 8Gi
+        globalMounts:
+          - path: /temp
+      movies:
+        existingClaim: tdarr-movies-pvc
+        globalMounts:
+          - path: /media/movies
+      tvshows:
+        existingClaim: tdarr-tvshows-pvc
+        globalMounts:
+          - path: /media/tvshows
