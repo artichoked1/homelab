@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: lidarr-torrents-pv
+  name: tdarr-torrents-pv
 spec:
   capacity:
     storage: 1Gi
