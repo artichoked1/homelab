@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lidarr
+  namespace: lidarr
+spec:
+  rules:
+    - host: "lidarr.coma.artichoke.network"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: lidarr
+                port:
+                  number: 8686
