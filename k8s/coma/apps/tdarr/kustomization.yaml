@@ -5,4 +5,4 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./ingress.yaml
-  - ./tdarr.yaml
+  - ./tdarr-master.yaml
