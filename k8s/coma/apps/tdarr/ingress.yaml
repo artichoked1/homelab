@@ -12,6 +12,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: tdarr-master
+                name: tdarr-master-main
                 port:
                   number: 8265
