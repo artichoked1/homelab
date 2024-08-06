@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Main/Movies
+    path: /mnt/Media/Movies
     server: 192.168.188.143
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
@@ -25,7 +25,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Main/TV-Shows
+    path: /mnt/Media/TV-Shows
     server: 192.168.188.143
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
