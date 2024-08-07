@@ -19,3 +19,8 @@ spec:
     proxyListenerMode: multiplex
     acme: true
     acmeEmail: ${ACME_EMAIL}
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: true
+      useExisting: true
