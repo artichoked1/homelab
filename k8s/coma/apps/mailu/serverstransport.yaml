@@ -1,0 +1,29 @@
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"traefik.io/v1alpha1","kind":"ServersTransport","metadata":{"annotations":{},"name":"skip-tls","namespace":"mailu"},"spec":{"insecureSkipVerify":true}}
+  creationTimestamp: '2024-08-02T23:07:50Z'
+  generation: 1
+  managedFields:
+    - apiVersion: traefik.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:spec:
+          .: {}
+          f:insecureSkipVerify: {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: '2024-08-02T23:07:50Z'
+  name: skip-tls
+  namespace: mailu
+  resourceVersion: '3267604'
+  uid: 2f39fa25-f4ff-48a6-b5bd-3f8e19169025
+  selfLink: /apis/traefik.io/v1alpha1/namespaces/mailu/serverstransports/skip-tls
+spec:
+  insecureSkipVerify: true
