@@ -17,7 +17,7 @@ spec:
   values:
     clusterName: teleport.artichoke.cc
     proxyListenerMode: multiplex
-    acme: true
+    acme: false
     acmeEmail: ${ACME_EMAIL}
     service:
       type: ClusterIP
