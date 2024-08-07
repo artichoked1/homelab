@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./teleport.yaml
+  - ./ingress.yaml
