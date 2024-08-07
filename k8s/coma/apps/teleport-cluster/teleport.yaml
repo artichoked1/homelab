@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: teleport-cluster
+  namespace: teleport-cluster
+spec:
+  chart:
+    spec:
+      chart: teleport-cluster
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: teleport
+        namespace: flux-system
+      version: 16.1.3
+  interval: 1m0s
+  values:
+    clusterName: teleport.artichoke.cc
+    proxyListenerMode: multiplex
+    acme: true
+    acmeEmail: ${ACME_EMAIL}
