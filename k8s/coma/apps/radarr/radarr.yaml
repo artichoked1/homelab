@@ -38,11 +38,12 @@ spec:
                     name: radarr-api-key
                     key: api-key
 
-  serviceMonitor:
-    enabled: true
-    serviceName: radarr-metrics
-    labels:
-      release: prometheus-stack
+    serviceMonitor:
+      main:
+        enabled: true
+        serviceName: radarr-metrics
+        labels:
+          release: prometheus-stack
 
     service:
       main:
