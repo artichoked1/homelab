@@ -30,6 +30,8 @@ spec:
               repository: ghcr.io/onedr0p/exportarr
               tag: v2.0.1
               pullPolicy: IfNotPresent
+            args:
+            - radarr
             env:
               PORT: 9707
               APIKEY:

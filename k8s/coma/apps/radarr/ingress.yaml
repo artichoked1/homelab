@@ -12,6 +12,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: radarr
+                name: radarr-main
                 port:
                   number: 7878
