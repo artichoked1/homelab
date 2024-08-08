@@ -20,11 +20,29 @@ spec:
         strategy: Recreate
 
         containers:
-          main:
+          radarr:
             image:
               repository: lscr.io/linuxserver/radarr
               tag: latest
               pullPolicy: IfNotPresent
+          exportarr:
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.0.1
+              pullPolicy: IfNotPresent
+            env:
+              PORT: 9707
+              APIKEY:
+                valueFrom:
+                  secretKeyRef: 
+                    name: radarr-api-key
+                    key: api-key
+
+  serviceMonitor:
+    enabled: true
+    serviceName: radarr-metrics
+    labels:
+      release: prometheus-stack
 
     service:
       main:
@@ -32,6 +50,11 @@ spec:
         ports:
           http:
             port: 7878
+      metrics:
+        controller: main
+        ports:
+          metrics:
+            port: 9707
 
     persistence:
       data:
