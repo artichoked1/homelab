@@ -33,6 +33,7 @@ spec:
             args:
             - radarr
             env:
+              URL: "http://radarr-main:7878"
               PORT: 9707
               APIKEY:
                 valueFrom:
