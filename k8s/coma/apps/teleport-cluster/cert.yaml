@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: teleport-certs
+  namespace: teleport-cluster
+spec:
+  secretName: teleport-certs
+  dnsNames:
+    - teleport.artichoke.cc
+    - "*.teleport.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

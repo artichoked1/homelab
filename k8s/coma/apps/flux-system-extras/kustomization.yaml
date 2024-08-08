@@ -12,6 +12,7 @@ resources:
   - ./helm-repos/prometheus-community.yaml
   - ./helm-repos/authentik.yaml
   - ./helm-repos/mailu.yaml
+  - ./helm-repos/teleport.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
