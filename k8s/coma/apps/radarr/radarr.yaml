@@ -44,6 +44,11 @@ spec:
         serviceName: radarr-metrics
         labels:
           release: prometheus-stack
+        endpoints:
+          - port: monitoring
+            interval: 4m
+            scrapeTimeout: 90s
+            path: /metrics
 
     service:
       main:
@@ -54,7 +59,7 @@ spec:
       metrics:
         controller: main
         ports:
-          metrics:
+          monitoring:
             port: 9707
 
     persistence:
