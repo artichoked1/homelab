@@ -25,6 +25,12 @@ spec:
               repository: slskd/slskd
               tag: 0.21.3
               pullPolicy: IfNotPresent
+            env:
+              SLSKD_DOWNLOADS_DIR: /downloads/soulseek/downloads
+              SLSKD_INCOMPLETE_DIR: /downloads/soulseek/incomplete
+              SLSKD_SHARED_DIR: /music
+              SLSKD_REMOTE_FILE_MANAGEMENT: true
+              SLSKD_SHARE_CACHE_STORAGE_MODE: disk
 
     service:
       main:
@@ -50,3 +56,7 @@ spec:
         existingClaim: slskd-downloads-pvc
         globalMounts:
           - path: /downloads
+      music:
+        existingClaim: slskd-music-pvc
+        globalMounts:
+          - path: /music
