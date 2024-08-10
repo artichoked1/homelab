@@ -13,6 +13,7 @@ resources:
   - ./helm-repos/authentik.yaml
   - ./helm-repos/mailu.yaml
   - ./helm-repos/teleport.yaml
+  - ./helm-repos/chartmuseum.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
