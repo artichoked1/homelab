@@ -46,7 +46,7 @@ spec:
                   secretKeyRef:
                     name: slskd-jwt-secret
                     key: secret-key
-              SLSKD_JWT_TTL: 604800000
+              SLSKD_JWT_TTL: "604800000"
               SLSKD_METRICS: true
               SLSKD_METRICS_USERNAME: metrics
               SLSKD_METRICS_PASSWORD:
