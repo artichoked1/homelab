@@ -4,5 +4,6 @@ resources:
   - ./namespace.yaml
   - ./pv.yaml
   - ./pvc.yaml
+  - ./secrets.yaml
   - ./slskd.yaml
   - ./ingress.yaml
