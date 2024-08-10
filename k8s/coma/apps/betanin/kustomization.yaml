@@ -5,4 +5,5 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./ingress.yaml
+  - ./betanin-config.yaml
   - ./betanin.yaml
