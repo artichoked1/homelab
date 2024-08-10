@@ -27,7 +27,7 @@ spec:
               pullPolicy: IfNotPresent
             env:
               SLSKD_DOWNLOADS_DIR: /app/downloads/soulseek/downloads
-              SLSKD_INCOMPLETE_DIR: /downloads/soulseek/incomplete
+              SLSKD_INCOMPLETE_DIR: /app/downloads/soulseek/incomplete
               SLSKD_SHARED_DIR: /music
               SLSKD_REMOTE_FILE_MANAGEMENT: true
               SLSKD_SHARE_CACHE_STORAGE_MODE: disk
