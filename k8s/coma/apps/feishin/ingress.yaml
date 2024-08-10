@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: feishin
+  namespace: feishin
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "feishin.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: feishin
+                port:
+                  number: 9180
+  tls:
+    - hosts:
+        - "feishin.artichoke.cc"
+      secretName: artichokecc-cert
