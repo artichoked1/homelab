@@ -44,7 +44,7 @@ spec:
           - path: /b/.config/beets
       config:
         enabled: true
-        type: configMap
+        type: secret
         name: betanin-config
         advancedMounts:
           main:
