@@ -26,11 +26,45 @@ spec:
               tag: 0.21.3
               pullPolicy: IfNotPresent
             env:
-              SLSKD_DOWNLOADS_DIR: /downloads/soulseek/downloads
+              SLSKD_DOWNLOADS_DIR: /app/downloads/soulseek/downloads
               SLSKD_INCOMPLETE_DIR: /downloads/soulseek/incomplete
               SLSKD_SHARED_DIR: /music
               SLSKD_REMOTE_FILE_MANAGEMENT: true
               SLSKD_SHARE_CACHE_STORAGE_MODE: disk
+              SLSKD_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-webui-user
+                    key: username
+              SLSKD_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-webui-user
+                    key: password
+              SLSKD_JWT_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-jwt-secret
+                    key: secret-key
+              SLSKD_JWT_TTL: 604800000
+              SLSKD_METRICS: true
+              SLSKD_METRICS_USERNAME: metrics
+              SLSKD_METRICS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-webui-user
+                    key: password
+              SLSKD_FILE_PERMISSION_MODE: 664
+              SLSKD_SLSK_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-slsk-user
+                    key: username
+              SLSKD_SLSK_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-slsk-user
+                    key: password
 
     service:
       main:
@@ -45,6 +79,18 @@ spec:
           tcp:
             port: 50300
 
+    serviceMonitor:
+      main:
+        enabled: true
+        serviceName: slskd-main
+        labels:
+          release: prometheus-stack
+        endpoints:
+          - port: http
+            interval: 4m
+            scrapeTimeout: 90s
+            path: /metrics
+
     persistence:
       data:
         storageClass: "longhorn"
@@ -55,7 +101,7 @@ spec:
       downloads:
         existingClaim: slskd-downloads-pvc
         globalMounts:
-          - path: /downloads
+          - path: /app/downloads
       music:
         existingClaim: slskd-music-pvc
         globalMounts:
