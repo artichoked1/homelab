@@ -14,4 +14,4 @@ spec:
               service:
                 name: betanin
                 port:
-                  number: http
+                  number: 9393
