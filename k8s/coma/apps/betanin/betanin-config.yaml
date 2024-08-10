@@ -1,0 +1,22 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: betanin-config
+  namespace: default
+data:
+  config.toml: |
+    [frontend]
+    username = "betanin"
+    password = "betanin"
+
+    [notifications.services]
+
+    [notifications.strings]
+    body = "@ $time. view/use the console at http://127.0.0.1:9393/$console_path"
+    title = "[betanin] torrent `$name` $status"
+
+    [clients]
+    api_key = ""
+
+    [server]
+    num_parallel_jobs = 1

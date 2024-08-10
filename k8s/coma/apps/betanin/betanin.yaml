@@ -42,6 +42,16 @@ spec:
           - path: /b/.local/share/betanin
           - path: /b/.config/betanin
           - path: /b/.config/beets
+      config:
+        enabled: true
+        type: configMap
+        name: betanin-config
+        advancedMounts:
+          main:
+            main:
+              - path: /b/.config/betanin/config.toml
+                readOnly: true
+                subPath: config.toml
       downloads:
         existingClaim: betanin-downloads-pvc
         globalMounts:
