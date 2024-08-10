@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: betanin-downloads-pvc
+  namespace: betanin
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: betanin-downloads-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: betanin-music-pvc
+  namespace: slskd
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: betanin-music-pv
