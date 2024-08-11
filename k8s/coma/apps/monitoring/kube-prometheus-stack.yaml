@@ -30,10 +30,10 @@ spec:
           root_url: https://grafana.artichoke.cc
         smtp:
           enabled: true
-          host: smtp.domain.tld:465
-          user: user
-          password: password
-          from_address: noreply@domain.tld
+          host: $__env{GF_SMTP_HOST}
+          user: $__env{GF_SMTP_USER}
+          password: $__env{GF_SMTP_PASSWORD}
+          from_address: $__env{GF_SMTP_FROM_ADDRESS}
           from_name: Grafana
     prometheus:
       prometheusSpec:
