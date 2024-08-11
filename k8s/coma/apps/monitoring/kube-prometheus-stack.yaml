@@ -23,6 +23,18 @@ spec:
       persistence:
         enabled: true
         size: 1Gi
+      envFromSecret: "grafana-env-vars"
+      grafana.ini:
+        server:
+          domain: grafana.artichoke.cc
+          root_url: https://grafana.artichoke.cc
+        smtp:
+          enabled: true
+          host: smtp.domain.tld:465
+          user: user
+          password: password
+          from_address: noreply@domain.tld
+          from_name: Grafana
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
