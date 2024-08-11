@@ -20,7 +20,7 @@ spec:
     controller:
       type: cronjob
       cronjob:
-        schedule: "*/1 * * * *"
+        schedule: "*/5 * * * *"
         ttlSecondsAfterFinished: 3600
 
     restartPolicy: OnFailure
