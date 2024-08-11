@@ -20,6 +20,7 @@ spec:
         ENABLE_METRICS: true
         CACHE: redis
         CACHE_REDIS_ADDR: main.redis-clusters.svc.cluster.local:6379
+        DISABLE_API: false
     serviceMonitor:
       enabled: true
       labels:
