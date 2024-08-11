@@ -20,6 +20,8 @@ spec:
     crds: CreateReplace
   values:
     grafana:
+      deploymentStrategy:
+        type: Recreate
       persistence:
         enabled: true
         size: 1Gi
