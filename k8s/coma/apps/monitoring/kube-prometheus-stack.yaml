@@ -40,6 +40,12 @@ spec:
           client_id: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_ID}
           client_secret: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
           scopes: openid profile email
+          login_attribute_path: preferred_username
+          groups_attribute_path: groups
+          name_attribute_path: name
+          empty_scopes: false
+          use_pkce: true
+          icon: signin
           auth_url: https://auth.artichoke.cc/application/o/authorize/
           token_url: https://auth.artichoke.cc/application/o/token/
           api_url: https://auth.artichoke.cc/application/o/userinfo/
