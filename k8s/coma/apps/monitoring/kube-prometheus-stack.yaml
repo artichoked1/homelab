@@ -27,6 +27,18 @@ spec:
         size: 1Gi
       envFromSecret: "grafana-env-vars"
       grafana.ini:
+        auth:
+          signout_redirect_url: https://auth.artichoke.cc/application/o/grafana/end-session/
+          oauth_auto_login: true
+        auth.generic_oauth:
+          enabled: true
+          name: Authentik
+          client_id: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_ID}
+          client_secret: $__env{GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET}
+          scopes: openid profile email
+          auth_url: https://auth.artichoke.cc/application/o/authorize/
+          token_url: https://auth.artichoke.cc/application/o/token/
+          api_url: https://auth.artichoke.cc/application/o/userinfo/
         server:
           domain: grafana.artichoke.cc
           root_url: https://grafana.artichoke.cc
