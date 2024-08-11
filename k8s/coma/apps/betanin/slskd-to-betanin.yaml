@@ -64,4 +64,4 @@ spec:
         type: nfs
         server: "192.168.188.143"
         path: /mnt/Media/Torrents/soulseek/downloads
-        mountPath: /complete
+        mountPath: /downloads
