@@ -37,7 +37,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: betanin-config
-            key: betanin-api-key
+            key: api-key
 
     service:
       main:
