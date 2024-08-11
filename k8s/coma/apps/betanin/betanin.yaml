@@ -56,6 +56,7 @@ spec:
         existingClaim: betanin-downloads-pvc
         globalMounts:
           - path: /downloads
+          - path: /mnt/media/downloads
       music:
         existingClaim: betanin-music-pvc
         globalMounts:
