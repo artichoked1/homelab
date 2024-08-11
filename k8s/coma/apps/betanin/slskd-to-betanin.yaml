@@ -38,6 +38,21 @@ spec:
           secretKeyRef:
             name: betanin-config
             key: api-key
+      PUSHOVER_TOKEN:
+        valueFrom:
+          secretKeyRef:
+            name: betanin-pushover
+            key: app-key
+      PUSHOVER_USER:
+        valueFrom:
+          secretKeyRef:
+            name: betanin-pushover
+            key: user-key
+      PUSHOVER_DEVICE:
+        valueFrom:
+          secretKeyRef:
+            name: betanin-pushover
+            key: device
 
     service:
       main:
