@@ -27,6 +27,10 @@ spec:
         size: 1Gi
       envFromSecret: "grafana-env-vars"
       grafana.ini:
+        users:
+          auto_assign_org: true
+          auto_assign_org_id: 1
+          auto_assign_org_role: Viewer
         auth:
           signout_redirect_url: https://auth.artichoke.cc/application/o/grafana/end-session/
           oauth_auto_login: true
