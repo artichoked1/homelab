@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chartmuseum
+  namespace: chartmuseum
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "charts.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: chartmuseum
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - "charts.artichoke.cc"
+      secretName: artichokecc-cert
