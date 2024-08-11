@@ -6,4 +6,5 @@ resources:
   - ./pvc.yaml
   - ./ingress.yaml
   - ./secrets.yaml
+  - ./slskd-to-betanin.yaml
   - ./betanin.yaml
