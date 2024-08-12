@@ -10,7 +10,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: ferrite
+        name: artichoke
         namespace: flux-system
       version: 2.0.0
   interval: 1m0s
