@@ -16,7 +16,7 @@ spec:
   interval: 1m0s
   values:
     appName: "Ferrite"
-
+    replicaCount: 1
     image:
       repository: ghcr.io/smartich0ke/ferritecms
       pullPolicy: IfNotPresent
