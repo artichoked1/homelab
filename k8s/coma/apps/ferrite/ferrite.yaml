@@ -36,7 +36,7 @@ spec:
       useExistingSecret: true
       existingSecretName: "ferrite-initial-admin"
 
-    logChannel: "stack stderr"
+    logChannel: "stack"
 
     database:
       externalDatabase: true
