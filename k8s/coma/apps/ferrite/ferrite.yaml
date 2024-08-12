@@ -29,7 +29,7 @@ spec:
 
     appKey:
       useExistingSecret: true
-      secretName: "ferrite-app-key"
+      existingSecretName: "ferrite-app-key"
 
     initialAdminUser:
       enabled: true
