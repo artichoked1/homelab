@@ -17,6 +17,11 @@ spec:
   values:
     appName: "Ferrite"
 
+    image:
+      repository: ghcr.io/smartich0ke/ferritecms
+      pullPolicy: IfNotPresent
+      tag: "1.3.1"
+
     appEnv: "production"
     appDebug: "false"
 
