@@ -1,0 +1,74 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ferrite
+  namespace: ferrite
+spec:
+  chart:
+    spec:
+      chart: ferritecms
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: ferrite
+        namespace: flux-system
+      version: 2.0.0
+  interval: 1m0s
+  values:
+    appName: "Ferrite"
+
+    appEnv: "production"
+    appDebug: "false"
+
+    appUrl: "https://nikolaipatrick.com"
+
+    taskScheduler:
+      enabled: false
+    queueWorker:
+      enabled: false
+
+    appKey:
+      useExistingSecret: true
+      secretName: "ferrite-app-key"
+
+    initialAdminUser:
+      enabled: true
+      useExistingSecret: true
+      existingSecretName: "ferrite-initial-admin"
+
+    logChannel: "stack,stderr"
+
+    database:
+      externalDatabase: true
+      auth:
+        driver: "pgsql"
+        host: "main-postgres.databases.svc.cluster.local"
+        port: "5432"
+        database: "ferrite"
+        useExistingSecret: true
+        existingSecretName: "ferrite-postgres-auth"
+
+    postgresql:
+      enabled: false
+
+    redis:
+      externalRedis: true
+      auth:
+        host: "main.redis-clusters.svc.cluster.local"
+        password: ""
+        port: "6379"
+
+    redischart:
+      enabled: false
+
+    mail:
+      driver: "smtp"
+      host: "smtp.artichoke.cc"
+      port: "465"
+      encryption: "ssl"
+      useExistingSecret: true
+      existingSecretName: "ferrite-mail-auth"
+
+    persistence:
+      enabled: true
+      size: "2Gi"
