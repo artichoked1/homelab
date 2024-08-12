@@ -42,7 +42,7 @@ spec:
       externalDatabase: true
       auth:
         driver: "pgsql"
-        host: "main-postgres.databases.svc.cluster.local"
+        host: "main-postgres-rw.databases.svc.cluster.local"
         port: "5432"
         database: "ferrite"
         useExistingSecret: true
