@@ -42,6 +42,16 @@ spec:
       existingSecretName: "ferrite-initial-admin"
 
     logChannel: "stack"
+    logLevel: "warning"
+
+    cache:
+      driver: "redis"
+
+    session:
+      driver: "redis"
+
+    queue:
+      connection: "redis"
 
     database:
       externalDatabase: true
@@ -58,6 +68,7 @@ spec:
 
     redis:
       externalRedis: true
+      driver: "predis"
       auth:
         host: "main.redis-clusters.svc.cluster.local"
         password: ""
