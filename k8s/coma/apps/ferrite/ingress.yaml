@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ferrite
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "nikolaipatrick.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: ferrite-ferritecms
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - "nikolaipatrick.com"
+      secretName: artichokecc-cert
