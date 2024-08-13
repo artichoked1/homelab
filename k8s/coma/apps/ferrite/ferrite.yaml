@@ -20,7 +20,7 @@ spec:
     image:
       repository: ghcr.io/smartich0ke/ferritecms
       pullPolicy: IfNotPresent
-      tag: "1.3.1-build-100"
+      tag: "1.3.1-build-103"
 
     appEnv: "production"
     appDebug: "false"
