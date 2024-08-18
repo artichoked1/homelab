@@ -15,6 +15,7 @@ resources:
   - ./helm-repos/teleport.yaml
   - ./helm-repos/chartmuseum.yaml
   - ./helm-repos/artichoke.yaml
+  - ./helm-repos/dendrite.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
