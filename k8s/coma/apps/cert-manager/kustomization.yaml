@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cert-manager.yaml
+  - ./vault-issuer-sa.yaml
 namespace: cert-manager
