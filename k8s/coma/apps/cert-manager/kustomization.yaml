@@ -4,4 +4,5 @@ resources:
   - ./namespace.yaml
   - ./cert-manager.yaml
   - ./vault-issuer-sa.yaml
+  - ./vault-issuer-token.yaml
 namespace: cert-manager
