@@ -5,6 +5,7 @@ metadata:
   namespace: vault
   annotations:
     cert-manager.io/cluster-issuer: vault-issuer
+    cert-manager.io/common-name: vault.coma.artichoke.network
 spec:
   rules:
     - host: "vault.coma.artichoke.network"
