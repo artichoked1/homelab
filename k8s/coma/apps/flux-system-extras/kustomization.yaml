@@ -16,7 +16,7 @@ resources:
   - ./helm-repos/chartmuseum.yaml
   - ./helm-repos/artichoke.yaml
   - ./helm-repos/dendrite.yaml
-
+  - ./helm-repos/gitea.yaml
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml
