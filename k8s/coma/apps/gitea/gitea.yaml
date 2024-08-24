@@ -1,0 +1,44 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  chart:
+    spec:
+      chart: gitea
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: gitea
+        namespace: flux-system
+      version: 10.4.0
+  interval: 1m0s
+  values:
+    gitea:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      database:
+        builtIn:
+          postgresql:
+            enabled: false
+      cache:
+        builtIn:
+          enabled: false
+      config:
+        APP_NAME: "Artichoke's Gitea Server"
+        database:
+          DB_TYPE: postgres
+          HOST: main-postgres-rw.databases.svc.cluster.local
+          NAME: gitea
+          USER: gitea
+          PASSWD: ${GITEA_POSTGRES_PASS}
+          SCHEMA: public
+        cache:
+          ADAPTER: redis
+          HOST: redis://main.redis-clusters-svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s
+        queue:
+          TYPE: redis
+          CONN_STR: redis://main.redis-clusters-svc.cluster.local:6379/0
