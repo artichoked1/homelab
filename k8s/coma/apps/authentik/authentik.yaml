@@ -25,7 +25,7 @@ spec:
         host: smtp.artichoke.cc
         port: 465
         username: ${NOREPLY_EMAIL}
-        password: '"${NOREPLY_EMAIL_PASS}"'
+        password: '""${NOREPLY_EMAIL_PASS}""'
         use_tls: false
         use_ssl: true
         from: ${NOREPLY_EMAIL}
