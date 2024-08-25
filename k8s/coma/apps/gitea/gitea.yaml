@@ -15,15 +15,15 @@ spec:
       version: 10.4.0
   interval: 1m0s
   values:
+    redis-cluster:
+      enabled: false
+    postgresql-ha:
+      enabled: false
     gitea:
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
-      database:
-        builtIn:
-          postgresql:
-            enabled: false
       config:
         APP_NAME: "Artichoke's Gitea Server"
         database:
