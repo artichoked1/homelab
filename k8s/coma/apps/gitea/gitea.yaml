@@ -24,9 +24,6 @@ spec:
         builtIn:
           postgresql:
             enabled: false
-      cache:
-        builtIn:
-          enabled: false
       config:
         APP_NAME: "Artichoke's Gitea Server"
         database:
