@@ -35,7 +35,7 @@ spec:
           SCHEMA: public
         cache:
           ADAPTER: redis
-          HOST: redis://main.redis-clusters-svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s
+          HOST: redis://main.redis-clusters.svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s
         queue:
           TYPE: redis
-          CONN_STR: redis://main.redis-clusters-svc.cluster.local:6379/0
+          CONN_STR: redis://main.redis-clusters.svc.cluster.local:6379/0
