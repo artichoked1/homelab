@@ -32,7 +32,7 @@ spec:
           SMTP_ADDR: smtp.artichoke.cc
           SMTP_PORT: 465
           USER: ${NOREPLY_EMAIL}
-          PASSWD: '""${NOREPLY_EMAIL_PASS}""'
+          PASSWD: '"${NOREPLY_EMAIL_PASS}"'
         APP_NAME: "Artichoke's Gitea Server"
         database:
           DB_TYPE: postgres
