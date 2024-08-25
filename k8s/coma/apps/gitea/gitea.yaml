@@ -31,17 +31,17 @@ spec:
           PROTOCOL: smtps
           SMTP_ADDR: smtp.artichoke.cc
           SMTP_PORT: 465
-          USER: ${NOREPLY_EMAIL}
-          PASSWD: '"${NOREPLY_EMAIL_PASS}"'
+          USER: ${GITEA_EMAIL}
+          PASSWD: ${GITEA_EMAIL_PASS}
+          FROM: ${GITEA_EMAIL}
         APP_NAME: "Artichoke's Gitea Server"
         database:
           DB_TYPE: postgres
           HOST: main-postgres-rw.databases.svc.cluster.local
           NAME: gitea
-          USER: noreply@artichoke.cc
+          USER: gitea
           PASSWD: ${GITEA_POSTGRES_PASS}
           SCHEMA: public
-          FROM: noreply@artichoke.cc
         cache:
           ADAPTER: redis
           HOST: redis://main.redis-clusters.svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s
