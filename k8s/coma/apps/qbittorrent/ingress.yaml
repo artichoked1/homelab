@@ -5,6 +5,7 @@ metadata:
   namespace: qbittorrent
   annotations:
     cert-manager.io/cluster-issuer: vault-issuer
+    cert-manager.io/common-name: qbittorrent.coma.artichoke.network
 spec:
   rules:
     - host: "qbittorrent.coma.artichoke.network"
