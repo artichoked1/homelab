@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: qbittorrent
   namespace: qbittorrent
-  cert-manager.io/cluster-issuer: vault-issuer
+  annotations:
+    cert-manager.io/cluster-issuer: vault-issuer
 spec:
   rules:
     - host: "qbittorrent.coma.artichoke.network"
