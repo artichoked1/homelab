@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: flux-system
 resources:
   - ./helm-repos/bjw-s.yaml
   - ./helm-repos/longhorn.yaml
@@ -22,5 +23,3 @@ resources:
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml
-
-namespace: flux-system
