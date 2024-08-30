@@ -17,6 +17,8 @@ resources:
   - ./helm-repos/artichoke.yaml
   - ./helm-repos/dendrite.yaml
   - ./helm-repos/gitea.yaml
+  - ./helm-repos/mastodon.yaml
+
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml

@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: mastodon
+  namespace: flux-system
+spec:
+  interval: 2h
+  url: https://mastodon.github.io/helm-charts/
