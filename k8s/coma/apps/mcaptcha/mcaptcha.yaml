@@ -56,13 +56,13 @@ spec:
               MCAPTCHA_captcha_QUEUE_LENGTH: 2000
               MCAPTCHA_captcha_ENABLE_STATS: true
 
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_avg_traffic_difficulty: 50000
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_peak_sustainable_traffic_difficulty: 3000000
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_broke_my_site_traffic_difficulty: 5000000
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_duration: 30
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_avg_traffic_time: 1
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_peak_sustainable_traffic_time: 3
-              MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_broke_my_site_traffic_time: 5
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_avg_traffic_difficulty: 50000
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_peak_sustainable_traffic_difficulty: 3000000
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_broke_my_site_traffic_difficulty: 5000000
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_duration: 30
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_avg_traffic_time: 1
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_peak_sustainable_traffic_time: 3
+              # MCAPTCHA_captcha_DEFAULT_DIFFICULTY_STRATEGY_broke_my_site_traffic_time: 5
 
               MCAPTCHA_smtp_FROM: ${NOREPLY_EMAL}
               MCAPTCHA_smtp_REPLY: ${NOREPLY_EMAL}
