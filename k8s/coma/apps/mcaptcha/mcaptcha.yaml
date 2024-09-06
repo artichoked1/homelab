@@ -29,6 +29,7 @@ spec:
               MCAPTCHA_allow_demo: false
 
               MCAPTCHA_database_POOL: 4
+              MCAPTCHA_redis_POOL: 4
               DATABASE_URL:
                 valueFrom:
                   secretKeyRef:
