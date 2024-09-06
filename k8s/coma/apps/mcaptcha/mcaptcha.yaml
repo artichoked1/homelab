@@ -49,7 +49,7 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: mcaptcha-password-salt
-                    key: secret
+                    key: salt
 
               MCAPTCHA_captcha_GC: 30
               MCAPTCHA_captcha_RUNNERS: 4
