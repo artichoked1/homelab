@@ -90,11 +90,3 @@ spec:
         ports:
           http:
             port: 7000
-
-    persistence:
-      data:
-        storageClass: "local-path"
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        globalMounts:
-          - path: /config
