@@ -48,7 +48,7 @@ spec:
               MCAPTCHA_captcha_SALT:
                 valueFrom:
                   secretKeyRef:
-                    name: mcaptcha-captcha-salt
+                    name: mcaptcha-password-salt
                     key: secret
 
               MCAPTCHA_captcha_GC: 30
