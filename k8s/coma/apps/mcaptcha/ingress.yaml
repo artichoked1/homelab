@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mcaptcha
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "captcha.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: mcaptcha
+                port:
+                  number: 7000
+  tls:
+    - hosts:
+        - "captcha.artichoke.cc"
+      secretName: artichokecc-cert
