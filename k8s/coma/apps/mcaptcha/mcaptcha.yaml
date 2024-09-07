@@ -25,7 +25,7 @@ spec:
               MCAPTCHA_debug: false
               MCAPTCHA_commercial: false
               MCAPTCHA_source_code: https://github.com/mCaptcha/mCaptcha
-              MCAPTCHA_allow_registration: false
+              MCAPTCHA_allow_registration: true
               MCAPTCHA_allow_demo: false
 
               MCAPTCHA_database_POOL: 4
