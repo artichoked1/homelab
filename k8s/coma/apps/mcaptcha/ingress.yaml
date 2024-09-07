@@ -14,7 +14,7 @@ spec:
             path: "/"
             backend:
               service:
-                name: mcaptcha
+                name: mcaptcha-main
                 port:
                   number: 7000
   tls:
