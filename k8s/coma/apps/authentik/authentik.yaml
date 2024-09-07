@@ -15,6 +15,10 @@ spec:
       version: 2024.6.4
   interval: 1m0s
   values:
+    worker:
+      env:
+      - name: TMPDIR
+        value: /tmp
     authentik:
       bootstrap_token: test
       bootstrap_password: test
