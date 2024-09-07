@@ -26,6 +26,7 @@ spec:
     restartPolicy: OnFailure
 
     image:
+      pullPolicy: IfNotPresent
       repository: ghcr.io/lucas-dclrcq/slskd-to-betanin-notifier
       tag: latest@sha256:90fe436c462509dc291b09311e6f1e004c9a1ed50d3e8af2ef748d2c1a710e89
 
