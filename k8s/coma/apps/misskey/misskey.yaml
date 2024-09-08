@@ -26,7 +26,7 @@ spec:
               tag: 2024.8
               pullPolicy: IfNotPresent
             env:
-              MISSKEY_URL: ms.artichoke.cc
+              MISSKEY_URL: https://ms.artichoke.cc/
               POSTGRES_PASSWORD:
                 valueFrom:
                   secretKeyRef:
@@ -54,8 +54,12 @@ spec:
         globalMounts:
           - path: /misskey/files
       config:
-        accessMode: ReadWriteOnce
-        size: 10Mi
-        globalMounts:
-          - path: /misskey/.config
-            readOnly: false
+        enabled: true
+        type: configMap
+        name: misskey-config
+        advancedMounts:
+          main:
+            main:
+              - path: /misskey/.config/default.yml
+                subPath: default.yml
+                readOnly: true
