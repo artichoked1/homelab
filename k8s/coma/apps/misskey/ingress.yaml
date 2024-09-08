@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: misskey
+  namespace: misskey
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "ms.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: misskey
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+        - "ms.artichoke.cc"
+      secretName: artichokecc-cert

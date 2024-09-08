@@ -5,3 +5,4 @@ resources:
   - ./secrets.yaml
   - ./configmap.yaml
   - ./misskey.yaml
+  - ./ingress.yaml
