@@ -58,4 +58,4 @@ spec:
         size: 10Mi
         globalMounts:
           - path: /misskey/.config
-            readOnly: true
+            readOnly: false
