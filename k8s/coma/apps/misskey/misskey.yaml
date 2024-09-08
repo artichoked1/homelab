@@ -1,0 +1,61 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: misskey
+  namespace: misskey
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+
+        containers:
+          main:
+            image:
+              repository: misskey/misskey
+              tag: 2024.8
+              pullPolicy: IfNotPresent
+            env:
+              MISSKEY_URL: ms.artichoke.cc
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: misskey-postgres-auth
+                    key: password
+              POSTGRES_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: misskey-postgres-auth
+                    key: username
+              POSTGRES_DB: misskey
+              DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 3000
+
+    persistence:
+      data:
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        globalMounts:
+          - path: /misskey/files
+      config:
+        accessMode: ReadWriteOnce
+        size: 10Mi
+        globalMounts:
+          - path: /misskey/.config
+        readOnly: true
