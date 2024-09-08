@@ -60,6 +60,6 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: /misskey/.config/default.yml
+              - path: /misskey/.config
                 subPath: default.yml
                 readOnly: true
