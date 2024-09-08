@@ -27,17 +27,17 @@ spec:
               pullPolicy: IfNotPresent
             env:
               MISSKEY_URL: https://ms.artichoke.cc/
-              POSTGRES_PASSWORD:
+              DATABASE_PASSWORD:
                 valueFrom:
                   secretKeyRef:
                     name: misskey-postgres-auth
                     key: password
-              POSTGRES_USER:
+              DATABASE_USER:
                 valueFrom:
                   secretKeyRef:
                     name: misskey-postgres-auth
                     key: username
-              POSTGRES_DB: misskey
+              DATABASE_DB: misskey
               DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
 
     service:

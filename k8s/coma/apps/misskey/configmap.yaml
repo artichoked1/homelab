@@ -41,6 +41,10 @@ data:
     #   ┌──────────────────────────┐
     #───┘ PostgreSQL configuration └────────────────────────────────
 
+    db:
+      host: db
+      port: 5432
+
     # You can configure any number of replicas here
     #dbSlaves:
     #  -
