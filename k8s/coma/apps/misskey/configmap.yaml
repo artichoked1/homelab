@@ -14,7 +14,7 @@ data:
 
     # Final accessible URL seen by a user.
     # You can set url from an environment variable instead.
-    # url: https://example.tld/
+    url: https://ms.artichoke.cc
 
     # ONCE YOU HAVE STARTED THE INSTANCE, DO NOT CHANGE THE
     # URL SETTINGS AFTER THAT!
@@ -41,18 +41,18 @@ data:
     #   ┌──────────────────────────┐
     #───┘ PostgreSQL configuration └────────────────────────────────
 
-    # db:
-    #   host: db
-    #   port: 5432
+    db:
+      host: db
+      port: 5432
 
     #   # Database name
     #   # You can set db from an environment variable instead.
-    #   db: misskey
+      db: main-postgres-rw.databases.svc.cluster.local
 
     #   # Auth
     #   # You can set user and pass from environment variables instead.
-    #   user: example-misskey-user
-    #   pass: example-misskey-pass
+      user: example-misskey-user
+      pass: example-misskey-pass
 
     #   # Whether disable Caching queries
     #   #disableCache: true
