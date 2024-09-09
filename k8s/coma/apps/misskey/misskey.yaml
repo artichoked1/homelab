@@ -39,6 +39,13 @@ spec:
                     key: username
               DATABASE_DB: misskey
               DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
+        initContainers:
+          chmod-files-dir:
+            image: busybox
+            command: ["sh", "-c", "chown -hR 991:991 /misskey/files", "chmod -R 700 /misskey/files"]
+            volumeMounts:
+              - name: data
+                mountPath: /misskey/files
 
     service:
       main:
