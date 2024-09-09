@@ -42,10 +42,13 @@ spec:
         initContainers:
           chmod-files-dir:
             image: busybox
-            command: ["sh", "-c", "chown -hR 991:991 /misskey/files", "chmod -R 700 /misskey/files"]
-            volumeMounts:
-              - name: data
-                mountPath: /misskey/files
+            command:
+              [
+                "sh",
+                "-c",
+                "chown -hR 991:991 /misskey/files",
+                "chmod -R 700 /misskey/files",
+              ]
 
     service:
       main:
