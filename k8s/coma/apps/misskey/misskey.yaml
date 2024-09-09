@@ -41,7 +41,10 @@ spec:
               DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
         initContainers:
           chmod-files-dir:
-            image: busybox
+            image:
+              repository: busybox
+              tag: stable
+              pullPolicy: IfNotPresent
             command:
               [
                 "sh",
