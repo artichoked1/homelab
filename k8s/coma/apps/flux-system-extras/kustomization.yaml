@@ -19,6 +19,7 @@ resources:
   - ./helm-repos/dendrite.yaml
   - ./helm-repos/gitea.yaml
   - ./helm-repos/mastodon.yaml
+  - ./helm-repos/nextcloud.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
