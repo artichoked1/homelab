@@ -37,7 +37,7 @@ spec:
           secure: ssl
           authtype: LOGIN
       configs:
-        redis.config.php: |-
+        z-redis.config.php: |-
           <?php
           $CONFIG = array (
             'memcache.local' => '\OC\Memcache\Redis',
@@ -56,7 +56,7 @@ spec:
     metrics:
       enabled: true
       serviceMonitor:
-        enabled: true 
+        enabled: true
         labels:
           release: prometheus-stack
     externalDatabase:
