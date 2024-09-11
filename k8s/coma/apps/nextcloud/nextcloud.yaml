@@ -48,6 +48,15 @@ spec:
               'port' => 6379,
             ]
           );
+      extraVolumes:
+        - name: nsfiles
+          nfs:
+            server: truenas.artichoke.network
+            path: "/mnt/Main/Ns Files"
+            readOnly: false
+      extraVolumeMounts:
+        - name: nsfiles
+          mountPath: /nsfiles
     cronjob:
       enabled: true
     persistence:
