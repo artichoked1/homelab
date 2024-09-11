@@ -48,6 +48,13 @@ spec:
               'port' => 6379,
             ]
           );
+        z-general.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => ['10.42.0.0/16'],
+            'maintenance_window_start' => 1,
+            'default_phone_region' => 'AU',
+          );
       extraVolumes:
         - name: nsfiles
           nfs:
@@ -68,6 +75,8 @@ spec:
         enabled: true
         labels:
           release: prometheus-stack
+    internalDatabase:
+      enabled: false
     externalDatabase:
       enabled: true
       type: postgresql
