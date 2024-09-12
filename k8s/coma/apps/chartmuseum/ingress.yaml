@@ -5,7 +5,7 @@ metadata:
   namespace: chartmuseum
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    traefik.ingress.kubernetes.io/router.middlewares: default/https-redirect@kubernetescrd,default/hsts@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-https-redirect@kubernetescrd,default-hsts@kubernetescrd
 spec:
   rules:
     - host: "charts.artichoke.cc"
