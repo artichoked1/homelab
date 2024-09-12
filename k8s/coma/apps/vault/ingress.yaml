@@ -6,6 +6,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: vault-issuer
     cert-manager.io/common-name: vault.coma.artichoke.network
+    traefik.ingress.kubernetes.io/router.middlewares: default/https-redirect@kubernetescrd,default/hsts@kubernetescrd
 spec:
   rules:
     - host: "vault.coma.artichoke.network"

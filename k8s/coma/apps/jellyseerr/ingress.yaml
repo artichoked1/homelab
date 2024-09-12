@@ -5,6 +5,7 @@ metadata:
   namespace: jellyseerr
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.middlewares: default/https-redirect@kubernetescrd,default/hsts@kubernetescrd
 spec:
   rules:
     - host: "jellyseerr.artichoke.cc"
