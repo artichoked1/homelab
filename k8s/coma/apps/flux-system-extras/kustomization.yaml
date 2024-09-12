@@ -21,6 +21,7 @@ resources:
   - ./helm-repos/mastodon.yaml
   - ./helm-repos/nextcloud.yaml
   - ./helm-repos/bitnami.yaml
+  - ./helm-repos/onlyoffice.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
