@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: onlyoffice-docserver
+  namespace: onlyoffice-docserver
+spec:
+  chart:
+    spec:
+      chart: docs
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: onlyoffice
+        namespace: flux-system
+      version: 4.2.2
+  interval: 1m0s
+  values:
+    connections:
+      dbType: postgres
+      dbHost: main-postgres-rw.databases.svc.cluster.local
+      dbPort: "5432"
+      dbExistingSecret: true
+      dbSecretKeyName:
+        dbPassword: "password"
