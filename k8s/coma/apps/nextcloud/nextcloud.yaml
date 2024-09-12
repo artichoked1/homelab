@@ -29,8 +29,8 @@ spec:
         smtpHostKey: smtp-host
       mail:
         enabled: true
-        fromAddress: ${NOREPLY_EMAIL}
-        domain: smtp.artichoke.cc
+        fromAddress: noreply
+        domain: artichoke.cc
         smtp:
           host: smtp.artichoke.cc
           port: 465
