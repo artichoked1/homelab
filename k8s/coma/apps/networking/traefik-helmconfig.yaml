@@ -13,4 +13,4 @@ spec:
           permanent: true
       websecure:
         middlewares:
-          - name: kube-public-hsts@kubernetescrd
+          - name: hsts@kubernetescrd
