@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rabbitmq
+  namespace: onlyoffice-docserver
+spec:
+  chart:
+    spec:
+      chart: rabbitmq
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: 14.7.0
+  interval: 1m0s
+  values:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        labels:
+          release: rabbitmq
