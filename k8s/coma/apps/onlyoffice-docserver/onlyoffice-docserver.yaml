@@ -21,8 +21,8 @@ spec:
       dbPort: "5432"
       dbUser: onlyoffice
       dbName: onlyoffice
-      dbExistingSecret: true
-      dbSecretKeyName: "onlyoffice-docserver-postgres-auth"
+      dbExistingSecret: "onlyoffice-docserver-postgres-auth"
+      dbSecretKeyName: "password"
 
       redisConnectorName: redis
       redisHost: main.redis-clusters.svc.cluster.local
