@@ -21,4 +21,5 @@ spec:
       eventFlushInterval: 30000ms
     serviceMonitor:
       enabled: true
-      additionalLabels: prometheus-stack
+      additionalLabels:
+        release: prometheus-stack
