@@ -58,3 +58,6 @@ spec:
 
     persistence:
       storageClass: "longhorn"
+
+    jwt:
+      existingSecret: onlyoffice-docserver-jwt
