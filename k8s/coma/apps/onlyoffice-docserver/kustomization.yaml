@@ -6,3 +6,4 @@ resources:
   - ./secrets.yaml
   - ./statsd-exporter.yaml
   - ./onlyoffice-docserver.yaml
+  - ./ingress.yaml
