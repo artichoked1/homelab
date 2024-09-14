@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: statsd-exporter
+      chart: prometheus-statsd-exporter
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
