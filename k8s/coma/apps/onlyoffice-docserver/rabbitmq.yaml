@@ -20,3 +20,7 @@ spec:
       serviceMonitor:
         labels:
           release: rabbitmq
+    auth:
+      username: onlyoffice
+      existingPasswordSecret: "onlyoffice-docserver-rabbitmq-auth"
+      onlyoffice-docserver-rabbitmq-auth: "password"
