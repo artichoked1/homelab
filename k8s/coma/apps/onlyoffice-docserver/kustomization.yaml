@@ -5,3 +5,4 @@ resources:
   - ./rabbitmq.yaml
   - ./secrets.yaml
   - ./statsd-exporter.yaml
+  - ./onlyoffice-docserver.yaml
