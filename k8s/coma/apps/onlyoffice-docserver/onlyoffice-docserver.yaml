@@ -23,7 +23,6 @@ spec:
       dbName: onlyoffice
       dbExistingSecret: true
       dbSecretKeyName: "onlyoffice-docserver-postgres-auth"
-      dbPassword: "password"
 
       redisConnectorName: redis
       redisHost: main.redis-clusters.svc.cluster.local
