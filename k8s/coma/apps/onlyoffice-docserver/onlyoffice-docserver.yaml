@@ -60,4 +60,4 @@ spec:
       storageClass: "longhorn"
 
     jwt:
-      existingSecret: onlyoffice-docserver-jwt
+      existingSecret: onlyoffice-docserver-jwt-secret
