@@ -24,3 +24,6 @@ spec:
       username: onlyoffice
       existingPasswordSecret: "onlyoffice-docserver-rabbitmq-auth"
       existingSecretPasswordKey: "password"
+
+    persistence:
+      storageClass: "longhorn"
