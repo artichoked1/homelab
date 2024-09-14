@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: landing
+  namespace: landing
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/smartich0ke/artichokenetwork-web
+              tag: main
+              pullPolicy: IfNotPresent
+
+    service:
+      http:
+        controller: main
+        ports:
+          http:
+            port: 80
