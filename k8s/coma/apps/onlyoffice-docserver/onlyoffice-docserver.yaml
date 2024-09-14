@@ -30,11 +30,11 @@ spec:
       redisUser: default
       redisNoPass: true
 
-      ampqType: rabbitmq
-      ampqHost: rabbitmq
-      ampqPort: "5672"
-      ampqUser: onlyoffice
-      ampqExistingSecret: "onlyoffice-docserver-rabbitmq-auth"
+      amqpType: rabbitmq
+      amqpHost: rabbitmq
+      amqpPort: "5672"
+      amqpUser: onlyoffice
+      amqpExistingSecret: "onlyoffice-docserver-rabbitmq-auth"
       amqpSecretKeyName: "password"
 
     docservice:
