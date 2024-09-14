@@ -55,3 +55,6 @@ spec:
 
     metrics:
       enabled: true
+
+    persistence:
+      storageClass: "longhorn"
