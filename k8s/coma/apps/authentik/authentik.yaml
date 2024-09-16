@@ -46,11 +46,12 @@ spec:
         enabled: true
       serviceMonitor:
         enabled: true
-    volumes:
-      - name: custom-css
-        configMap:
-          name: authentik-custom-css
-    volumeMounts:
-      - name: custom-css
-        mountPath: /web/dist/custom.css
-        subPath: custom.css
+    global:
+      volumes:
+        - name: custom-css
+          configMap:
+            name: authentik-custom-css
+      volumeMounts:
+        - name: custom-css
+          mountPath: /web/dist/custom.css
+          subPath: custom.css
