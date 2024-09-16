@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authentik-custom-css
+  namespace: authentik
+data:
+  custom.css: |
