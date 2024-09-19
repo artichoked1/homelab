@@ -11,6 +11,10 @@ spec:
     size: 2Gi
     storageClass: local-path
 
+  bootstrap:
+    pg_basebackup:
+      source: source-db
+
   externalClusters:
     - name: source-db
       connectionParameters:
