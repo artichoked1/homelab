@@ -10,3 +10,12 @@ spec:
   storage:
     size: 2Gi
     storageClass: local-path
+
+  externalClusters:
+    - name: source-db
+      connectionParameters:
+        host: 192.168.188.167
+        user: temp-superuser
+      password:
+        name: temp-superuser
+        key: password
