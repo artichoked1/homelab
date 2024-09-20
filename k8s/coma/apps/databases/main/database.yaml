@@ -15,8 +15,8 @@ spec:
       destinationPath: "s3://holeinmybudget/pg_backups/"
       s3Credentials:
         accessKeyId:
-          name: aws-creds
+          name: pg-backups-aws-creds
           key: access-key
         secretAccessKey:
-          name: aws-creds
+          name: pg-backups-aws-creds
           key: access-key-secret
