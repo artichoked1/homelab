@@ -10,16 +10,13 @@ spec:
   storage:
     size: 2Gi
     storageClass: local-path
-
-  bootstrap:
-    pg_basebackup:
-      source: source-db
-
-  externalClusters:
-    - name: source-db
-      connectionParameters:
-        host: 192.168.188.167
-        user: tempsuperuser
-      password:
-        name: temp-superuser
-        key: password
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://holeinmybudget/pg_backups/"
+      s3Credentials:
+        accessKeyId:
+          name: aws-creds
+          key: access-key
+        secretAccessKey:
+          name: aws-creds
+          key: access-key-secret
