@@ -51,7 +51,7 @@ spec:
         z-general.config.php: |-
           <?php
           $CONFIG = array (
-            'trusted_proxies' => ['10.42.0.0/16', '127.0.0.0/24', '192.168.0.0/16'],
+            'trusted_proxies' => ['10.42.0.0/16', '127.0.0.0/24', '192.168.0.0/16' '10.43.0.0/16'],
             'overwriteprotocol' => 'https',
             'maintenance_window_start' => 1,
             'default_phone_region' => 'AU',
