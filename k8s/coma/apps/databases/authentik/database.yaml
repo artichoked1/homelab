@@ -14,7 +14,16 @@ spec:
       owner: authentik
       secret:
         name: authentik-postgres-auth
-
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://holeinmybudget/pg_backups/"
+      s3Credentials:
+        accessKeyId:
+          name: pg-backups-aws-creds
+          key: access-key
+        secretAccessKey:
+          name: pg-backups-aws-creds
+          key: access-key-secret
   storage:
     size: 1Gi
     storageClass: local-path
