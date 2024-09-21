@@ -5,12 +5,15 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
-    ports:
-      web:
-        redirectTo:
-          port: websecure
-          priority: 10
-          permanent: true
-      websecure:
-        middlewares:
-          - name: default-hsts@kubernetescrd
+    service:
+      externalTrafficPolicy: Cluster
+
+#     ports:
+#       web:
+#         redirectTo:
+#           port: websecure
+#           priority: 10
+#           permanent: true
+#       websecure:
+#         middlewares:
+#           - name: default-hsts@kubernetescrd
