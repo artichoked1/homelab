@@ -11,3 +11,4 @@ resources:
 
   - ./main/secrets.yaml
   - ./main/database.yaml
+  - ./main/backup.yaml
