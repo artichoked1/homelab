@@ -20,15 +20,3 @@ spec:
         secretAccessKey:
           name: pg-backups-aws-creds
           key: access-key-secret
-  bootstrap:
-    pg_basebackup:
-      source: source-db
-
-  externalClusters:
-    - name: source-db
-      connectionParameters:
-        host: 192.168.188.167
-        user: tempsuperuser
-      password:
-        name: temp-superuser
-        key: password
