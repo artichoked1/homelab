@@ -5,8 +5,10 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
+    deployment:
+      kind: DaemonSet
     service:
-      externalTrafficPolicy: Cluster
+      externalTrafficPolicy: Local
 
 #     ports:
 #       web:

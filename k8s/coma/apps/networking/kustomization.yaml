@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ./hsts-middleware.yaml
   - ./https-redirect-middleware.yaml
-  # - ./traefik-helmconfig.yaml
+  - ./traefik-helmconfig.yaml
