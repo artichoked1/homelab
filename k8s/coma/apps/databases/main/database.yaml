@@ -13,7 +13,7 @@ spec:
   backup:
     barmanObjectStore:
       destinationPath: "s3://holeinmybudget/pg_backups/"
-      endpointURL: 9ff3d45c0c9a72a7a909d7fcf8ccab91.r2.cloudflarestorage.com/holeinmybudget
+      endpointURL: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
       s3Credentials:
         accessKeyId:
           name: pg-backups-aws-creds
