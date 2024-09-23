@@ -79,7 +79,7 @@ spec:
 
     mail:
       driver: "smtp"
-      host: "smtp.artichoke.cc"
+      host: "${NOREPLY_EMAIL_HOST}"
       port: "465"
       encryption: "ssl"
       useExistingSecret: true
