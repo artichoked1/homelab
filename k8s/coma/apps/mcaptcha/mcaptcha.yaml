@@ -67,7 +67,7 @@ spec:
 
               MCAPTCHA_smtp_FROM: ${NOREPLY_EMAL}
               MCAPTCHA_smtp_REPLY: ${NOREPLY_EMAL}
-              MCAPTCHA_smtp_URL: smtp.artichoke.cc
+              MCAPTCHA_smtp_URL: ${NOREPLY_EMAIL_HOST}
               MCAPTCHA_smtp_USERNAME:
                 valueFrom:
                   secretKeyRef:
