@@ -29,7 +29,7 @@ spec:
           ROOT_URL: https://git.artichoke.cc/
         mailer:
           PROTOCOL: smtps
-          SMTP_ADDR: smtp.artichoke.cc
+          SMTP_ADDR: ${NOREPLY_EMAIL_HOST}
           SMTP_PORT: 465
           USER: ${GITEA_EMAIL}
           PASSWD: ${GITEA_EMAIL_PASS}
