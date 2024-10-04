@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./secrets.yaml
   - ./coder.yaml
+  - ./ingress.yaml
