@@ -23,6 +23,7 @@ resources:
   - ./helm-repos/bitnami.yaml
   - ./helm-repos/onlyoffice.yaml
   - ./helm-repos/jameswynn.yaml
+  - ./helm-repos/coder.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
