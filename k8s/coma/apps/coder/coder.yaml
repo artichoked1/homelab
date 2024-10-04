@@ -16,6 +16,8 @@ spec:
   interval: 1m0s
   values:
     coder:
+      service:
+        type: ClusterIP
       env:
         - name: CODER_ACCESS_URL
           value: https://coder.artichoke.cc
