@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coder
+  namespace: coder
+spec:
+  chart:
+    spec:
+      chart: coder
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: coder
+        namespace: flux-system
+      version: 0.1.0
+  interval: 1m0s
+  values:
+    coder:
+      env:
+        - name: CODER_ACCESS_URL
+          value: https://coder.artichoke.cc
+        - name: CODER_WILDCARD_ACCESS_URL
+          value: https://*.coder.artichoke.cc
+        - name: CODER_PG_CONNECTION_URL
+          valueFrom:
+            secretKeyRef:
+              key: url
+              name: coder-postgres-auth
+        - name: CODER_PROMETHEUS_ADDRESS
+          value: 0.0.0.0:2112
+
+        - name: CODER_OIDC_ISSUER_URL
+          valueFrom:
+            secretKeyRef:
+              key: issuer-url
+              name: coder-oidc-auth
+        - name: CODER_EMAIL_DOMAIN
+          valueFrom:
+            secretKeyRef:
+              key: email-domain
+              name: coder-oidc-auth
+        - name: CODER_OIDC_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: client-id
+              name: coder-oidc-auth
+        - name: CODER_OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: client-secret
+              name: coder-oidc-auth
+
+        - name: CODER_EXTERNAL_AUTH_0_ID
+          value: github-primary
+        - name: CODER_EXTERNAL_AUTH_0_DISPLAY_NAME
+          value: GitHub
+        - name: CODER_EXTERNAL_AUTH_0_TYPE
+          value: github
+        - name: CODER_EXTERNAL_AUTH_0_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: client-id
+              name: coder-github-auth
+        - name: CODER_EXTERNAL_AUTH_0_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: client-secret
+              name: coder-github-auth
