@@ -51,6 +51,10 @@ spec:
             secretKeyRef:
               key: client-secret
               name: coder-oidc-auth
+        - name: CODER_OIDC_SIGN_IN_TEXT
+          value: "Sign in with Artichoke Technologies"
+        - name: CODER_OIDC_ICON_URL
+          value: "https://auth.artichoke.cc/static/dist/assets/icons/icon.svg"
 
         - name: CODER_EXTERNAL_AUTH_0_ID
           value: github-primary
