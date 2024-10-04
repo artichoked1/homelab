@@ -20,7 +20,7 @@ spec:
         - name: CODER_ACCESS_URL
           value: https://coder.artichoke.cc
         - name: CODER_WILDCARD_ACCESS_URL
-          value: https://*.coder.artichoke.cc
+          value: "*.coder.artichoke.cc"
         - name: CODER_PG_CONNECTION_URL
           valueFrom:
             secretKeyRef:
