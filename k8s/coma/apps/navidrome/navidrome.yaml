@@ -24,6 +24,7 @@ spec:
             env:
               ND_BASEURL: "https://music.artichoke.cc"
               ND_LASTFM_ENABLED: "true"
+              ND_ENABLESHARING: "true"
               ND_LASTFM_APIKEY:
                 valueFrom:
                   secretKeyRef:
@@ -48,7 +49,7 @@ spec:
 
             image:
               repository: deluan/navidrome
-              tag: latest
+              tag: 0.53.3
               pullPolicy: IfNotPresent
 
     service:
