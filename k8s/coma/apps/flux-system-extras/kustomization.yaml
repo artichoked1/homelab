@@ -24,6 +24,7 @@ resources:
   - ./helm-repos/onlyoffice.yaml
   - ./helm-repos/jameswynn.yaml
   - ./helm-repos/coder.yaml
+  - ./helm-epos/influxdata.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
