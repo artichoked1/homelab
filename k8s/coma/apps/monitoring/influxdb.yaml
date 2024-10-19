@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: iluxdb
+  namespace: monitoring
+spec:
+  chart:
+    spec:
+      chart: influxdb3-clustered
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: influxdata
+        namespace: flux-system
+      version: 0.1.7
+  interval: 1m0s
+  values:

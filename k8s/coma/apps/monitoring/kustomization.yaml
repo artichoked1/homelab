@@ -6,3 +6,4 @@ resources:
   - ./kube-prometheus-stack.yaml
   - ./ingress-prometheus.yaml
   - ./ingress-grafana.yaml
+  - ./influxdb.yaml
