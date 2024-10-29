@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: quay.io/hedgedoc/hedgedoc
-              tag: 1.9.9
+              tag: 1.10.0
               pullPolicy: IfNotPresent
 
             env:
@@ -38,7 +38,7 @@ spec:
                   secretKeyRef:
                     name: hedgedoc-postgres-auth
                     key: uri
-              
+
               CMD_OAUTH2_PROVIDERNAME: "Artichoke Technologies"
               CMD_OAUTH2_CLIENT_ID:
                 valueFrom:
