@@ -25,7 +25,7 @@ spec:
               TZ: Australia/Adelaide
             image:
               repository: lscr.io/linuxserver/bazarr
-              tag: 1.4.3
+              tag: 1.4.5
               pullPolicy: IfNotPresent
 
     service:
