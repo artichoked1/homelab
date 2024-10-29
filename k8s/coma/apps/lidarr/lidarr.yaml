@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: lscr.io/linuxserver/lidarr
-              tag: 2.4.3
+              tag: 2.7.1
               pullPolicy: IfNotPresent
 
     service:
