@@ -38,8 +38,8 @@ spec:
               CONDUIT_TRUSTED_SERVERS: '["matrix.org"]'
               CONDUIT_ADDRESS: 0.0.0.0
               CONDUIT_CONFIG: ""
-              CONDUIT_CLIENT: "https://matrix.artichoke.cc"
-              CONDUIT_SERVER: "matrix.artichoke.cc:443"
+              CONDUIT_WELL_KNOWN_CLIENT: "https://matrix.artichoke.cc"
+              CONDUIT_WELL_KNOWN_SERVER: "matrix.artichoke.cc:443"
     service:
       main:
         controller: main
