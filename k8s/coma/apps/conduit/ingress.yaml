@@ -17,6 +17,16 @@ spec:
                 name: conduit
                 port:
                   number: 8448
+    - host: "artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/.well-known/matrix/*"
+            backend:
+              service:
+                name: conduit
+                port:
+                  number: 8448
   tls:
     - hosts:
         - "matrix.artichoke.cc"
