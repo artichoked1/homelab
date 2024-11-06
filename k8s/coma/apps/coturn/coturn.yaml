@@ -18,6 +18,7 @@ spec:
     certificate:
       enabled: true
       issuerName: "letsencrypt-production"
+      host: "turn.artichoke.cc"
 
     externalDatabase:
       enabled: true
