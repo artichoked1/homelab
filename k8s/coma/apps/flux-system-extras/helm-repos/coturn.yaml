@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: coturn
+  namespace: coturn
+spec:
+  interval: 2h
+  url: https://small-hack.github.io/coturn-chart/
