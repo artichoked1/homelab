@@ -17,7 +17,7 @@ spec:
   values:
     certificate:
       enabled: true
-      issuerName: "letsencrypt-staging"
+      issuerName: "letsencrypt-production"
 
     externalDatabase:
       enabled: true
