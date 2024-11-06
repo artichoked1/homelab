@@ -5,14 +5,14 @@ metadata:
 spec:
   acme:
     email: ${ACME_EMAIL}
-    preferredChain: ''
+    preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-production
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
       - dns01:
           cloudflare:
-            apiKeySecretRef:
+            apiTokenSecretRef:
               key: token
               name: cloudflare-api-token
             email: ${ACME_EMAIL}
