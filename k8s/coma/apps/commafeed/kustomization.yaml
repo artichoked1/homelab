@@ -3,5 +3,3 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./secrets.yaml
-  - ./commafeed.yaml
-  - ./ingress.yaml
