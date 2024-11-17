@@ -16,7 +16,7 @@ spec:
               service:
                 name: commafeed
                 port:
-                  number: 80
+                  number: 8082
   tls:
     - hosts:
         - "commafeed.artichoke.cc"
