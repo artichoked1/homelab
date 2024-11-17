@@ -68,7 +68,7 @@ spec:
         controller: main
         ports:
           http:
-            port: 80
+            port: 8082
 
     persistence:
       data:
