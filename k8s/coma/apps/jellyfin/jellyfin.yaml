@@ -23,8 +23,6 @@ spec:
         strategy: Recreate
         containers:
           main:
-            env:
-              TRUE: "true"
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.3
