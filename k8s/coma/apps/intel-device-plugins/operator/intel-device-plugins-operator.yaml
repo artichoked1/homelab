@@ -10,7 +10,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: intel-device-plugins
+        name: intel
         namespace: flux-system
       version: 0.31.1
   interval: 1m0s
