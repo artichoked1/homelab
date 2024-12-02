@@ -18,13 +18,16 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
+        nodeSelector:
+          intel.feature.node.kubernetes.io/gpu: "true"
         containers:
           main:
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.1
               pullPolicy: IfNotPresent
+            securityContext:
+              privileged: true
 
     service:
       main:
@@ -58,3 +61,6 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /cache
+      gpu:
+        type: hostPath
+        globalMounts: /dev/dri
