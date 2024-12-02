@@ -17,7 +17,7 @@ spec:
   values:
     defaultPodOptions:
       nodeSelector:
-        intel.feature.node.kubernetes.io/gpu: "true"
+        gpu: "true"
     controllers:
       main:
         strategy: Recreate
