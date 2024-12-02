@@ -15,13 +15,14 @@ spec:
       version: 3.2.1
   interval: 1m0s
   values:
+    defaultPodOptions:
+      nodeSelector:
+        intel.feature.node.kubernetes.io/gpu: "true"
     controllers:
       main:
         strategy: Recreate
         containers:
           main:
-            nodeSelector:
-              intel.feature.node.kubernetes.io/gpu: "true"
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.1
@@ -62,6 +63,6 @@ spec:
         globalMounts:
           - path: /cache
       gpu:
+        enabled: true
         type: hostPath
-        globalMounts:
-          - path: /dev/dri
+        hostPath: /dev
