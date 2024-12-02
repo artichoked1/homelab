@@ -59,7 +59,7 @@ spec:
       cache:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
-        size: 1Gi
+        size: 4Gi
         globalMounts:
           - path: /cache
       gpu:
