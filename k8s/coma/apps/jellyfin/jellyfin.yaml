@@ -15,20 +15,18 @@ spec:
       version: 3.2.1
   interval: 1m0s
   values:
-    defaultPodOptions:
-      nodeSelector:
-        gpu: "true"
     controllers:
       main:
         strategy: Recreate
         containers:
           main:
+            resources:
+              limits:
+                gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.3
               pullPolicy: IfNotPresent
-            securityContext:
-              privileged: true
 
     service:
       main:
@@ -62,7 +60,3 @@ spec:
         size: 4Gi
         globalMounts:
           - path: /cache
-      gpu:
-        enabled: true
-        type: hostPath
-        hostPath: /dev
