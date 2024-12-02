@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: intel-device-plugins-operator
-  namespace: intel-device-plugins
+  namespace: inteldeviceplugins-system
 spec:
   chart:
     spec:
