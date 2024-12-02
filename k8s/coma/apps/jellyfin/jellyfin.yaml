@@ -18,10 +18,10 @@ spec:
     controllers:
       main:
         strategy: Recreate
-        nodeSelector:
-          intel.feature.node.kubernetes.io/gpu: "true"
         containers:
           main:
+            nodeSelector:
+              intel.feature.node.kubernetes.io/gpu: "true"
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.1
@@ -63,4 +63,5 @@ spec:
           - path: /cache
       gpu:
         type: hostPath
-        globalMounts: /dev/dri
+        globalMounts:
+          - path: /dev/dri
