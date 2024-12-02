@@ -17,7 +17,7 @@ spec:
   values:
     defaultPodOptions:
       nodeSelector:
-        gpu: "true"
+        gpu: true
     controllers:
       main:
         strategy: Recreate
