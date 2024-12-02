@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: intel
+      chart: intel-device-plugins-gpu
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
