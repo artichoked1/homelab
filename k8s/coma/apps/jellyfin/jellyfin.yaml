@@ -20,9 +20,6 @@ spec:
         strategy: Recreate
         containers:
           main:
-            resources:
-              limits:
-                gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.3
