@@ -42,6 +42,12 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /config
+      config:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /config2
       music:
         existingClaim: jellyfin-music-pvc
         globalMounts:
