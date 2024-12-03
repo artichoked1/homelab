@@ -41,13 +41,13 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         globalMounts:
-          - path: /config
+          - path: /old
       config:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
         size: 4Gi
         globalMounts:
-          - path: /config2
+          - path: /config
       music:
         existingClaim: jellyfin-music-pvc
         globalMounts:
