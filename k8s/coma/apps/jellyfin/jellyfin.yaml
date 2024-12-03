@@ -36,12 +36,6 @@ spec:
             port: 8096
 
     persistence:
-      data:
-        storageClass: "local-path"
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        globalMounts:
-          - path: /old
       config:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
