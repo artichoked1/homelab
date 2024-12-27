@@ -29,3 +29,19 @@ spec:
     server: 192.168.188.143
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: lidarr-slsk-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /mnt/Media/Torrents/soulseek
+    server: 192.168.188.143
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
