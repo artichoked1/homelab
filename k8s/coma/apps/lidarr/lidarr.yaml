@@ -48,3 +48,7 @@ spec:
         existingClaim: lidarr-torrents-pvc
         globalMounts:
           - path: /downloads
+      soulseek:
+        existingClaim: lidarr-slsk-pvc
+        globalMounts:
+          - path: /slsk-downloads
