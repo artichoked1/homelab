@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: immich
         namespace: flux-system
-      version: 0.7.2
+      version: 0.9.0
   interval: 1m0s
   values:
     env:
@@ -32,11 +32,13 @@ spec:
       IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
 
     image:
-      tag: v1.114.0
+      tag: v1.123.0
 
     immich:
       metrics:
-        enabled: false
+        enabled: true
+        labels:
+          release: prometheus-stack
       persistence:
         library:
           existingClaim: immich-import-pvc
@@ -46,7 +48,7 @@ spec:
       #
       configuration:
         trash:
-          enabled: false
+          enabled: true
           days: 30
         storageTemplate:
           enabled: true
