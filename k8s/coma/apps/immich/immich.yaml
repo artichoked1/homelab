@@ -53,6 +53,12 @@ spec:
         storageTemplate:
           enabled: true
           template: "{{y}}/{{album}}/{{ext}}/{{filename}}"
+        machine-learning:
+          enabled: true
+          url:
+            - http://world-trade-centre-1.artichoke.network:3003
+            - http://192.168.188.167:3003
+            - http://immich-machine-learning:3003
 
     # Dependencies
 
