@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Main/Photos
+    path: /mnt/Main/Photos/immich
     server: 192.168.188.143
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
