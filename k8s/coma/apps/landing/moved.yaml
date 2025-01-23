@@ -23,8 +23,8 @@ spec:
           main:
             image:
               repository: ghcr.io/smartich0ke/artichokenetwork-moved
-              tag: sha256-48774bc26f87d390bde9e6fb52abc952e59b939bafe7fe7f0cbea118ee77db90.sig
-              pullPolicy: IfNotPresent
+              tag: main
+              pullPolicy: Always
 
     service:
       http:
