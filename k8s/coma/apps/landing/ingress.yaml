@@ -18,7 +18,33 @@ spec:
                 name: landing
                 port:
                   number: 80
+
+    - host: "artichokenetwork.com"
+      http:
+        paths:
+          - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: artichokenetwork-moved
+            port:
+              number: 80
+    - host: "*.artichokenetwork.com"
+      http:
+        paths:
+          - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: artichokenetwork-moved
+            port:
+              number: 80
+
   tls:
     - hosts:
         - "artichoke.cc"
       secretName: artichokecc-cert
+    - hosts:
+        - "artichokenetwork.com"
+        - "*.artichokenetwork.com"
+      secretName: artichokenetwork-com-cert
