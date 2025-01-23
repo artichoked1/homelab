@@ -33,7 +33,7 @@ spec:
           auto_assign_org_role: Viewer
         auth:
           signout_redirect_url: https://auth.artichoke.cc/application/o/grafana/end-session/
-          oauth_auto_login: false
+          oauth_auto_login: true
         auth.generic_oauth:
           enabled: true
           name: Authentik
