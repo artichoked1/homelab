@@ -17,7 +17,7 @@ spec:
               service:
                 name: chartmuseumui
                 port:
-                  number: 8080
+                  number: 3000
           - pathType: Prefix
             path: "/index.yaml"
             backend:
