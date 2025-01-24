@@ -12,28 +12,14 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: "/gui"
             backend:
               service:
                 name: chartmuseumui
                 port:
                   number: 3000
           - pathType: Prefix
-            path: "/index.yaml"
-            backend:
-              service:
-                name: chartmuseum
-                port:
-                  number: 8080
-          - pathType: Prefix
-            path: "/charts"
-            backend:
-              service:
-                name: chartmuseum
-                port:
-                  number: 8080
-          - pathType: Prefix
-            path: "/api"
+            path: "/"
             backend:
               service:
                 name: chartmuseum
