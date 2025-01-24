@@ -15,6 +15,27 @@ spec:
             path: "/"
             backend:
               service:
+                name: chartmuseumui
+                port:
+                  number: 8080
+          - pathType: Prefix
+            path: "/index.yaml"
+            backend:
+              service:
+                name: chartmuseum
+                port:
+                  number: 8080
+          - pathType: Prefix
+            path: "/charts"
+            backend:
+              service:
+                name: chartmuseum
+                port:
+                  number: 8080
+          - pathType: Prefix
+            path: "/api"
+            backend:
+              service:
                 name: chartmuseum
                 port:
                   number: 8080
