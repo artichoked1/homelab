@@ -27,7 +27,7 @@ spec:
               pullPolicy: IfNotPresent
             env:
               PUBLIC_CHARTMUSEUM_URL: http://chartmuseum.chartmuseum.svc.cluster.local:8080
-              PATH_BASE: /gui
+              PATH_BASE: /
 
     service:
       main:
