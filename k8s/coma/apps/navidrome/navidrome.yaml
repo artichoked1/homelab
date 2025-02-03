@@ -52,6 +52,9 @@ spec:
               tag: 0.54.4
               pullPolicy: IfNotPresent
 
+            securityContext:
+              fsGroup: 3004
+
     service:
       main:
         controller: main
