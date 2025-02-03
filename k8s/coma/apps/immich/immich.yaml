@@ -52,7 +52,7 @@ spec:
         storageTemplate:
           enabled: true
           template: "{{y}}/{{album}}/{{ext}}/{{filename}}"
-        machine-learning:
+        machineLearning:
           enabled: true
           urls:
             - http://world-trade-centre-1.artichoke.network:3003
