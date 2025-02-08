@@ -67,6 +67,16 @@ spec:
           clientId: ${IMMICH_OAUTH_CLIENT_ID}
           clientSecret: ${IMMICH_OAUTH_CLIENT_SECRET}
           issuerUrl: "https://auth.artichoke.cc/application/o/immich/.well-known/openid-configuration"
+        notifications:
+          smtp:
+            enabled: true
+            from: ${NOREPLY_EMAIL}
+            replyTo: ${NOREPLY_EMAIL}
+            transport:
+              host: ${NOREPLY_EMAIL_HOST}
+              port: 465
+              username: ${NOREPLY_EMAIL}
+              password: ${NOREPLY_EMAIL_PASS}
 
     # Dependencies
 
