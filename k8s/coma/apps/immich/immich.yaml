@@ -58,6 +58,13 @@ spec:
             - http://world-trade-centre-1.artichoke.network:3003
             - http://192.168.188.167:3003
             - http://immich-machine-learning:3003
+        oauth:
+          enabled: true
+          autoRegister: true
+          buttonText: "Sign in with Artichoke Technologies"
+          clientId: ${IMMICH_OAUTH_CLIENT_ID}
+          clientSecret: ${IMMICH_OAUTH_CLIENT_SECRET}
+          issuerUrl: "https://auth.artichoke.cc"
 
     # Dependencies
 
