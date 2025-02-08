@@ -46,6 +46,8 @@ spec:
       # ref: https://immich.app/docs/install/config-file/
       #
       configuration:
+        server:
+          externalDomain: "https://immich.artichoke.cc"
         trash:
           enabled: true
           days: 30
