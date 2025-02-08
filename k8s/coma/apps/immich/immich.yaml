@@ -64,7 +64,7 @@ spec:
           buttonText: "Sign in with Artichoke Technologies"
           clientId: ${IMMICH_OAUTH_CLIENT_ID}
           clientSecret: ${IMMICH_OAUTH_CLIENT_SECRET}
-          issuerUrl: "https://auth.artichoke.cc"
+          issuerUrl: "https://auth.artichoke.cc/application/o/immich/.well-known/openid-configuration"
 
     # Dependencies
 
