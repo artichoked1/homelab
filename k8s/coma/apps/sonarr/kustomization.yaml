@@ -6,3 +6,4 @@ resources:
   - ./pvc.yaml
   - ./ingress.yaml
   - ./sonarr.yaml
+  - ./secrets.yaml
