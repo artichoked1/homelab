@@ -42,16 +42,6 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /config
-      config:
-        enabled: true
-        type: secret
-        name: sonarr-config
-        advancedMounts:
-          main:
-            main:
-              - path: /config/config.xml
-                readOnly: true
-                subPath: config.xml
       tvshows:
         existingClaim: sonarr-tvshows-pvc
         globalMounts:
