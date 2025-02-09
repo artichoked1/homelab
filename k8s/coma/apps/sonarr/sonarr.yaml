@@ -23,6 +23,11 @@ spec:
           main:
             env:
               TZ: Australia/Adelaide
+              SONARR__AUTH__APIKEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr-apikey
+                    key: api-key
             image:
               repository: lscr.io/linuxserver/sonarr
               tag: 4.0.8
