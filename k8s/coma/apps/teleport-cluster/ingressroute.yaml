@@ -14,7 +14,7 @@ spec:
   routes:
     - kind: Rule
       match: >-
-        Host(`teleport.artichoke.cc`) || Host(`*.teleport.artichoke.cc`)
+        Host(`teleport.artichoke.cc`) || HostRegexp(`{subdomain:[a-z0-9-]+}.teleport.artichoke.cc`)
       services:
         - name: teleport-cluster
           port: 443
