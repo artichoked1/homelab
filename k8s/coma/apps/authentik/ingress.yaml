@@ -18,7 +18,21 @@ spec:
                 name: authentik-server
                 port:
                   number: 80
+    - host: "*.auth.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: ak-outpost-coma-http
+                port:
+                  number: 9000
+
   tls:
     - hosts:
         - "auth.artichoke.cc"
       secretName: artichokecc-cert
+    - hosts:
+        - "*.auth.artichoke.cc"
+      secretName: artichokecc-wildcard-cert
