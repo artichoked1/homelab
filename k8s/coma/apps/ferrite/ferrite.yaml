@@ -18,7 +18,7 @@ spec:
     appName: "Ferrite"
     replicaCount: 1
     image:
-      repository: ghcr.io/smartich0ke/ferritecms
+      repository: ghcr.io/artichoked1/ferritecms
       pullPolicy: IfNotPresent
       tag: "1.4.1-build-149"
 
