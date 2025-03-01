@@ -21,3 +21,10 @@ spec:
         secretAccessKey:
           name: pg-backups-aws-creds
           key: access-key-secret
+      wal:
+        maxParallel: 8
+
+  bootstrap:
+    recovery:
+      backup:
+        name: weekly-main-s3-backup-20250228000000
