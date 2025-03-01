@@ -12,7 +12,7 @@ spec:
     storageClass: local-path
   backup:
     barmanObjectStore:
-      destinationPath: "s3://holeinmybudget/pg_backups/"
+      destinationPath: "s3://holeinmybudget/pg_backups/main-postgres-new"
       endpointURL: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
       s3Credentials:
         accessKeyId:
