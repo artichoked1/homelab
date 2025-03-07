@@ -45,8 +45,8 @@ spec:
       tvshows:
         existingClaim: bazarr-tvshows-pvc
         globalMounts:
-          - path: /tvshows
+          - path: /media/tvshows
       movies:
         existingClaim: bazarr-movies-pvc
         globalMounts:
-          - path: /movies
+          - path: /media/movies
