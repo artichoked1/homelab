@@ -31,13 +31,13 @@ spec:
               tag: v2.0.1
               pullPolicy: IfNotPresent
             args:
-            - radarr
+              - radarr
             env:
               URL: "http://radarr-main:7878"
               PORT: 9707
               APIKEY:
                 valueFrom:
-                  secretKeyRef: 
+                  secretKeyRef:
                     name: radarr-api-key
                     key: api-key
 
@@ -75,8 +75,8 @@ spec:
       movies:
         existingClaim: radarr-movies-pvc
         globalMounts:
-          - path: /movies
+          - path: /media/movies
       torrents:
         existingClaim: radarr-torrents-pvc
         globalMounts:
-          - path: /downloads
+          - path: /media/downloads
