@@ -9,8 +9,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Main/Music
-    server: 192.168.188.143
+    path: /mnt/MoonShapedPool/Media/imports/Music
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -25,8 +25,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Media/Torrents
-    server: 192.168.188.143
+    path: /mnt/MoonShapedPool/Media/torrents
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -41,7 +41,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    path: /mnt/Media/Torrents/soulseek
-    server: 192.168.188.143
+    path: /mnt/MoonShapedPool/Media/soulseek
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
