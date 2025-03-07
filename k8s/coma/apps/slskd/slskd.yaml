@@ -28,7 +28,7 @@ spec:
             env:
               SLSKD_DOWNLOADS_DIR: /app/downloads/soulseek
               SLSKD_INCOMPLETE_DIR: /app/downloads/soulseek/incomplete
-              SLSKD_SHARED_DIR: /music
+              SLSKD_SHARED_DIR: /media/music
               SLSKD_REMOTE_FILE_MANAGEMENT: true
               SLSKD_SHARE_CACHE_STORAGE_MODE: disk
               SLSKD_USERNAME:
@@ -105,4 +105,4 @@ spec:
       music:
         existingClaim: slskd-music-pvc
         globalMounts:
-          - path: /music
+          - path: /media/music
