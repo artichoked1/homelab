@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Media/Torrents
-    server: 192.168.188.143
+    path: /mnt/MoonShapedPool/Media/torrents
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
