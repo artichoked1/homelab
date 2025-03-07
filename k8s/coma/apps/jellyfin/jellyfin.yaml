@@ -25,7 +25,7 @@ spec:
                 gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin
-              tag: 10.10.3
+              tag: 10.10.6
               pullPolicy: IfNotPresent
 
     service:
