@@ -43,12 +43,12 @@ spec:
       music:
         existingClaim: lidarr-music-pvc
         globalMounts:
-          - path: /music
+          - path: /media/music
       torrents:
         existingClaim: lidarr-torrents-pvc
         globalMounts:
-          - path: /downloads
+          - path: /media/torrents
       soulseek:
         existingClaim: lidarr-slsk-pvc
         globalMounts:
-          - path: /slsk-downloads
+          - path: /media/soulseek
