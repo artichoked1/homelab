@@ -64,8 +64,8 @@ spec:
       tvshows:
         existingClaim: sonarr-tvshows-pvc
         globalMounts:
-          - path: /tvshows
+          - path: /media/tvshows
       torrents:
         existingClaim: sonarr-torrents-pvc
         globalMounts:
-          - path: /downloads
+          - path: /media/torrents
