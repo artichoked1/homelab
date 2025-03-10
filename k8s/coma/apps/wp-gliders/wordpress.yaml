@@ -57,5 +57,6 @@ spec:
         persistence:
           storageClass: "local-path"
 
+    wordpressConfigureCache: true
     memcached:
       enabled: true
