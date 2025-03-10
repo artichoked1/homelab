@@ -7,7 +7,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   rules:
-    - host: "gliders.nikolaipatrick.com"
+    - host: "gliders.artichoke.cc"
       http:
         paths:
           - pathType: Prefix
@@ -19,5 +19,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - "gliders.nikolaipatrick.com"
+        - "gliders.artichoke.cc"
       secretName: tls-secret
