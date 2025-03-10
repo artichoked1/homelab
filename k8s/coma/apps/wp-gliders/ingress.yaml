@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wp-gliders
+  namespace: wp-gliders
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  rules:
+    - host: "gliders.nikolaipatrick.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: wp-gliders-wordpress
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - "gliders.nikolaipatrick.com"
+      secretName: tls-secret
