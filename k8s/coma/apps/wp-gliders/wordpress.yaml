@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wp-gliders
+  namespace: wp-gliders
+spec:
+  chart:
+    spec:
+      chart: wordpress
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: 24.1.18
+  interval: 1m0s
+  values:
+    smtpHost: smtp.migadu.com
+    smtpPort: 587
+    smtpProtocol: "tls"
+    smtpUser: ${NOREPLY_EMAIL}
+    smtpPassword: ${NOREPLY_EMAIL_PASS}
+    smtpFromEmail: ${NOREPLY_EMAIL}
+    smtpFromName: "No Reply"
