@@ -25,6 +25,8 @@ spec:
       version: 24.1.18
   interval: 1m0s
   values:
+    allowEmptyPassword: false
+
     smtpHost: smtp.migadu.com
     smtpPort: 587
     smtpProtocol: "tls"
