@@ -19,7 +19,7 @@ spec:
       chart: wordpress
       reconcileStrategy: ChartVersion
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: bitnami-oci
         namespace: wp-gliders
       version: 24.1.18
