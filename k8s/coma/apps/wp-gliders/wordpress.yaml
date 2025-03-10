@@ -48,3 +48,10 @@ spec:
     smtpPassword: ${NOREPLY_EMAIL_PASS}
     smtpFromEmail: ${NOREPLY_EMAIL}
     smtpFromName: "No Reply"
+
+    wordpressPlugins: all
+
+    wordpressExtraConfigContent: |
+      define( 'WP_REDIS_HOST', 'main.redis-clusters.svc.cluster.local' );
+      define( 'WP_REDIS_PORT', 6379 );
+      define('WP_REDIS_SCHEME', 'tcp');
