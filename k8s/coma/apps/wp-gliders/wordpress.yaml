@@ -26,6 +26,8 @@ spec:
   interval: 1m0s
   values:
     allowEmptyPassword: false
+    updateStrategy:
+      type: Recreate
 
     smtpHost: smtp.migadu.com
     smtpPort: 587
