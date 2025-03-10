@@ -25,9 +25,14 @@ spec:
       version: 24.1.18
   interval: 1m0s
   values:
-    wordpressBlogName: "Gliders"
+    wordpressBlogName: "Glider Sales"
     wordpressScheme: https
+
+    wordpressUsername: npatrick
+    wordpressFirstName: "Nikolai"
+    wordpressLastName: "Patrick"
     wordpressEmail: ${ACME_EMAIL}
+    existingSecret: wordpress-password
 
     allowEmptyPassword: false
 
