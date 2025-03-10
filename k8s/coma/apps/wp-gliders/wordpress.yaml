@@ -27,6 +27,7 @@ spec:
   values:
     wordpressBlogName: "Gliders"
     wordpressScheme: https
+    wordpressEmail: ${ACME_EMAIL}
 
     allowEmptyPassword: false
 
