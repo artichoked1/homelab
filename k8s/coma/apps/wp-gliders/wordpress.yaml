@@ -51,5 +51,11 @@ spec:
 
     wordpressPlugins: all
 
+    mariadb:
+      enabled: true
+      primary:
+        persistence:
+          storageClass: local-path
+
     memcached:
       enabled: true
