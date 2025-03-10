@@ -51,6 +51,8 @@ spec:
 
     wordpressPlugins: all
 
+    resourcesPreset: "medium"
+
     mariadb:
       enabled: true
       primary:
