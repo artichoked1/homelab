@@ -25,6 +25,9 @@ spec:
       version: 24.1.18
   interval: 1m0s
   values:
+    wordpressBlogName: "Gliders"
+    wordpressScheme: https
+
     allowEmptyPassword: false
 
     updateStrategy:
