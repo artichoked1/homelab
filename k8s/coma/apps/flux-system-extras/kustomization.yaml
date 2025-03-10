@@ -27,6 +27,7 @@ resources:
   - ./helm-repos/influxdata.yaml
   - ./helm-repos/coturn.yaml
   - ./helm-repos/intel.yaml
+  - ./helm-repos/bitnami-oci.yaml
 
   - ./flux-webhook/ingress.yaml
   - ./flux-webhook/token-secret.yaml
