@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: lidarr-music-pv
+  name: lidarr-media-pv
 spec:
   capacity:
     storage: 1Gi
@@ -9,39 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/MoonShapedPool/Media/imports/Music
-    server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: lidarr-torrents-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/MoonShapedPool/Media/torrents
-    server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: lidarr-slsk-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    path: /mnt/MoonShapedPool/Media/soulseek
+    path: /mnt/MoonShapedPool/Media
     server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain

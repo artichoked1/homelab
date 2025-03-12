@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: lidarr-music-pvc
+  name: lidarr-media-pvc
   namespace: lidarr
 spec:
   storageClassName: ""
@@ -10,32 +10,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: lidarr-music-pv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lidarr-torrents-pvc
-  namespace: lidarr
-spec:
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  volumeName: lidarr-torrents-pv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lidarr-slsk-pvc
-  namespace: lidarr
-spec:
-  storageClassName: ""
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  volumeName: lidarr-slsk-pv
+  volumeName: lidarr-media-pv
