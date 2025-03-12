@@ -42,18 +42,10 @@ spec:
         size: 4Gi
         globalMounts:
           - path: /config
-      music:
-        existingClaim: jellyfin-music-pvc
+      media:
+        existingClaim: jellyfin-media-pvc
         globalMounts:
-          - path: /media/music
-      movies:
-        existingClaim: jellyfin-movies-pvc
-        globalMounts:
-          - path: /media/movies
-      tvshows:
-        existingClaim: jellyfin-tvshows-pvc
-        globalMounts:
-          - path: /media/tvshows
+          - path: /media
       cache:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
