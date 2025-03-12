@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: slskd-downloads-pvc
+  name: slskd-media-pvc
   namespace: slskd
 spec:
   storageClassName: ""
@@ -10,18 +10,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: slskd-downloads-pv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: slskd-music-pvc
-  namespace: slskd
-spec:
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  volumeName: slskd-music-pv
+  volumeName: slskd-media-pv

@@ -26,9 +26,9 @@ spec:
               tag: 0.21.3
               pullPolicy: IfNotPresent
             env:
-              SLSKD_DOWNLOADS_DIR: /app/downloads
-              SLSKD_INCOMPLETE_DIR: /app/downloads/incomplete
-              SLSKD_SHARED_DIR: /media/music
+              SLSKD_DOWNLOADS_DIR: /media/soulseek
+              SLSKD_INCOMPLETE_DIR: /media/soulseek/incomplete
+              SLSKD_SHARED_DIR: /media/imports/Music
               SLSKD_REMOTE_FILE_MANAGEMENT: true
               SLSKD_SHARE_CACHE_STORAGE_MODE: disk
               SLSKD_USERNAME:
@@ -98,11 +98,7 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /app
-      downloads:
-        existingClaim: slskd-downloads-pvc
+      media:
+        existingClaim: slskd-media-pvc
         globalMounts:
-          - path: /app/downloads
-      music:
-        existingClaim: slskd-music-pvc
-        globalMounts:
-          - path: /media/music
+          - path: /media
