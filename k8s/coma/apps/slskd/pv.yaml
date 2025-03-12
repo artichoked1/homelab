@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: slskd-downloads-pv
+  name: slskd-media-pv
 spec:
   capacity:
     storage: 1Gi
@@ -9,23 +9,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/MoonShapedPool/Media/soulseek
+    path: /mnt/MoonShapedPool/Media
     server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: slskd-music-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/MoonShapedPool/Media/imports/Music
-    server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
+
