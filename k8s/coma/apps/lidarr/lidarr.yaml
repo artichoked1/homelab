@@ -41,14 +41,6 @@ spec:
         globalMounts:
           - path: /config
       music:
-        existingClaim: lidarr-music-pvc
+        existingClaim: lidarr-media-pvc
         globalMounts:
-          - path: /media/music
-      torrents:
-        existingClaim: lidarr-torrents-pvc
-        globalMounts:
-          - path: /media/torrents
-      soulseek:
-        existingClaim: lidarr-slsk-pvc
-        globalMounts:
-          - path: /media/soulseek
+          - path: /media
