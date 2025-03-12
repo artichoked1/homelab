@@ -1,23 +1,9 @@
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: sonarr-tvshows-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/MoonShapedPool/Media/imports/TV-Shows
-    server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
+
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sonarr-torrents-pv
+  name: sonarr-media-pv
 spec:
   capacity:
     storage: 1Gi
@@ -25,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/MoonShapedPool/Media/torrents
+    path: /mnt/MoonShapedPool/Media
     server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
