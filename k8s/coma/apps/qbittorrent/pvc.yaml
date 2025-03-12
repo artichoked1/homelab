@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: qbittorrent-torrents-pvc
+  name: qbittorrent-media-pvc
   namespace: qbittorrent
 spec:
   storageClassName: ""
@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: qbittorrent-torrents-pv
+  volumeName: qbittorrent-media-pv
