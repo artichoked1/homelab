@@ -43,10 +43,6 @@ spec:
         globalMounts:
           - path: /config
       tvshows:
-        existingClaim: bazarr-tvshows-pvc
+        existingClaim: bazarr-media-pvc
         globalMounts:
-          - path: /media/tvshows
-      movies:
-        existingClaim: bazarr-movies-pvc
-        globalMounts:
-          - path: /media/movies
+          - path: /media
