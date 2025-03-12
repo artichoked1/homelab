@@ -55,6 +55,6 @@ spec:
         globalMounts:
           - path: /config
       torrents:
-        existingClaim: qbittorrent-torrents-pvc
+        existingClaim: qbittorrent-media-pvc
         globalMounts:
-          - path: /media/torrents
+          - path: /media
