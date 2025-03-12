@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: bazarr-tvshows-pv
+  name: bazarr-media-pv
 spec:
   capacity:
     storage: 1Gi
@@ -9,39 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/MoonShapedPool/Media/imports/TV-Shows
+    path: /mnt/MoonShapedPool/Media
     server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: bazarr-movies-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/MoonShapedPool/Media/imports/Movies
-    server: truenas2.artichoke.network
-    readOnly: false
-  persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: bazarr-torrents-pv
-spec:
-  capacity:
-    storage: 1Gi
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/MoonShapedPool/Media/torrents
-    server: 192.168.188.143
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
