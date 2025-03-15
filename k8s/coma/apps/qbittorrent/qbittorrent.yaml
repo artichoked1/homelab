@@ -24,7 +24,7 @@ spec:
             env:
               TZ: Australia/Adelaide
               WEBUI_PORT: 8080
-              TORRENTING_PORT: 6881
+              TORRENTING_PORT: 52545
             image:
               repository: lscr.io/linuxserver/qbittorrent
               tag: 5.0.4
@@ -41,10 +41,10 @@ spec:
         type: LoadBalancer
         ports:
           torrents:
-            port: 6881
+            port: 52545
             protocol: TCP
           torrents-udp:
-            port: 6881
+            port: 52545
             protocol: UDP
 
     persistence:
