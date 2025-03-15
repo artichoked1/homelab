@@ -27,7 +27,7 @@ spec:
               TORRENTING_PORT: 6881
             image:
               repository: lscr.io/linuxserver/qbittorrent
-              tag: 4.6.5
+              tag: 5.0.4
               pullPolicy: IfNotPresent
 
     service:
