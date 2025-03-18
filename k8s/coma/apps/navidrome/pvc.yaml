@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: media-pv
+  volumeName: navidrome-media-pv
