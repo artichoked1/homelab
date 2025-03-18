@@ -22,7 +22,7 @@ spec:
         containers:
           main:
             env:
-              ND_MUSICFOLDER: "/media/music"
+              ND_MUSICFOLDER: "/media/imports/Music"
               ND_BASEURL: "https://music.artichoke.cc"
               ND_LASTFM_ENABLED: "true"
               ND_ENABLESHARING: "true"
@@ -71,6 +71,6 @@ spec:
         globalMounts:
           - path: /data
       media:
-        existingClaim: media-pvc
+        existingClaim: navidrome-media-pvc
         globalMounts:
-          - path: /media/music
+          - path: /media
