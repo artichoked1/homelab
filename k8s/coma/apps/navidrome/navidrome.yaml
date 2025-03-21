@@ -47,10 +47,12 @@ spec:
                   secretKeyRef:
                     name: navidrome-spotify-token
                     key: client-secret
+              ND_SCANNER_ENABLED: "true"
+              ND_SCANNER_SCHEDULE: "*/5 * * * *"
 
             image:
               repository: deluan/navidrome
-              tag: 0.54.4
+              tag: 0.55.1
               pullPolicy: IfNotPresent
 
             securityContext:
