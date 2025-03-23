@@ -34,3 +34,11 @@ spec:
         ports:
           http:
             port: 5690
+
+    persistence:
+      data:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /wizarr/database
