@@ -41,4 +41,4 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         globalMounts:
-          - path: /wizarr/database
+          - path: /data/database
