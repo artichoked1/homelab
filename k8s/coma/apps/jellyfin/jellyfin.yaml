@@ -20,6 +20,8 @@ spec:
         strategy: Recreate
         containers:
           main:
+            env:
+              TZ: Australia/Adelaide
             resources:
               limits:
                 gpu.intel.com/i915: 1000m
