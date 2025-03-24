@@ -24,8 +24,8 @@ spec:
             env:
               TZ: Australia/Adelaide
             image:
-              repository: ghcr.io/wizarrrr/wizarr
-              tag: 4.2.0
+              repository: ghcr.io/wizarrrrr/wizarr
+              tag: 3.5.5
               pullPolicy: IfNotPresent
 
     service:
