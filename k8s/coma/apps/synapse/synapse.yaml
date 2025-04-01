@@ -41,7 +41,6 @@ spec:
       oidc_providers:
         - idp_id: authentik
           idp_name: "Artichoke Technologies"
-          idp_icon:
           discover: true
           issuer: "https://auth.artichoke.cc/application/o/matrix-synapse/"
           client_id: ${SYNAPSE_OIDC_AUTHENTIK_CLIENT_ID}
