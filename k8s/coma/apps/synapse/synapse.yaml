@@ -56,6 +56,9 @@ spec:
       registrations_require_3pid:
         - email
         - msisdn
+      default_identity_server: https://vector.im
+      account_threepid_delegates:
+        msisdn: http://matrix.org:8090
     extraSecrets:
     postgresql:
       enabled: false
