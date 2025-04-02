@@ -31,6 +31,7 @@ spec:
         privateKey: "${SYNAPSE_RECAPTCHA_SECRET_KEY}"
     extraConfig:
       enable_registration: true
+      recaptcha_private_key: ${SYNAPSE_RECAPTCHA_SECRET_KEY}
       enable_registration_captcha: true
       presence:
         enabled: true
