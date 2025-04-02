@@ -26,11 +26,9 @@ spec:
           issuer: "https://mas.artichoke.cc/"
           account: "https://auth.example.com/account"
     config:
-      recaptcha:
-        publicKey: "${SYNAPSE_RECAPTCHA_SITE_KEY}"
-        privateKey: "${SYNAPSE_RECAPTCHA_SECRET_KEY}"
     extraConfig:
       enable_registration: false
+      enable_registration_captcha: false
       presence:
         enabled: true
       email:
