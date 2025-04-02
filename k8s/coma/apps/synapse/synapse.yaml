@@ -19,6 +19,11 @@ spec:
     publicServerName: "matrix.artichoke.cc"
     wellknown:
       enabled: true
+      extraData:
+        client:
+          org.matrix.msc2965.authentication:
+            - issuer: "https://mas.artichoke.cc/"
+              account: "https://auth.example.com/account"
     config:
       recaptcha:
         publicKey: ${SYNAPSE_RECAPTCHA_SITE_KEY}
@@ -38,27 +43,36 @@ spec:
         notif_from: "Artichoke's Matrix/Synapse Server <${NOREPLY_EMAIL}>"
         enable_notifs: true
       admin_contact: ${ACME_EMAIL}
-      oidc_providers:
-        - idp_id: authentik
-          idp_name: "Artichoke Technologies"
-          discover: true
-          issuer: "https://auth.artichoke.cc/application/o/matrix-synapse/"
-          client_id: ${SYNAPSE_OIDC_AUTHENTIK_CLIENT_ID}
-          client_secret: ${SYNAPSE_OIDC_AUTHENTIK_CLIENT_SECRET}
-          scopes:
-            - "openid"
-            - "profile"
-            - "email"
-          user_mapping_provider:
-            config:
-              localpart_template: "{{ user.preferred_username }}"
-              display_name_template: "{{ user.name|capitalize }}"
+      # oidc_providers:
+      #   - idp_id: authentik
+      #     idp_name: "Artichoke Technologies"
+      #     discover: true
+      #     issuer: "https://auth.artichoke.cc/application/o/matrix-synapse/"
+      #     client_id: ${SYNAPSE_OIDC_AUTHENTIK_CLIENT_ID}
+      #     client_secret: ${SYNAPSE_OIDC_AUTHENTIK_CLIENT_SECRET}
+      #     scopes:
+      #       - "openid"
+      #       - "profile"
+      #       - "email"
+      #     user_mapping_provider:
+      #       config:
+      #         localpart_template: "{{ user.preferred_username }}"
+      #         display_name_template: "{{ user.name|capitalize }}"
       registrations_require_3pid:
         - email
         - msisdn
       default_identity_server: https://vector.im
       account_threepid_delegates:
         msisdn: http://matrix.org:8090
+      experimental_features:
+      msc3861:
+        enabled: true
+        issuer: https://mas.artichoke.cc
+        client_id: ${SYNAPSE_EXTERNAL_OAUTH_CLIENT_ID}
+        client_auth_method: client_secret_basic
+        client_secret: ${SYNAPSE_EXTERNAL_OAUTH_CLIENT_SECRET}
+        admin_token: ${SYNAPSE_MAS_SHARED_SECRET}
+
     extraSecrets:
     postgresql:
       enabled: false
