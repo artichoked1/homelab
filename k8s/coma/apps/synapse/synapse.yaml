@@ -19,11 +19,10 @@ spec:
     publicServerName: "matrix.artichoke.cc"
     wellknown:
       enabled: true
-      extraData:
-        client:
-          org.matrix.msc2965.authentication:
-            - issuer: "https://mas.artichoke.cc/"
-              account: "https://auth.example.com/account"
+      client:
+        org.matrix.msc2965.authentication:
+          - issuer: "https://mas.artichoke.cc/"
+            account: "https://auth.example.com/account"
     config:
       recaptcha:
         publicKey: ${SYNAPSE_RECAPTCHA_SITE_KEY}
