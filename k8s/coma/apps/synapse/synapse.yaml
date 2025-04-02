@@ -83,7 +83,7 @@ spec:
       existingSecret: synapse-postgres-auth
       existingSecretPasswordKey: password
     externalRedis:
-      host: main.redis-clusters.svc.local
+      host: main.redis-clusters.svc.cluster.local
       port: 6379
     ingress:
       enabled: false
