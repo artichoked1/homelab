@@ -30,11 +30,16 @@ spec:
             env:
               MAS_CONFIG: /config/config.yaml
     service:
-      main:
+      health:
         controller: main
         ports:
           http:
             port: 8080
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8081
 
     persistence:
       config:
