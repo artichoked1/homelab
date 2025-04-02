@@ -20,6 +20,8 @@ spec:
     wellknown:
       enabled: true
       client:
+        m.homeserver:
+          base_url: "https://matrix.artichoke.cc"
         org.matrix.msc2965.authentication:
           - issuer: "https://mas.artichoke.cc/"
             account: "https://auth.example.com/account"
