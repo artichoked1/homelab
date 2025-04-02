@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mas
+  namespace: synapse
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/element-hq/matrix-authentication-service
+              tag: sha256-a49d7199f09d3d522bb55f4e088b33fe27b116693d9be7c32011d08097ec42d6.sig
+              pullPolicy: IfNotPresent
+
+            env:
+              MAS_CONFIG: /config/config.yaml
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+
+    persistence:
+      persistence:
+        config:
+          enabled: true
+          type: secret
+          name: mas-config
