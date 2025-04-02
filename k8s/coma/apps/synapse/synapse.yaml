@@ -30,7 +30,7 @@ spec:
         publicKey: "${SYNAPSE_RECAPTCHA_SITE_KEY}"
         privateKey: "${SYNAPSE_RECAPTCHA_SECRET_KEY}"
     extraConfig:
-      enable_registration: true
+      enable_registration: false
       recaptcha_private_key: ${SYNAPSE_RECAPTCHA_SECRET_KEY}
       enable_registration_captcha: true
       presence:
