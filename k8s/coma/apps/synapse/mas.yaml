@@ -36,8 +36,7 @@ spec:
             port: 8080
 
     persistence:
-      persistence:
-        config:
-          enabled: true
-          type: secret
-          name: mas-config
+      config:
+        enabled: true
+        type: secret
+        name: mas-config
