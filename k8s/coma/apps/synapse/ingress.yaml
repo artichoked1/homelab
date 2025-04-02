@@ -27,8 +27,19 @@ spec:
                 name: synapse-wellknown-lighttpd
                 port:
                   number: 80
+    - host: "mas.artichoke.cc"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: mas-main
+                port:
+                  number: 8081
   tls:
     - hosts:
         - "artichoke.cc"
         - "matrix.artichoke.cc"
+        - "mas.artichoke.cc"
       secretName: tls-secret
