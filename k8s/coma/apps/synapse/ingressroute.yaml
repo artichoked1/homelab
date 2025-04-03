@@ -15,7 +15,7 @@ spec:
         - name: synapse-matrix-synapse
           port: 8008
 
-    - match: Host(`matrix.artichoke.cc`) && PathRegexp(`^/_matrix/client/(.*)/(login|logout|refresh)`)
+    - match: Host(`matrix.artichoke.cc`) && PathRegexp(`/_matrix/client/(.*)/(login|logout|refresh)`)
       kind: Rule
       priority: 10
       services:
