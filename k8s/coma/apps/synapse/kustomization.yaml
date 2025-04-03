@@ -5,4 +5,4 @@ resources:
   - ./secrets.yaml
   - ./synapse.yaml
   - ./mas.yaml
-  - ./ingress.yaml
+  - ./ingressroute.yaml
