@@ -1,45 +1,84 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: synapse
+#   namespace: synapse
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-production
+# spec:
+#   rules:
+#     - host: "matrix.artichoke.cc"
+#       http:
+#         paths:
+#           - pathType: Prefix
+#             path: "/"
+#             backend:
+#               service:
+#                 name: synapse-matrix-synapse
+#                 port:
+#                   number: 8008
+#     - host: "artichoke.cc"
+#       http:
+#         paths:
+#           - pathType: Prefix
+#             path: "/.well-known/matrix/"
+#             backend:
+#               service:
+#                 name: synapse-wellknown-lighttpd
+#                 port:
+#                   number: 80
+#     - host: "mas.artichoke.cc"
+#       http:
+#         paths:
+#           - pathType: Prefix
+#             path: "/"
+#             backend:
+#               service:
+#                 name: mas-main
+#                 port:
+#                   number: 8081
+#   tls:
+#     - hosts:
+#         - "artichoke.cc"
+#         - "matrix.artichoke.cc"
+#         - "mas.artichoke.cc"
+#       secretName: tls-secret
+
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: synapse
   namespace: synapse
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
-  rules:
-    - host: "matrix.artichoke.cc"
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: synapse-matrix-synapse
-                port:
-                  number: 8008
-    - host: "artichoke.cc"
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/.well-known/matrix/"
-            backend:
-              service:
-                name: synapse-wellknown-lighttpd
-                port:
-                  number: 80
-    - host: "mas.artichoke.cc"
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: mas-main
-                port:
-                  number: 8081
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`matrix.artichoke.cc`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: synapse-matrix-synapse
+          port: 8008
+
+    - match: Host(`matrix.artichoke.cc`) && PathRegexp(`^/_matrix/client/(.*)/(login|logout|refresh)`)
+      kind: Rule
+      priority: 10
+      services:
+        - name: mas-main
+          port: 8081
+
+    - match: Host(`artichoke.cc`) && PathPrefix(`/.well-known/matrix/`)
+      kind: Rule
+      services:
+        - name: synapse-wellknown-lighttpd
+          port: 80
+
+    - match: Host(`mas.artichoke.cc`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: mas-main
+          port: 8081
+
   tls:
-    - hosts:
-        - "artichoke.cc"
-        - "matrix.artichoke.cc"
-        - "mas.artichoke.cc"
-      secretName: tls-secret
+    secretName: tls-secret
