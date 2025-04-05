@@ -69,10 +69,6 @@ spec:
           client_auth_method: client_secret_basic
           client_secret: ${SYNAPSE_EXTERNAL_OAUTH_CLIENT_SECRET}
           admin_token: ${SYNAPSE_MAS_SHARED_SECRET}
-      redis:
-        enabled: true
-        host: redis-replicated.redis-clusters.svc.cluster.local
-        port: 6379
 
     extraSecrets:
     postgresql:
@@ -89,5 +85,7 @@ spec:
     externalRedis:
       host: redis-replicated.redis-clusters.svc.cluster.local
       port: 6379
+      existingSecret: synapse-redis-auth
+      existingSecretPasswordKey: password
     ingress:
       enabled: false
