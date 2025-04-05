@@ -2,6 +2,7 @@ apiVersion: redis.redis.opstreelabs.in/v1beta2
 kind: RedisReplication
 metadata:
   name: redis-replicated
+  namespace: redis-clusters
 spec:
   clusterSize: 3
   podSecurityContext:
