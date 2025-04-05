@@ -9,18 +9,17 @@ spec:
   entryPoints:
     - websecure
   routes:
+    - match: Host(`matrix.artichoke.cc`) && PathRegexp(`^/_matrix/client/(.*)/(login|logout|refresh)`)
+      kind: Rule
+      services:
+        - name: mas-main
+          port: 8081
+
     - match: Host(`matrix.artichoke.cc`) && PathPrefix(`/`)
       kind: Rule
       services:
         - name: synapse-matrix-synapse
           port: 8008
-
-    - match: Host(`matrix.artichoke.cc`) && PathRegexp(`/_matrix/client/(.*)/(login|logout|refresh)`)
-      kind: Rule
-      priority: 10
-      services:
-        - name: mas-main
-          port: 8081
 
     - match: Host(`artichoke.cc`) && PathPrefix(`/.well-known/matrix/`)
       kind: Rule
