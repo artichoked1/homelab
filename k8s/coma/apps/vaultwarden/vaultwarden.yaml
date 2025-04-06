@@ -26,6 +26,7 @@ spec:
               tag: 1.33.2
               pullPolicy: IfNotPresent
             env:
+              DOMAIN: "https://vaultwarden.artichoke.cc"
               ADMIN_TOKEN:
                 valueFrom:
                   secretKeyRef:
