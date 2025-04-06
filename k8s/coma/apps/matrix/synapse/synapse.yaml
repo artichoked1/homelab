@@ -115,3 +115,6 @@ spec:
       existingClaim: synapse-media
     federation_sender:
       enabled: true
+    workers:
+      default:
+        replicaCount: 2
