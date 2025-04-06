@@ -39,7 +39,7 @@ spec:
       enable_registration: false
       enable_registration_captcha: false
       presence:
-        enabled: true
+        enabled: false
       email:
         smtp_host: ${NOREPLY_EMAIL_HOST}
         smtp_port: 465
