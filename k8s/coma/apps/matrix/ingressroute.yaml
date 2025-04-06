@@ -33,5 +33,11 @@ spec:
         - name: mas-main
           port: 8081
 
+    - match: Host(`element.artichoke.cc`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: synapse-matrix-synapse
+          port: 80
+
   tls:
     secretName: tls-secret
