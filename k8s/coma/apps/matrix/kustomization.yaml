@@ -8,4 +8,4 @@ resources:
   - ./element/element.yaml
   - ./element/config.yaml
   - ./ingressroute.yaml
-  # - ./certificate.yaml
+  - ./certificate.yaml
