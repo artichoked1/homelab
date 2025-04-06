@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: matrix-tls-cert
+  namespace: matrix
+spec:
+  secretName: tls-secret
+  dnsNames:
+    - "artichoke.cc"
+    - "matrix.artichoke.cc"
+    - "mas.artichoke.cc"
+    - "element.artichoke.cc"
+    - "calls.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
