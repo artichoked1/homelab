@@ -113,3 +113,5 @@ spec:
     persistence:
       enabled: true
       existingClaim: synapse-media
+    federation_sender:
+      enabled: true
