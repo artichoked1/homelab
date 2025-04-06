@@ -26,8 +26,6 @@ spec:
               tag: v1.11.96
               pullPolicy: IfNotPresent
 
-            env:
-
     service:
       main:
         controller: main
