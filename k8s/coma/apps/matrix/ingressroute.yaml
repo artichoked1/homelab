@@ -36,7 +36,7 @@ spec:
     - match: Host(`element.artichoke.cc`) && PathPrefix(`/`)
       kind: Rule
       services:
-        - name: synapse-matrix-synapse
+        - name: element
           port: 80
 
   tls:
