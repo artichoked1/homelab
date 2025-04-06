@@ -62,6 +62,9 @@ spec:
       account_threepid_delegates:
         msisdn: http://matrix.org:8090
       experimental_features:
+        msc4108_enabled: true
+        msc3266_enabled: true
+        msc4222_enabled: true
         msc3861:
           enabled: true
           issuer: https://mas.artichoke.cc
@@ -69,6 +72,13 @@ spec:
           client_auth_method: client_secret_basic
           client_secret: ${SYNAPSE_EXTERNAL_OAUTH_CLIENT_SECRET}
           admin_token: ${SYNAPSE_MAS_SHARED_SECRET}
+      max_event_delay_duration: 24h
+      rc_message:
+        per_second: 0.5
+        burst_count: 30
+      rc_delayed_event_mgmt:
+        per_second: 1
+        burst_count: 20
 
     extraSecrets:
     postgresql:
