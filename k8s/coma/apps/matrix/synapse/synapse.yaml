@@ -65,6 +65,7 @@ spec:
         msc4108_enabled: true
         msc3266_enabled: true
         msc4222_enabled: true
+        msc4076_enabled: true
         msc3861:
           enabled: true
           issuer: https://mas.artichoke.cc
@@ -99,3 +100,6 @@ spec:
       existingSecretPasswordKey: password
     ingress:
       enabled: false
+    persistence:
+      enabled: true
+      existingClaim: synapse-media

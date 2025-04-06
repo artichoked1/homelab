@@ -4,6 +4,8 @@ resources:
   - ./namespace.yaml
   - ./secrets.yaml
   - ./synapse/synapse.yaml
+  - ./synapse/pv.yaml
+  - ./synapse/pvc.yaml
   - ./mas/mas.yaml
   - ./element/element.yaml
   - ./element/config.yaml
