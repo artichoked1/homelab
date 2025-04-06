@@ -113,8 +113,7 @@ spec:
     persistence:
       enabled: true
       existingClaim: synapse-media
-    federation_sender:
-      enabled: true
     workers:
-      default:
+      federation_sender:
+        enabled: true
         replicaCount: 2
