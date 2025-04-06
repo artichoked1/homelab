@@ -116,4 +116,4 @@ spec:
     workers:
       federation_sender:
         enabled: true
-        replicaCount: 2
+        replicaCount: 1
