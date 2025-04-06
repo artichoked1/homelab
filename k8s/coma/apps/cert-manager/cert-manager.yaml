@@ -15,7 +15,11 @@ spec:
       version: 1.17.1
   install:
     createNamespace: true
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   interval: 1m0s
+
   releaseName: cert-manager
   targetNamespace: cert-manager
   values:
