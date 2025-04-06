@@ -25,6 +25,9 @@ spec:
         org.matrix.msc2965.authentication:
           issuer: "https://mas.artichoke.cc/"
           account: "https://auth.example.com/account"
+        org.matrix.msc4143.rtc_foci:
+          - livekit_service_url: https://jwt.call.element.io
+            type: "livekit"
     config:
       turnUris:
         [
