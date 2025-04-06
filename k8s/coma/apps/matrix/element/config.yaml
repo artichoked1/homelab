@@ -32,7 +32,7 @@ data:
             "feature_oidc_native_flow": true
         },
         "default_federate": true,
-        "default_theme": "light",
+        "default_theme": "dark",
         "room_directory": {
             "servers": ["artichoke.cc"]
         },
