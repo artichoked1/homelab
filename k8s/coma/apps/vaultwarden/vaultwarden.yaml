@@ -32,6 +32,7 @@ spec:
                     name: vaultwarden-admin-token
                     key: token
               DATA_FOLDER: "config"
+              EXPERIMENTAL_CLIENT_FEATURE_FLAGS: "fido2-vault-credentials,ssh-key-vault-item,ssh-agent"
 
     service:
       main:
