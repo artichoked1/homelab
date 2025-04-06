@@ -48,7 +48,7 @@ spec:
                     name: navidrome-spotify-token
                     key: client-secret
               ND_SCANNER_ENABLED: "true"
-              ND_SCANNER_SCHEDULE: "*/5 * * * *"
+              ND_SCANNER_SCHEDULE: "0 6 * * 1"
 
             image:
               repository: deluan/navidrome
