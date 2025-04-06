@@ -34,7 +34,13 @@ spec:
             port: 80
 
     persistence:
-      app:
+      config:
         enabled: true
         type: configMap
         name: element-config
+        advancedMounts:
+          main:
+            main:
+              - path: /app/config.json
+                subPath: config.json
+                readOnly: true
