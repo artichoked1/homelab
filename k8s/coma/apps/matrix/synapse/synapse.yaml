@@ -25,6 +25,13 @@ spec:
         org.matrix.msc2965.authentication:
           issuer: "https://mas.artichoke.cc/"
           account: "https://auth.example.com/account"
+    config:
+      turnUris:
+        [
+          "turn:staticauth.openrelay.metered.ca:80",
+          "turn:staticauth.openrelay.metered.ca:443",
+        ]
+      turnSecret: "openrelayprojectsecret"
     extraConfig:
       enable_registration: false
       enable_registration_captcha: false
