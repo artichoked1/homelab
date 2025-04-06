@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./secrets.yaml
-  - ./synapse.yaml
-  - ./mas.yaml
+  - ./synapse/synapse.yaml
+  - ./mas/mas.yaml
+  - ./element/element.yaml
+  - ./element/config.yaml
   - ./ingressroute.yaml
