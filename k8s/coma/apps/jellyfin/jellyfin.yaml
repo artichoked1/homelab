@@ -41,7 +41,7 @@ spec:
       config:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
-        size: 4Gi
+        size: 5Gi
         globalMounts:
           - path: /config
       media:
@@ -51,6 +51,6 @@ spec:
       cache:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
-        size: 4Gi
+        size: 5Gi
         globalMounts:
           - path: /cache
