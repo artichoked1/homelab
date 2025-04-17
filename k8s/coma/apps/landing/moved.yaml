@@ -22,7 +22,7 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/smartich0ke/artichokenetwork-moved
+              repository: ghcr.io/artichoked1/artichokenetwork-moved
               tag: main
               pullPolicy: Always
 
