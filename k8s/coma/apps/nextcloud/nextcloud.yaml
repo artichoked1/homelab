@@ -65,7 +65,7 @@ spec:
             readOnly: false
       extraVolumeMounts:
         - name: nsfiles
-          mountPath: /nsfiles
+          mountPath: /mnt/nsfiles
     cronjob:
       enabled: true
     persistence:
