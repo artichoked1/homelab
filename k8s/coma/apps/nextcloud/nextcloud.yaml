@@ -61,7 +61,7 @@ spec:
         - name: nsfiles
           nfs:
             server: truenas2.artichoke.network
-            path: "/mnt/Main/Ns Files"
+            path: "/mnt/MoonShapedPool/NsFiles"
             readOnly: false
       extraVolumeMounts:
         - name: nsfiles
