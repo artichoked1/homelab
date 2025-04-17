@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/Main/Photos/immich
-    server: 192.168.188.143
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -25,7 +25,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/Main/Ns Files/Photos
-    server: 192.168.188.143
+    path: /mnt/MoonShapedPool/NsFiles
+    server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
