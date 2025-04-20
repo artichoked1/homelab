@@ -22,8 +22,8 @@ spec:
         containers:
           main:
             image:
-              repository: lscr.io/linuxserver/lidarr
-              tag: 2.7.1
+              repository: ghcr.io/linuxserver-labs/prarr
+              tag: lidarr-plugins
               pullPolicy: IfNotPresent
 
     service:
