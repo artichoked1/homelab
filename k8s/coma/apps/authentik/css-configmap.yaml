@@ -5,3 +5,61 @@ metadata:
   namespace: authentik
 data:
   custom.css: |
+    :root {
+      /* Core colors */
+      --color-white:      #fff;
+      --color-black:      #000;
+      --color-grey-dark:  #111;
+      --color-grey:       #333;
+      --color-grey-light: #f9f9f9;
+      --color-primary:      #419a79
+
+      /* RGB channels for alpha variants */
+      --white-rgb:     255,255,255;
+      --black-rgb:     0,0,0;
+      --dark-grey-rgb: 17,17,17;
+
+      /* Semantic tokens (light theme as default) */
+      --color-bg:             var(--color-grey-light);
+      --color-text:           var(--color-black);
+      --color-border:         rgba(var(--black-rgb), 0.1);
+      --color-bg-overlay:     rgba(var(--white-rgb), 0.7);
+      --color-drop-shadow:    rgba(var(--black-rgb), 0.25);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg:          var(--color-grey-dark);
+        --color-text:        var(--color-white);
+        --color-border:      rgba(var(--white-rgb), 0.1);
+        --color-bg-overlay:  rgba(var(--dark-grey-rgb), 0.7);
+      }
+    }
+
+    .pf-c-login__main {
+      background:        var(--color-bg-overlay);
+      box-shadow:        0 0 10px 5px var(--color-drop-shadow);
+      border:            1px solid var(--color-border);
+      backdrop-filter:   blur(10px);
+      border-radius:     10px;          /* shorthand for all corners */
+      color:            var(--color-text);
+    }
+
+    .pf-c-login__main-footer-band {
+      background: none;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .pf-c-form-control {
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+    }
+    .pf-c-button {
+      border-radius: 6px;
+    }
+
+    .pf-m-primary {
+      background-color: var(--color-primary);
+    }
+      border-color: var(--color-primary);
+    }
