@@ -17,7 +17,7 @@ spec:
   values:
     service:
       ssh:
-        type: ClusterIP
+        type: LoadBalancer
     redis-cluster:
       enabled: false
     postgresql-ha:
