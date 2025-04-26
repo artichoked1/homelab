@@ -31,7 +31,6 @@ spec:
       config:
         server:
           ROOT_URL: https://git.artichoke.cc/
-          DISABLE_SSH: false
           START_SSH_SERVER: true
           SSH_DOMAIN: git.artichoke.cc
         mailer:
