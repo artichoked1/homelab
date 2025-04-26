@@ -15,6 +15,9 @@ spec:
       version: 10.5.0
   interval: 1m0s
   values:
+    service:
+      ssh:
+        type: ClusterIP
     redis-cluster:
       enabled: false
     postgresql-ha:
@@ -27,6 +30,9 @@ spec:
       config:
         server:
           ROOT_URL: https://git.artichoke.cc/
+          DISABLE_SSH: false
+          START_SSH_SERVER: true
+          SSH_DOMAIN: git.artichoke.cc
         mailer:
           PROTOCOL: smtps
           SMTP_ADDR: ${NOREPLY_EMAIL_HOST}
