@@ -24,7 +24,7 @@ spec:
             env:
               TZ: Australia/Adelaide
               DB_CONNECTION: pgsql
-              DB_HOST: database
+              DB_HOST: main-postgres-rw.databases.svc.cluster.local
               DB_PORT: 5432
               DB_DATABASE: koel
               DB_USERNAME:
