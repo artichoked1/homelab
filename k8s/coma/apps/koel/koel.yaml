@@ -67,6 +67,8 @@ spec:
               repository: phanan/koel
               tag: 7.2.2
               pullPolicy: IfNotPresent
+            securityContext:
+              fsGroup: 33
 
     service:
       main:
@@ -91,4 +93,4 @@ spec:
       media:
         existingClaim: koel-media-pvc
         globalMounts:
-          - path: /music
+          - path: /media
