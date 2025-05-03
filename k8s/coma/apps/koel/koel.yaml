@@ -37,6 +37,26 @@ spec:
                   secretKeyRef:
                     name: koel-postgres-auth
                     key: password
+              LASTFM_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-lastfm-token
+                    key: key
+              LASTFM_API_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-lastfm-token
+                    key: shared-secret
+              SPOTIFY_CLIENT_ID:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-spotify-token
+                    key: client-id
+              SPOTIFY_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-spotify-token
+                    key: client-secret
             image:
               repository: phanan/koel
               tag: 7.2.2
