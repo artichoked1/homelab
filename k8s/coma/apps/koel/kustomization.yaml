@@ -6,3 +6,4 @@ resources:
   - ./pv.yaml
   - ./pvc.yaml
   - ./koel.yaml
+  - ./ingress.yaml
