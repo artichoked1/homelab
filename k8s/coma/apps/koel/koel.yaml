@@ -1,0 +1,68 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: koel
+  namespace: koel
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+
+        containers:
+          main:
+            env:
+              TZ: Australia/Adelaide
+              DB_CONNECTION: pgsql
+              DB_HOST: database
+              DB_PORT: 5432
+              DB_DATABASE: koel
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-postgres-auth
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-postgres-auth
+                    key: password
+            image:
+              repository: phanan/koel
+              tag: 7.2.2
+              pullPolicy: IfNotPresent
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 80
+
+    persistence:
+      search:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /var/www/html/storage/search-indexes
+      covers:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /var/www/html/public/img/covers
+      media:
+        existingClaim: koel-media-pvc
+        globalMounts:
+          - path: /music
