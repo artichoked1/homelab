@@ -57,6 +57,11 @@ spec:
                   secretKeyRef:
                     name: koel-spotify-token
                     key: client-secret
+              APP_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: koel-app-key
+                    key: app-key
             image:
               repository: phanan/koel
               tag: 7.2.2
