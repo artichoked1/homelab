@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/MoonShapedPool/Media
+    path: /mnt/MoonShapedPool/Media/imports/Music
     server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain

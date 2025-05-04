@@ -93,4 +93,4 @@ spec:
       media:
         existingClaim: koel-media-pvc
         globalMounts:
-          - path: /media
+          - path: /music
