@@ -40,7 +40,7 @@ spec:
           release: prometheus-stack
       persistence:
         library:
-          existingClaim: immich-import-pvc
+          existingClaim: immich-uploads-pvc
 
       # configuration is immich-config.json converted to yaml
       # ref: https://immich.app/docs/install/config-file/
@@ -128,9 +128,3 @@ spec:
         mountPath: /media/nsphotos
         readOnly: true
         existingClaim: immich-nsfiles-pvc
-      uploads:
-        enabled: true
-        type: pvc
-        mountPath: /usr/src/app/upload
-        readOnly: false
-        existingClaim: immich-uploads-pvc
