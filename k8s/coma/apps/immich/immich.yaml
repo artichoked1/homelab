@@ -31,7 +31,7 @@ spec:
             key: password
 
     image:
-      tag: v1.131.3
+      tag: v1.132.3
 
     immich:
       metrics:
@@ -125,6 +125,12 @@ spec:
       existing-photos:
         enabled: true
         type: pvc
-        mountPath: /existing-photos
+        mountPath: /media/nsphotos
         readOnly: true
         existingClaim: immich-nsfiles-pvc
+      uploads:
+        enabled: true
+        type: pvc
+        mountPath: /usr/src/app/upload
+        readOnly: false
+        existingClaim: immich-uploads-pvc

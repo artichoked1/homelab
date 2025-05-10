@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: immich-import-pvc
+  name: immich-uploads-pvc
   namespace: immich
 spec:
   storageClassName: ""
@@ -10,7 +10,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: immich-import-pv
+  volumeName: immich-uploads-pv
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
