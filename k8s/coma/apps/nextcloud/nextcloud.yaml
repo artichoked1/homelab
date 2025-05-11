@@ -16,8 +16,8 @@ spec:
   interval: 1m0s
   values:
     image:
-      flavour: apache
-      tag: 31.0.4-apache
+      flavour: alpine
+      tag: 31.0.4-fpm-alpine
     nextcloud:
       host: nc.artichoke.cc
       username: admin
