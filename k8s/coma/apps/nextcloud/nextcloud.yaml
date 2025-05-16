@@ -20,10 +20,6 @@ spec:
       tag: 31.0.4-fpm-alpine
     nginx:
       enabled: true
-      securityContext:
-        runAsUser: 33
-        runAsGroup: 33
-        fsGroup: 33
     nextcloud:
       securityContext:
         runAsUser: 33
@@ -86,6 +82,9 @@ spec:
         runAsUser: 33
         runAsGroup: 33
         fsGroup: 33
+      podSecurityContext:
+        fsGroup: 33
+        fsGroupChangePolicy: "Always"
     persistence:
       enabled: true
       size: 4Gi
