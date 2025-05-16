@@ -61,6 +61,7 @@ spec:
             'maintenance_window_start' => 1,
             'default_phone_region' => 'AU',
             'overwrite.cli.url' => 'https://nc.artichoke.cc',
+            'loglevel' => 2,
           );
       extraVolumes:
         - name: nsfiles
