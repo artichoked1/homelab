@@ -21,7 +21,7 @@ spec:
     nginx:
       enabled: true
       securityContext:
-        runAsUser: 82
+        runAsUser: 33
         runAsGroup: 33
         fsGroup: 33
     nextcloud:
