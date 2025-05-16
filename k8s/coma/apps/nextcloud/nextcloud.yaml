@@ -20,7 +20,15 @@ spec:
       tag: 31.0.4-fpm-alpine
     nginx:
       enabled: true
+      securityContext:
+        runAsUser: 82
+        runAsGroup: 33
+        fsGroup: 33
     nextcloud:
+      securityContext:
+        runAsUser: 33
+        runAsGroup: 33
+        fsGroup: 33
       host: nc.artichoke.cc
       username: admin
       existingSecret:
@@ -74,6 +82,10 @@ spec:
           mountPath: /mnt/nsfiles
     cronjob:
       enabled: true
+      securityContext:
+        runAsUser: 33
+        runAsGroup: 33
+        fsGroup: 33
     persistence:
       enabled: true
       size: 4Gi
