@@ -17,6 +17,7 @@ spec:
   values:
     defaultSettings:
       defaultReplicaCount: 2
+      defaultDataPath: /var/mnt/longhorn
     persistence:
       reclaimPolicy: Retain
       defaultClassReplicaCount: 2
