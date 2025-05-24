@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./main/redis-cluster.yaml
-  - ./redis-replicated/redis-replicated.yaml
-  - ./redis-replicated/secrets.yaml
+  # - ./namespace.yaml
+  # - ./main/redis-cluster.yaml
+  # - ./redis-replicated/redis-replicated.yaml
+  # - ./redis-replicated/secrets.yaml
