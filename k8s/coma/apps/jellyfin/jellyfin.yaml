@@ -23,8 +23,8 @@ spec:
             env:
               TZ: Australia/Adelaide
             resources:
-              limits:
-                gpu.intel.com/i915: 1000m
+              # limits:
+              #   gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin
               tag: 10.10.6
