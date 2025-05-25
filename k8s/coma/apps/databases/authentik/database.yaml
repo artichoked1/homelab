@@ -6,11 +6,6 @@ metadata:
 spec:
   postgresql:
   instances: 1
-  imageCatalogRef:
-    apiGroup: postgresql.cnpg.io
-    kind: ImageCatalog
-    name: postgresql
-    major: 16
   imageName: ghcr.io/cloudnative-pg/postgresql:16.8
   superuserSecret:
     name: authentik-postgres-superuser-auth

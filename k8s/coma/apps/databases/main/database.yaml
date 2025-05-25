@@ -5,11 +5,6 @@ metadata:
   namespace: databases
 spec:
   instances: 3
-  imageCatalogRef:
-    apiGroup: postgresql.cnpg.io
-    kind: ImageCatalog
-    name: postgresql
-    major: 16
   imageName: ghcr.io/cloudnative-pg/postgresql:16.8
   superuserSecret:
     name: main-postgres-superuser-auth
