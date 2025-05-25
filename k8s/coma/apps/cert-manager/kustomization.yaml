@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cert-manager.yaml
-  # - ./vault-issuer-sa.yaml
-  # - ./vault-issuer-token.yaml
-  # - ./vault-issuer.yaml
-  # - ./letsencrypt-production-issuer.yaml
+  - ./vault-issuer-sa.yaml
+  - ./vault-issuer-token.yaml
+  - ./vault-issuer.yaml
+  - ./letsencrypt-production-issuer.yaml
 namespace: cert-manager
