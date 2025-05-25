@@ -9,7 +9,7 @@ spec:
     name: main-postgres-superuser-auth
   storage:
     size: 2Gi
-    storageClass: local-path
+    storageClass: openebs-hostpath
   backup:
     barmanObjectStore:
       destinationPath: "s3://holeinmybudget/pg_backups/main-postgres-new"
