@@ -39,9 +39,10 @@ spec:
 
     persistence:
       config:
-        storageClass: "longhorn"
-        accessMode: ReadWriteOnce
-        size: 5Gi
+        # storageClass: "longhorn"
+        # accessMode: ReadWriteOnce
+        # size: 5Gi
+        existingClaim: jellyfin-config
         globalMounts:
           - path: /config
       media:
