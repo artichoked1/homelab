@@ -8,12 +8,12 @@ spec:
   instances: 1
   superuserSecret:
     name: authentik-postgres-superuser-auth
-  bootstrap:
-    initdb:
-      database: authentik
-      owner: authentik
-      secret:
-        name: authentik-postgres-auth
+  # bootstrap:
+  #   initdb:
+  #     database: authentik
+  #     owner: authentik
+  #     secret:
+  #       name: authentik-postgres-auth
   backup:
     barmanObjectStore:
       destinationPath: "s3://holeinmybudget/pg_backups/"
@@ -27,4 +27,15 @@ spec:
           key: access-key-secret
   storage:
     size: 1Gi
-    storageClass: local-path
+    storageClass: openebs-hostpath
+  externalClusters:
+    - name: origin
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: r2-backup
+          serverName: main-postgres
+
+  bootstrap:
+    recovery:
+      source: origin

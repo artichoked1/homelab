@@ -7,7 +7,7 @@ resources:
   # - ./immich/database.yaml
 
   - ./authentik/secrets.yaml
-  # - ./authentik/database.yaml
+  - ./authentik/database.yaml
   - ./authentik/backup.yaml
 
   - ./main/secrets.yaml
