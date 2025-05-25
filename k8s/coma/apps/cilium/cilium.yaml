@@ -65,3 +65,5 @@ spec:
       enabled: true
       default: true
       loadbalancerMode: shared
+      service:
+        loadBalancerIP: 192.168.188.210
