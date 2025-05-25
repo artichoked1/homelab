@@ -1,0 +1,17 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: r2-backup
+spec:
+  configuration:
+    destinationPath: s3://holeinmybudget/pg_backups/main-postgres-new
+    endpointURL: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
+    s3Credentials:
+      accessKeyId:
+        name: pg-backups-aws-creds
+        key: access-key
+      secretAccessKey:
+        name: pg-backups-aws-creds
+        key: access-key-secret
+    wal:
+      maxParallel: 8
