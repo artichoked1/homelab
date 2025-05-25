@@ -8,8 +8,8 @@ resources:
 
   - ./authentik/secrets.yaml
   # - ./authentik/database.yaml
-  # - ./authentik/backup.yaml
+  - ./authentik/backup.yaml
 
   - ./main/secrets.yaml
   # - ./main/database.yaml
-  # - ./main/backup.yaml
+  - ./main/backup.yaml
