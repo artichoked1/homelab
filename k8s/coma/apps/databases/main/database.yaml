@@ -24,7 +24,14 @@ spec:
       wal:
         maxParallel: 8
 
+  externalClusters:
+    - name: origin
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: r2-backup
+          serverName: main-postgres-new
+
   bootstrap:
     recovery:
-      backup:
-        name: weekly-main-s3-backup-20250228000000
+      source: origin

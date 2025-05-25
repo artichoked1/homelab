@@ -11,7 +11,7 @@ resources:
   - ./authentik/backup.yaml
 
   - ./main/secrets.yaml
-  # - ./main/database.yaml
+  - ./main/database.yaml
   - ./main/backup.yaml
 
   - ./objectstore.yaml
