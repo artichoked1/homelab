@@ -30,7 +30,7 @@ spec:
         name: barman-cloud.cloudnative-pg.io
         parameters:
           barmanObjectName: r2-backup
-          serverName: main-postgres-new
+          serverName: main-postgres
 
   bootstrap:
     recovery:
