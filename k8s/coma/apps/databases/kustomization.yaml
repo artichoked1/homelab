@@ -3,13 +3,13 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
 
-  # - ./immich/secrets.yaml
+  - ./immich/secrets.yaml
   # - ./immich/database.yaml
 
-  # - ./authentik/secrets.yaml
+  - ./authentik/secrets.yaml
   # - ./authentik/database.yaml
   # - ./authentik/backup.yaml
 
-  # - ./main/secrets.yaml
+  - ./main/secrets.yaml
   # - ./main/database.yaml
   # - ./main/backup.yaml
