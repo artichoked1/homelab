@@ -14,4 +14,4 @@ resources:
   # - ./main/database.yaml
   - ./main/backup.yaml
 
-  - ./objectstore.yaml
+  # - ./objectstore.yaml
