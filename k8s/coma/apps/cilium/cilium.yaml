@@ -63,4 +63,4 @@ spec:
         burst: 50
     ingressController:
       enabled: true
-      loadBalancerMode: shared
+      loadbalancerMode: shared
