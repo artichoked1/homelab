@@ -30,6 +30,7 @@ resources:
   - ./helm-repos/bitnami-oci.yaml
   - ./helm-repos/ananace.yaml
   - ./helm-repos/metallb.yaml
+  - ./helm-repos/cilium.yaml
 
   # - ./flux-webhook/ingress.yaml
   # - ./flux-webhook/token-secret.yaml
