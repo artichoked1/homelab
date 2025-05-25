@@ -5,6 +5,11 @@ metadata:
   namespace: databases
 spec:
   instances: 3
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ImageCatalog
+    name: postgresql
+    major: 16
   superuserSecret:
     name: main-postgres-superuser-auth
   storage:
