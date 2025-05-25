@@ -10,6 +10,7 @@ spec:
     kind: ImageCatalog
     name: postgresql
     major: 16
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.8
   superuserSecret:
     name: main-postgres-superuser-auth
   storage:
