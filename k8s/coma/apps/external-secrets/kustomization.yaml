@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./external-secrets.yaml
-  - ./kv-provider.yaml
+  # - ./kv-provider.yaml
