@@ -40,3 +40,5 @@ spec:
   bootstrap:
     recovery:
       source: origin
+      recoveryTarget:
+        targetTime: "2025-05-24 00:00:54+00"
