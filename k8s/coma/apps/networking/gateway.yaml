@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: web-gateway
+  namespace: kube-system
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: artichoke-cc-http
+      port: 80
+      protocol: HTTP
+    - name: artichoke-cc-https
+      port: 443
+      protocol: HTTPS
+      hostname: "*.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: artichokecc-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
