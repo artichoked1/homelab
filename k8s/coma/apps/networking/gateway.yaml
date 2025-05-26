@@ -7,7 +7,7 @@ spec:
   gatewayClassName: cilium
   addresses:
     - type: IPAddress
-      value: 192.168.188.203
+      value: 192.168.188.211
   listeners:
     - name: artichoke-cc-http
       port: 80
