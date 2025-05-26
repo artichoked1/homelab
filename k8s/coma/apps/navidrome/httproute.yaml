@@ -2,14 +2,14 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: navidrome
-  namespace: naivdrome
+  namespace: navidrome
 spec:
   parentRefs:
     - name: web-gateway
       namespace: kube-system
       sectionName: artichoke-cc-https
   hostnames:
-    - media.artichoke.cc
+    - music.artichoke.cc
   rules:
     - matches:
         - path:
