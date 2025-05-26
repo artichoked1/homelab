@@ -35,7 +35,7 @@ spec:
         name: barman-cloud.cloudnative-pg.io
         parameters:
           barmanObjectName: r2-backup
-          serverName: main-postgres
+          serverName: authentik-postgres
 
   bootstrap:
     recovery:
