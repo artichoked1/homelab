@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: web-gateway
   namespace: kube-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   gatewayClassName: cilium
   addresses:
