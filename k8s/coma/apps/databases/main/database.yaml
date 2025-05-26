@@ -30,9 +30,5 @@ spec:
       plugin:
         name: barman-cloud.cloudnative-pg.io
         parameters:
-          barmanObjectName: r2-backup
+          barmanObjectName: r2-backup-main
           serverName: main-postgres
-
-  bootstrap:
-    recovery:
-      source: origin
