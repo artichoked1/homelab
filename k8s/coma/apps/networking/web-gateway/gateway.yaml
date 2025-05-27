@@ -4,14 +4,14 @@ metadata:
   name: web-gateway
   namespace: kube-system
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-production
+    # cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   gatewayClassName: cilium
   addresses:
     - type: IPAddress
       value: 192.168.188.211
   listeners:
-    - name: artichoke-cc-http
+    - name: http
       port: 80
       protocol: HTTP
     - name: artichoke-cc-https
@@ -21,6 +21,17 @@ spec:
       tls:
         certificateRefs:
           - name: artichokecc-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: coma-artichoke-network-https
+      port: 443
+      protocol: HTTPS
+      hostname: "*.coma.artichoke.network"
+      tls:
+        certificateRefs:
+          - name: coma-artichoke-local-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:

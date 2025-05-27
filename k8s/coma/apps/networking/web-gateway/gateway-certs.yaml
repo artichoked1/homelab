@@ -1,0 +1,45 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: artichokecc-cert
+  namespace: networking
+spec:
+  secretName: artichokecc-wildcard-cert
+  dnsNames:
+    - "artichoke.cc"
+    - "*.artichoke.cc"
+    - "*.teleport.artichoke.cc"
+    - "*.coder.artichoke.cc"
+    - "*.git.artichoke.cc"
+    - "*.auth.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: npatrick-cert
+  namespace: networking
+spec:
+  secretName: npatrick-cert
+  dnsNames:
+    - "nikolaipatrick.com"
+    - "www.nikolaipatrick.com"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: coma-artichoke-locaL-cert
+  namespace: networking
+spec:
+  secretName: coma-artichoke-local-wildcard-cert
+  dnsNames:
+    - "coma.artichoke.network"
+    - "*.coma.artichoke.network"
+  issuerRef:
+    name: vault-issuer
+    kind: ClusterIssuer

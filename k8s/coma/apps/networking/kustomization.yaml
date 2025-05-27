@@ -1,7 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - gateway.yaml
-#   - ./hsts-middleware.yaml
-#   - ./https-redirect-middleware.yaml
-#   - ./traefik-helmconfig.yaml
+  - ./namespace.yaml
+  - ./web-gateway/gateway.yaml
+  - ./web-gateway/gateway-certs.yaml
+#   - ./traefik/hsts-middleware.yaml
+#   - ./traefik/https-redirect-middleware.yaml
+#   - ./traefik/traefik-helmconfig.yaml
