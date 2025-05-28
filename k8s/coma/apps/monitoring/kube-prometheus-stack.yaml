@@ -25,6 +25,7 @@ spec:
       persistence:
         enabled: true
         size: 1Gi
+        storageClassName: longhorn
       envFromSecret: "grafana-env-vars"
       grafana.ini:
         users:
@@ -64,21 +65,23 @@ spec:
           from_name: Grafana
     prometheus:
       prometheusSpec:
+        retention: 30d
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: openebs-hostpath
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
-                  storage: 50Gi
+                  storage: 20Gi
     alertmanager:
       alertmanagerSpec:
+        retention: 30d
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn
+              storageClassName: openebs-hostpath
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
