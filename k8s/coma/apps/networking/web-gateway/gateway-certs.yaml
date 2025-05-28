@@ -36,6 +36,7 @@ metadata:
   name: coma-artichoke-local-cert
   namespace: networking
 spec:
+  commonName: "coma.artichoke.network"
   secretName: coma-artichoke-local-wildcard-cert
   dnsNames:
     - "coma.artichoke.network"
