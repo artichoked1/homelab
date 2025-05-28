@@ -6,7 +6,7 @@ metadata:
 spec:
   parentRefs:
     - name: web-gateway
-      namespace: kube-system
+      namespace: networking
       sectionName: artichoke-cc-https
   hostnames:
     - music.artichoke.cc
