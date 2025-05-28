@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./main/redis-cluster.yaml
-  # - ./redis-replicated/redis-replicated.yaml
-  # - ./redis-replicated/secrets.yaml
+  - ./redis-replicated/redis-replicated.yaml
+  - ./redis-replicated/secrets.yaml
