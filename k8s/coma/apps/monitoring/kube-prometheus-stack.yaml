@@ -65,7 +65,7 @@ spec:
           from_name: Grafana
     prometheus:
       prometheusSpec:
-        retention: 30d
+        retention: 720h
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
@@ -77,7 +77,7 @@ spec:
                   storage: 20Gi
     alertmanager:
       alertmanagerSpec:
-        retention: 30d
+        retention: 720h
         storage:
           volumeClaimTemplate:
             spec:
