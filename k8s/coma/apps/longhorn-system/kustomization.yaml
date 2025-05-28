@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - ./longhorn.yaml
   - ./namespace.yaml
-  - ./ingress.yaml
+  # - ./ingress.yaml
+  - ./httproute.yaml
 namespace: longhorn-system
