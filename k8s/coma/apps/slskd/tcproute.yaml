@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: TCPRoute
+metadata:
+  name: slskd
+  namespace: slskd
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: soulseek
+  rules:
+    - backendRefs:
+        - name: slskd-soulseek
+          port: 50300
