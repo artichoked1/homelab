@@ -36,10 +36,3 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: soulseek
-      port: 50300
-      protocol: TCP
-      hostname: "slskd.coma.artichoke.network"
-      allowedRoutes:
-        namespaces:
-          from: All
