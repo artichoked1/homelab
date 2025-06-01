@@ -4,5 +4,5 @@ metadata:
   name: home-network-pool
 spec:
   blocks:
-    - start: "192.168.188.201"
+    - start: "192.168.188.202"
       stop: "192.168.188.220"
