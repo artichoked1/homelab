@@ -17,7 +17,7 @@ spec:
   chart:
     spec:
       chart: rabbitmq
-      version: 16.0.5
+      version: 15.5.3
       sourceRef:
         kind: HelmRepository
         name: rabbitmq
