@@ -23,9 +23,21 @@ spec:
           main:
             env:
               TZ: Australia/Adelaide
+              DB_TYPE: "postgres"
+              DB_HOST: "main-postgres-rw.databases.svc.cluster.local"
+              DB_PORT: "5432"
+              DB_NAME: "jellyseerr"
+              DB_USER:
+                secretKeyRef:
+                  name: jellyseerr-postgres-auth
+                  key: username
+              DB_PASS:
+                secretKeyRef:
+                  name: jellyseerr-postgres-auth
+                  key: password
             image:
               repository: fallenbagel/jellyseerr
-              tag: 2.0.1
+              tag: 2.5.2
               pullPolicy: IfNotPresent
 
     service:

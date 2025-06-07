@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   # - ./ingress.yaml
-  # - ./jellyseerr.yaml
+  - ./jellyseerr.yaml
+  - ./httproute.yaml
