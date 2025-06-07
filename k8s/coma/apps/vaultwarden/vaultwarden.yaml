@@ -34,6 +34,11 @@ spec:
                     key: token
               DATA_FOLDER: "config"
               EXPERIMENTAL_CLIENT_FEATURE_FLAGS: "fido2-vault-credentials,ssh-key-vault-item,ssh-agent"
+              DATABASE_URL:
+                valueFrom:
+                  secretKeyRef:
+                    name: vaultwarden-postgres-auth
+                    key: url
 
     service:
       main:
