@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/element-hq/matrix-authentication-service
-              tag: sha-9302384
+              tag: sha-ed31b2f
               pullPolicy: IfNotPresent
             command: ["/usr/local/bin/mas-cli"]
             args: ["server"]

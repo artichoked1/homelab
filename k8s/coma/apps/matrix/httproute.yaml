@@ -1,0 +1,71 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix
+  namespace: matrix
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-https
+  hostnames:
+    - "matrix.artichoke.cc"
+    - "artichoke.cc"
+    - "mas.artichoke.cc"
+    - "element.artichoke.cc"
+  rules:
+    - matches:
+        - path:
+            type: RegularExpression
+            value: "^/_matrix/client/(.*)/(login|logout|refresh)"
+      backendRefs:
+        - name: mas-main
+          port: 8081
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/"
+      backendRefs:
+        - name: synapse-matrix-synapse
+          port: 8008
+      filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier: {}
+      # Apply this rule only for matrix.artichoke.cc
+      conditions:
+        - type: Host
+          value: "matrix.artichoke.cc"
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/.well-known/matrix/"
+      backendRefs:
+        - name: synapse-wellknown-lighttpd
+          port: 80
+      conditions:
+        - type: Host
+          value: "artichoke.cc"
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/"
+      backendRefs:
+        - name: mas-main
+          port: 8081
+      conditions:
+        - type: Host
+          value: "mas.artichoke.cc"
+
+    - matches:
+        - path:
+            type: PathPrefix
+            value: "/"
+      backendRefs:
+        - name: element
+          port: 80
+      conditions:
+        - type: Host
+          value: "element.artichoke.cc"
