@@ -10,9 +10,6 @@ spec:
       sectionName: artichoke-cc-https
   hostnames:
     - "matrix.artichoke.cc"
-    - "artichoke.cc"
-    - "mas.artichoke.cc"
-    - "element.artichoke.cc"
   rules:
     - matches:
         - path:
@@ -29,10 +26,20 @@ spec:
       backendRefs:
         - name: synapse-matrix-synapse
           port: 8008
-      # Narrow by host via hostnames list
-      hostnames:
-        - "matrix.artichoke.cc"
-
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: artichoke-wellknown
+  namespace: matrix
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-https
+  hostnames:
+    - "artichoke.cc"
+  rules:
     - matches:
         - path:
             type: PathPrefix
@@ -40,9 +47,20 @@ spec:
       backendRefs:
         - name: synapse-wellknown-lighttpd
           port: 80
-      hostnames:
-        - "artichoke.cc"
-
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mas
+  namespace: matrix
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-https
+  hostnames:
+    - "mas.artichoke.cc"
+  rules:
     - matches:
         - path:
             type: PathPrefix
@@ -50,9 +68,20 @@ spec:
       backendRefs:
         - name: mas-main
           port: 8081
-      hostnames:
-        - "mas.artichoke.cc"
-
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: element
+  namespace: matrix
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-https
+  hostnames:
+    - "element.artichoke.cc"
+  rules:
     - matches:
         - path:
             type: PathPrefix
@@ -60,5 +89,3 @@ spec:
       backendRefs:
         - name: element
           port: 80
-      hostnames:
-        - "element.artichoke.cc"
