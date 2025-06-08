@@ -40,7 +40,7 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /var/opt/thelounge
-      config:
+      thelounge-config:
         enabled: true
         type: Secret
         name: thelounge-config
