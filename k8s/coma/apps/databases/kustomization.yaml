@@ -14,5 +14,7 @@ resources:
   - ./main/database.yaml
   - ./main/backup.yaml
 
+  - ./synapse/secrets.yaml
+
   - ./objectstore.yaml
   - ./imagecatalog.yaml
