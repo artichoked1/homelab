@@ -4,7 +4,7 @@ resources:
   - ./namespace.yaml
 
   - ./immich/secrets.yaml
-  # - ./immich/database.yaml
+  - ./immich/database.yaml
 
   - ./authentik/secrets.yaml
   - ./authentik/database.yaml
