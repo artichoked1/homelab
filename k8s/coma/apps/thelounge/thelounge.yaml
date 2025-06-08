@@ -42,7 +42,7 @@ spec:
           - path: /var/opt/thelounge
       thelounge-config:
         enabled: true
-        type: Secret
+        type: secret
         name: thelounge-config
         advancedMounts:
           main:
