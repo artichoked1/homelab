@@ -1,0 +1,12 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: synapse-postgres
+  namespace: databases
+spec:
+  instances: 1
+  superuserSecret:
+    name: synapse-postgres-superuser-auth
+  storage:
+    size: 40Gi
+    storageClass: openebs-hostpath
