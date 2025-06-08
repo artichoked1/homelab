@@ -23,4 +23,4 @@ spec:
 
   storage:
     size: 1Gi
-    storageClass: local-path
+    storageClass: openebs-hostpath
