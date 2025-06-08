@@ -4,3 +4,4 @@ resources:
   - ./namespace.yaml
   - ./thelounge.yaml
   - ./httproute.yaml
+  - ./secrets.yaml
