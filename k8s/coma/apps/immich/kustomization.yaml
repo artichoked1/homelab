@@ -5,6 +5,6 @@ resources:
   - ./secrets.yaml
   - ./pv.yaml
   - ./pvc.yaml
-  - ./ingress.yaml
-  # - ./immich.yaml
+  # - ./ingress.yaml
+  - ./immich.yaml
   - ./httproute.yaml
