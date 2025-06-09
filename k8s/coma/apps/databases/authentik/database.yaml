@@ -6,15 +6,14 @@ metadata:
 spec:
   postgresql:
   instances: 1
-  imageName: ghcr.io/cloudnative-pg/postgresql:16.8
   superuserSecret:
     name: authentik-postgres-superuser-auth
-  # bootstrap:
-  #   initdb:
-  #     database: authentik
-  #     owner: authentik
-  #     secret:
-  #       name: authentik-postgres-auth
+  bootstrap:
+    initdb:
+      database: authentik
+      owner: authentik
+      secret:
+        name: authentik-postgres-auth
   backup:
     barmanObjectStore:
       destinationPath: "s3://holeinmybudget/pg_backups/"
@@ -29,16 +28,16 @@ spec:
   storage:
     size: 1Gi
     storageClass: openebs-hostpath
-  externalClusters:
-    - name: origin
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: r2-backup
-          serverName: authentik-postgres
+  # externalClusters:
+  #   - name: origin
+  #     plugin:
+  #       name: barman-cloud.cloudnative-pg.io
+  #       parameters:
+  #         barmanObjectName: r2-backup
+  #         serverName: authentik-postgres
 
-  bootstrap:
-    recovery:
-      source: origin
-      recoveryTarget:
-        targetTime: "2025-05-24 00:00:54+00"
+  # bootstrap:
+  #   recovery:
+  #     source: origin
+  #     recoveryTarget:
+  #       targetTime: "2025-06-09 00:00:54+00"
