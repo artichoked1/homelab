@@ -4,11 +4,11 @@ metadata:
   name: immich-postgres
   namespace: databases
 spec:
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16.9-0.3.0
+  imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16-v0.2.1
   postgresql:
     shared_preload_libraries:
-      - "vchord.so"
-      # - "vectors.so"
+      # - "vchord.so"
+      - "vectors.so"
   instances: 1
   superuserSecret:
     name: immich-postgres-superuser-auth
@@ -19,9 +19,9 @@ spec:
       secret:
         name: immich-postgres-auth
       postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-        # - ALTER SYSTEM SET search_path TO "$user", public, vectors;
-        # - CREATE EXTENSION IF NOT EXISTS "vectors";
+        # - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+        - ALTER SYSTEM SET search_path TO "$user", public, vectors;
+        - CREATE EXTENSION IF NOT EXISTS "vectors";
   storage:
     size: 1Gi
     storageClass: openebs-hostpath
