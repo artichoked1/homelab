@@ -9,7 +9,7 @@ spec:
     shared_preload_libraries:
       - "vchord.so"
       # - "vectors.so"
-  instances: 2
+  instances: 1
   superuserSecret:
     name: immich-postgres-superuser-auth
   bootstrap:
