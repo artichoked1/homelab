@@ -79,7 +79,7 @@ spec:
     cronjob:
       enabled: true
       securityContext:
-        runAsUser: 33
+        runAsUser: 0
         runAsGroup: 33
         fsGroup: 33
       podSecurityContext:
