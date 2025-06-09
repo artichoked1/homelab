@@ -7,7 +7,8 @@ spec:
   imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16-v0.2.1
   postgresql:
     shared_preload_libraries:
-      - "vchord.so"
+      # - "vchord.so"
+      - "vectors.so"
   instances: 2
   superuserSecret:
     name: immich-postgres-superuser-auth
