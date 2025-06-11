@@ -1,13 +1,13 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: weekly-main-s3-backup
+  name: weekly-immich-s3-backup
   namespace: databases
 spec:
   schedule: "0 0 0 * * *"
   backupOwnerReference: self
   cluster:
-    name: main-postgres
+    name: immich-postgres
   method: plugin
   pluginConfiguration:
     name: barman-cloud.cloudnative-pg.io
