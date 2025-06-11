@@ -32,6 +32,7 @@ resources:
   - ./helm-repos/metallb.yaml
   - ./helm-repos/cilium.yaml
   - ./helm-repos/cnpg.yaml
+  - ./helm-repos/agones.yaml
 
   # - ./flux-webhook/ingress.yaml
   # - ./flux-webhook/token-secret.yaml
