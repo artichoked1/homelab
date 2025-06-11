@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agones-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minecraft
