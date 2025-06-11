@@ -14,17 +14,11 @@ spec:
       owner: authentik
       secret:
         name: authentik-postgres-auth
-  backup:
-    barmanObjectStore:
-      destinationPath: "s3://holeinmybudget/pg_backups/"
-      endpointURL: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
-      s3Credentials:
-        accessKeyId:
-          name: pg-backups-aws-creds
-          key: access-key
-        secretAccessKey:
-          name: pg-backups-aws-creds
-          key: access-key-secret
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: r2-backup
   storage:
     size: 1Gi
     storageClass: openebs-hostpath

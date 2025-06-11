@@ -5,10 +5,11 @@ resources:
 
   - ./immich/secrets.yaml
   - ./immich/database.yaml
+  - ./immich/backup.yaml
 
   - ./authentik/secrets.yaml
   - ./authentik/database.yaml
-  # - ./authentik/backup.yaml
+  - ./authentik/backup.yaml
 
   - ./main/secrets.yaml
   - ./main/database.yaml

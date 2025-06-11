@@ -22,6 +22,11 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
         # - ALTER SYSTEM SET search_path TO "$user", public, vectors;
         # - CREATE EXTENSION IF NOT EXISTS "vectors";
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: r2-backup
   storage:
     size: 1Gi
     storageClass: openebs-hostpath

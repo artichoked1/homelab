@@ -11,24 +11,8 @@ spec:
   storage:
     size: 2Gi
     storageClass: openebs-hostpath
-  backup:
-    barmanObjectStore:
-      destinationPath: "s3://holeinmybudget/pg_backups/main-postgres-new"
-      endpointURL: https://${CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com
-      s3Credentials:
-        accessKeyId:
-          name: pg-backups-aws-creds
-          key: access-key
-        secretAccessKey:
-          name: pg-backups-aws-creds
-          key: access-key-secret
-      wal:
-        maxParallel: 8
-
-  externalClusters:
-    - name: origin
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: r2-backup-main
-          serverName: main-postgres
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: r2-backup
