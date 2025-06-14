@@ -54,3 +54,7 @@ spec:
         queue:
           TYPE: redis
           CONN_STR: redis://main.redis-clusters.svc.cluster.local:6379/0
+        service:
+          DISABLE_REGISTRATION: true
+        openid:
+          ENABLE_OPENID_SIGNUP: true
