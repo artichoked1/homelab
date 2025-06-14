@@ -9,7 +9,7 @@ spec:
       namespace: networking
       sectionName: artichoke-cc-https
   hostnames:
-    - gitea.artichoke.cc
+    - git.artichoke.cc
   rules:
     - matches:
         - path:
