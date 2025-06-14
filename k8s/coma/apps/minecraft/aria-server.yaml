@@ -1,0 +1,51 @@
+apiVersion: "agones.dev/v1"
+kind: GameServer
+metadata:
+  generateName: "aria-server-" # Generates a unique name for GameServer and Pod
+spec:
+  container: aria-server
+  ports:
+    - name: mc
+      portPolicy: Dynamic
+      container: mc-server
+      containerPort: 25565
+      protocol: TCP
+  health:
+    initialDelaySeconds: 60
+    periodSeconds: 12
+    failureThreshold: 5
+  template:
+    spec:
+      containers:
+        - name: mc-server
+          image: itzg/minecraft-server
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TYPE
+              
+          volumeMounts:
+            - mountPath: /data
+              name: world-vol
+          ports:
+            - containerPort: 25575
+
+        - name: mc-monitor
+          image: saulmaldonado/agones-mc
+          args:
+            - monitor
+            - --attempts=5 # matches spec.health.failureThreshold
+            - --initial-delay=60s # matches spec.health.initialDelaySeconds
+            - --interval=10s # below spec.health.periodSecond
+            - --timeout=10s # matches interval
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: 2048Mi
+            limits:
+              memory: 4096Mi
+              cpu: 1000m
+
+      volumes:
+        - name: world-vol
+          emptyDir: {}

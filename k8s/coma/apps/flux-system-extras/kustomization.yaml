@@ -34,6 +34,6 @@ resources:
   - ./helm-repos/cnpg.yaml
   - ./helm-repos/agones.yaml
 
-  # - ./flux-webhook/ingress.yaml
-  # - ./flux-webhook/token-secret.yaml
-  # - ./flux-webhook/receiver.yaml
+  - ./flux-webhook/httproute.yaml
+  - ./flux-webhook/token-secret.yaml
+  - ./flux-webhook/receiver.yaml
