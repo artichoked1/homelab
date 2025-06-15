@@ -24,3 +24,39 @@ spec:
     ingress:
       enabled: true
       useExisting: true
+    auth:
+      teleportConfig:
+        teleport:
+          storage:
+            type: postgresql
+            conn_string: postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20
+            audit_events_uri:
+              - "postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20"
+    proxy:
+      teleportConfig:
+        teleport:
+          storage:
+            type: postgresql
+            conn_string: postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20
+            audit_events_uri:
+              - "postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20"
+    extraVolumes:
+      - name: postgres-ca
+        secret:
+          secretName: main-postgres-ca
+      - name: postgres-cert
+        secret:
+          secretName: main-postgres-cert
+    extraVolumeMounts:
+      - name: postgres-ca
+        mountPath: /var/lib/teleport/.postgresql/root.crt
+        subPath: ca.crt
+        readOnly: true
+      - name: postgres-cert
+        mountPath: /var/lib/teleport/.postgresql/postgresql.crt
+        subPath: tls.crt
+        readOnly: true
+      - name: postgres-cert
+        mountPath: /var/lib/teleport/.postgresql/postgresql.key
+        subPath: tls.key
+        readOnly: true

@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./secrets.yaml
-  # - ./teleport.yaml
-  # - ./cert.yaml
+  - ./teleport.yaml
+  - ./cert.yaml
   # - ./serverstransport.yaml
   # - ./ingressroute.yaml
