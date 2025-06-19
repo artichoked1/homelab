@@ -7,9 +7,10 @@ spec:
   parentRefs:
     - name: web-gateway
       namespace: networking
-      sectionName: artichoke-cc-https
+      sectionName: artichoke-cc-authentik
   hostnames:
-    - auth.artichoke.cc
+    - "auth.artichoke.cc"
+    - "*.auth.artichoke.cc"
   rules:
     - matches:
         - path:
