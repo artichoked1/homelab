@@ -25,17 +25,6 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: artichoke-cc-authentik
-      port: 443
-      protocol: HTTPS
-      hostname: "*.auth.artichoke.cc"
-      tls:
-        certificateRefs:
-          - name: artichokecc-wildcard-cert
-            kind: Secret
-      allowedRoutes:
-        namespaces:
-          from: All
     - name: coma-artichoke-network-https
       port: 443
       protocol: HTTPS
@@ -43,6 +32,17 @@ spec:
       tls:
         certificateRefs:
           - name: coma-artichoke-local-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: artichoke-cc-authentik
+      port: 443
+      protocol: HTTPS
+      hostname: "*.auth.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: artichokecc-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:
