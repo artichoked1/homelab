@@ -36,7 +36,7 @@ spec:
   parentRefs:
     - name: web-gateway
       namespace: networking
-      sectionName: artichoke-cc-https
+      sectionName: artichoke-cc-root
   hostnames:
     - "artichoke.cc"
   rules:
