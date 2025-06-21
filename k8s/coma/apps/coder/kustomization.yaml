@@ -4,4 +4,5 @@ resources:
   - ./namespace.yaml
   - ./secrets.yaml
   - ./coder.yaml
+  - ./httproute.yaml
   # - ./ingress.yaml
