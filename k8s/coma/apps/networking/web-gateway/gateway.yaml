@@ -58,3 +58,14 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: artichoke-cc-coder
+      port: 443
+      protocol: HTTPS
+      hostname: "*.coder.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: artichokecc-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All

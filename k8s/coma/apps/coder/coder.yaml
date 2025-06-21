@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: coder
         namespace: flux-system
-      version: 2.16.1
+      version: 2.23.1
   interval: 1m0s
   values:
     coder:
