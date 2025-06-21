@@ -58,5 +58,5 @@ spec:
             type: PathPrefix
             value: /.well-known/webfinger
       backendRefs:
-        - name: ak-outpost-coma-http
-          port: 9000
+        - name: authentik-server
+          port: 80
