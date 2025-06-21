@@ -39,3 +39,24 @@ spec:
       backendRefs:
         - name: ak-outpost-coma-http
           port: 9000
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: authentik-webfinger
+  namespace: authentik
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-root
+  hostnames:
+    - "artichoke.cc"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /.well-known/webfinger
+      backendRefs:
+        - name: ak-outpost-coma-http
+          port: 9000
