@@ -24,22 +24,22 @@ spec:
     ingress:
       enabled: true
       useExisting: true
-    auth:
-      teleportConfig:
-        teleport:
-          storage:
-            type: postgresql
-            conn_string: ${TELEPORT_POSTGRES_URL}
-            audit_events_uri:
-              - ${TELEPORT_POSTGRES_URL}
-    proxy:
-      teleportConfig:
-        teleport:
-          storage:
-            type: postgresql
-            conn_string: ${TELEPORT_POSTGRES_URL}
-            audit_events_uri:
-              - ${TELEPORT_POSTGRES_URL}
+    # auth:
+    #   teleportConfig:
+    #     teleport:
+    #       storage:
+    #         type: postgresql
+    #         conn_string: ${TELEPORT_POSTGRES_URL}
+    #         audit_events_uri:
+    #           - ${TELEPORT_POSTGRES_URL}
+    # proxy:
+    #   teleportConfig:
+    #     teleport:
+    #       storage:
+    #         type: postgresql
+    #         conn_string: ${TELEPORT_POSTGRES_URL}
+    #         audit_events_uri:
+    #           - ${TELEPORT_POSTGRES_URL}
     extraVolumes:
       - name: postgres-ca
         secret:
