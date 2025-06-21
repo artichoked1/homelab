@@ -4,7 +4,7 @@ resources:
   - ./namespace.yaml
   - ./secrets.yaml
   - ./authentik.yaml
-  - ./authentik-webfinger.yaml
+  - ./webfinger.yaml
   # - ./ingress.yaml
   - ./css-configmap.yaml
   - ./httproute.yaml
