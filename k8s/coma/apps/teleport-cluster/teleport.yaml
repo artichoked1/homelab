@@ -29,17 +29,17 @@ spec:
         teleport:
           storage:
             type: postgresql
-            conn_string: postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20
+            conn_string: ${TELEPORT_POSTGRES_URL}
             audit_events_uri:
-              - "postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20"
+              - ${TELEPORT_POSTGRES_URL}
     proxy:
       teleportConfig:
         teleport:
           storage:
             type: postgresql
-            conn_string: postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20
+            conn_string: ${TELEPORT_POSTGRES_URL}
             audit_events_uri:
-              - "postgresql://teleport@main-postgres-rw.databases.svc.cluster.local:5432/teleport_backend?sslmode=verify-full&pool_max_conns=20"
+              - ${TELEPORT_POSTGRES_URL}
     extraVolumes:
       - name: postgres-ca
         secret:
