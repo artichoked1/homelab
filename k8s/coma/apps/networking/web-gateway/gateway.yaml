@@ -69,3 +69,21 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: artichoke-cc-teleport
+      port: 443
+      protocol: HTTPS
+      hostname: "teleport.artichoke.cc"
+      tls:
+        mode: Passthrough
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: artichoke-cc-teleport-wildcard
+      port: 443
+      protocol: HTTPS
+      hostname: "*.teleport.artichoke.cc"
+      tls:
+        mode: Passthrough
+      allowedRoutes:
+        namespaces:
+          from: All
