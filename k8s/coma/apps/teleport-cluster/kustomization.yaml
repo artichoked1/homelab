@@ -5,6 +5,6 @@ resources:
   - ./secrets.yaml
   - ./teleport.yaml
   # - ./cert.yaml
-  - ./tlsroute.yaml
+  - ./httproute.yaml
   # - ./serverstransport.yaml
   # - ./ingressroute.yaml

@@ -71,7 +71,7 @@ spec:
           from: All
     - name: artichoke-cc-teleport
       port: 443
-      protocol: TLS
+      protocol: HTTPS
       hostname: "teleport.artichoke.cc"
       tls:
         mode: Passthrough
@@ -80,7 +80,7 @@ spec:
           from: All
     - name: artichoke-cc-teleport-wildcard
       port: 443
-      protocol: TLS
+      protocol: HTTPS
       hostname: "*.teleport.artichoke.cc"
       tls:
         mode: Passthrough
