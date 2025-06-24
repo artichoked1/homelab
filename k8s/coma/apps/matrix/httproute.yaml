@@ -14,7 +14,7 @@ spec:
     - matches:
         - path:
             type: RegularExpression
-            value: "^/_matrix/client/(.*)/(login|logout|refresh)"
+            value: "^/_matrix/client/.*/(login|logout|refresh)(/.*)?$"
       backendRefs:
         - name: mas-main
           port: 8081
