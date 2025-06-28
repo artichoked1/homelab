@@ -9,7 +9,7 @@ spec:
   gatewayClassName: envoy
   addresses:
     - type: IPAddress
-      value: 192.168.188.209
+      value: 192.168.188.211
   listeners:
     - name: http
       port: 80
