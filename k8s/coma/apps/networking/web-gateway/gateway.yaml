@@ -71,8 +71,19 @@ spec:
           from: All
     - name: artichoke-cc-teleport-wildcard
       port: 443
-      protocol: HTTPS
+      protocol: TLS
       hostname: "*.teleport.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: artichokecc-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: artichoke-cc-teleport-root
+      port: 443
+      protocol: TLS
+      hostname: "teleport.artichoke.cc"
       tls:
         certificateRefs:
           - name: artichokecc-wildcard-cert

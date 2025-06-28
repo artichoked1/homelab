@@ -1,5 +1,5 @@
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TLSRoute
 metadata:
   name: teleport
   namespace: teleport-cluster
@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - name: web-gateway
       namespace: networking
-      sectionName: artichoke-cc-https
+      sectionName: artichoke-cc-teleport-root
   hostnames:
     - "teleport.artichoke.cc"
   rules:
@@ -18,17 +18,3 @@ spec:
       backendRefs:
         - name: teleport-cluster
           port: 443
----
-apiVersion: gateway.networking.k8s.io/v1alpha3
-kind: BackendTLSPolicy
-metadata:
-  name: teleport-insecure-tls
-  namespace: teleport-cluster
-spec:
-  targetRefs:
-    - group: gateway.networking.k8s.io
-      kind: HTTPRoute
-      name: teleport
-  validation:
-    hostname: teleport.artichoke.cc
-    wellKnownCACertificates: System
