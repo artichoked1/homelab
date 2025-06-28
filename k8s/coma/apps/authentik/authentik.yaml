@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: authentik
         namespace: flux-system
-      version: 2025.6.1
+      version: 2025.6.3
   interval: 1m0s
   values:
     worker:
