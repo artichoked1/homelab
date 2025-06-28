@@ -11,10 +11,6 @@ spec:
   hostnames:
     - "teleport.artichoke.cc"
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /
-      backendRefs:
-        - name: teleport-cluster
-          port: 443
+    backendRefs:
+      - name: teleport-cluster
+        port: 443
