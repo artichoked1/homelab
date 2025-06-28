@@ -24,13 +24,13 @@ spec:
     kind: OCIRepository
     name: envoy-gateway
   install:
-    disableHooks: true
+    disableHooks: false
     remediation:
       retries: -1
     crds: CreateReplace
   upgrade:
     cleanupOnFail: true
-    disableHooks: true
+    disableHooks: false
     remediation:
       retries: 3
     crds: CreateReplace
