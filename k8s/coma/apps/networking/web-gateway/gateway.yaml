@@ -6,7 +6,7 @@ metadata:
   annotations:
     # cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
-  gatewayClassName: cilium
+  gatewayClassName: envoy
   addresses:
     - type: IPAddress
       value: 192.168.188.211
