@@ -74,9 +74,7 @@ spec:
       protocol: TLS
       hostname: "*.teleport.artichoke.cc"
       tls:
-        certificateRefs:
-          - name: artichokecc-wildcard-cert
-            kind: Secret
+        mode: Passthrough
       allowedRoutes:
         namespaces:
           from: All
@@ -85,9 +83,7 @@ spec:
       protocol: TLS
       hostname: "teleport.artichoke.cc"
       tls:
-        certificateRefs:
-          - name: artichokecc-wildcard-cert
-            kind: Secret
+        mode: Passthrough
       allowedRoutes:
         namespaces:
           from: All
