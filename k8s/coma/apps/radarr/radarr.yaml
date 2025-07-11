@@ -23,7 +23,7 @@ spec:
           radarr:
             image:
               repository: lscr.io/linuxserver/radarr
-              tag: latest
+              tag: 5.26.2
               pullPolicy: IfNotPresent
           exportarr:
             image:
