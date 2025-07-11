@@ -49,5 +49,6 @@ spec:
                 readOnly: true
       cache:
         size: 1Gi
+        accessMode: ReadWrite
         globalMounts:
           - path: /var/cache/ntfy
