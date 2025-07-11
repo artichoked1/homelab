@@ -25,6 +25,9 @@ spec:
               NTFY_DEBUG: false
               NTFY_LOG_LEVEL: info
               NTFY_BASE_URL: https://ntfy.artichoke.cc
+              NTFY_AUTH_FILE: /var/lib/ntfy/auth.db
+              NTFY_AUTH_DEFAULT_ACCESS: deny-all
+              NTFY_BEHIND_PROXY: true
             image:
               repository: binwiederhier/ntfy
               tag: v2.13.0
