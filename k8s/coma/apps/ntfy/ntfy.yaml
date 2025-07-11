@@ -29,8 +29,7 @@ spec:
               repository: binwiederhier/ntfy
               tag: v2.13.0
               pullPolicy: IfNotPresent
-            command:
-              - serve
+            args: ["serve"]
 
     service:
       main:
