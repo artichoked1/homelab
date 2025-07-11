@@ -44,7 +44,7 @@ spec:
               #       key: password
             image:
               repository: lscr.io/linuxserver/sonarr
-              tag: 4.0.8
+              tag: 4.0.15
               pullPolicy: IfNotPresent
 
     service:
