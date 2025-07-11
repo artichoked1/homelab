@@ -22,6 +22,9 @@ spec:
           main:
             env:
               TZ: Australia/Adelaide
+              NTFY_DEBUG: false
+              NTFY_LOG_LEVEL: info
+              NTFY_BASE_URL: https://ntfy.artichoke.cc
             image:
               repository: binwiederhier/ntfy
               tag: v2.13.0
@@ -49,6 +52,6 @@ spec:
                 readOnly: true
       cache:
         size: 1Gi
-        accessMode: ReadWrite
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /var/cache/ntfy
