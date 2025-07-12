@@ -52,7 +52,7 @@ spec:
 
             image:
               repository: deluan/navidrome
-              tag: 0.55.1
+              tag: 0.57.0
               pullPolicy: IfNotPresent
 
             securityContext:
