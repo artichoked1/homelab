@@ -87,8 +87,6 @@ spec:
           add:
             - SETGID
             - SETUID
-        seccompProfile:
-          type: Unconfined
       podSecurityContext:
         fsGroup: 33
         fsGroupChangePolicy: "Always"
