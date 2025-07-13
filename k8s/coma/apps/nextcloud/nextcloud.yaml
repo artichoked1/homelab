@@ -83,6 +83,10 @@ spec:
         runAsUser: 33
         runAsGroup: 33
         fsGroup: 33
+        capabilities:
+          add:
+            - SETGID
+            - SETUID
       podSecurityContext:
         fsGroup: 33
         fsGroupChangePolicy: "Always"
