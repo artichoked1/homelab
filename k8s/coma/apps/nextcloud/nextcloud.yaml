@@ -17,7 +17,7 @@ spec:
   values:
     image:
       flavour: fpm
-      tag: 31.0.4-fpm-alpine
+      tag: 31.0.7-fpm-alpine
     nginx:
       enabled: true
     nextcloud:
