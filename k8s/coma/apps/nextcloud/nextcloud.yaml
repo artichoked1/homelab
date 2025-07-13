@@ -66,7 +66,7 @@ spec:
             'default_phone_region' => 'AU',
             'overwrite.cli.url' => 'https://nc.artichoke.cc',
             'loglevel' => 2,
-            'config_is_read_only' => true,
+            'config_is_read_only' => false,
           );
       extraVolumes:
         - name: nsfiles
