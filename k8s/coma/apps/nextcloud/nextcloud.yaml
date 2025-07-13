@@ -118,18 +118,3 @@ spec:
         secretName: nextcloud-postgres-auth
         usernameKey: username
         passwordKey: password
-    phpConfigs:
-      z-opcache.ini: |-
-        [opcache]
-        opcache.enable=1
-        opcache.enable_cli=1
-        opcache.memory_consumption=512
-        opcache.max_accelerated_files=30000
-        opcache.interned_strings_buffer=16
-        opcache.validate_timestamps=0
-        opcache.revalidate_freq=0
-        opcache.file_update_protection=2
-        opcache.max_wasted_percentage=5
-        opcache.fast_shutdown=1
-
-        opcache.enable_file_override=0
