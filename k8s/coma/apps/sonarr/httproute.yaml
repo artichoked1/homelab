@@ -16,8 +16,8 @@ spec:
             type: PathPrefix
             value: /
       timeouts:
-        request: 60s
-        backendRequest: 60s
+        request: 120s
+        backendRequest: 120s
       backendRefs:
         - name: sonarr
           port: 8989
