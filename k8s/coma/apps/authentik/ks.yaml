@@ -14,6 +14,10 @@ spec:
   postBuild:
     substitute:
       APP: *app
+    substituteFrom:
+      - kind: Secret
+        name: sops-secrets
+        optional: false
   prune: true
   retryInterval: 2m
   sourceRef:
@@ -23,3 +27,8 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: false
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+      namespace: flux-system
