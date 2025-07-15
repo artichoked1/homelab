@@ -16,7 +16,7 @@ spec:
       APP: *app
     substituteFrom:
       - kind: Secret
-        name: sops-age
+        name: cluster-secrets
         optional: false
   prune: true
   retryInterval: 2m
