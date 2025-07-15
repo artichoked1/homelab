@@ -51,7 +51,7 @@ spec:
           token_url: https://auth.artichoke.cc/application/o/token/
           api_url: https://auth.artichoke.cc/application/o/userinfo/
           skip_org_role_sync: true
-          role_attribute_path: contains(groups, 'Grafana Admins') && ['Admin', 'GrafanaAdmin'] || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+          role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
           allow_assign_grafana_admin: true
         server:
           domain: grafana.artichoke.cc
