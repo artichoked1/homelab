@@ -8,7 +8,7 @@ spec:
     - name: secrets
   interval: 10m0s
   path: ./k8s/coma/apps
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: flux-system
