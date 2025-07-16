@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: authentik
+resources:
+  - ./ns.yaml
+  - ./app/secrets.yaml
+  - ./app/helmrelease.yaml
+  - ./app/webfinger.yaml
+  # - ./app/ingress.yaml
+  - ./app/css-configmap.yaml
+  - ./app/httproute.yaml
