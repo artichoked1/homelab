@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./k8s/coma/apps/kube-prometheus-stack/app
+  path: ./k8s/coma/apps/monitoring/kube-prometheus-stack/app
   postBuild:
     substitute:
       APP: *app
