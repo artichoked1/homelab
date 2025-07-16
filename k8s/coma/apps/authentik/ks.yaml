@@ -11,9 +11,12 @@ spec:
       app.kubernetes.io/name: *app
   interval: 1h
   path: ./k8s/coma/apps/authentik/app
+  components:
+    - ../../../components/common
   postBuild:
     substitute:
       APP: *app
+      NAMESPACE: &namespace authentik
     substituteFrom:
       - kind: Secret
         name: cluster-secrets
@@ -24,7 +27,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  targetNamespace: &namespace authentik
+  targetNamespace: *authentik
   timeout: 5m
   wait: false
   dependsOn:
