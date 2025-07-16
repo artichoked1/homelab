@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: bazarr
-  namespace: bazarr
+  name: ${APP}
+  namespace: ${NAMESPACE}
 spec:
   chart:
     spec:
