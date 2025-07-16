@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: jellyseerr
-  namespace: jellyseerr
+  name: ${APP}
+  namespace: ${NAMESPACE}
 spec:
   chart:
     spec:
