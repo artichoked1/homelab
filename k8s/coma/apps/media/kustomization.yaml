@@ -8,3 +8,4 @@ resources:
   - ./lidarr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./flaresolverr/ks.yaml
+  - ./jellyfin/ks.yaml
