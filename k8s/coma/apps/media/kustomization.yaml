@@ -4,3 +4,4 @@ resources:
   - ./ns.yaml
   - ./bazarr/ks.yaml
   - ./radarr/ks.yaml
+  - ./sonarr/ks.yaml
