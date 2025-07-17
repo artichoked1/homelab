@@ -12,3 +12,5 @@ resources:
   - ./cert-manager/ks.yaml
   - ./vault/ns.yaml
   - ./vault/ks.yaml
+  - ./external-secrets/ns.yaml
+  - ./external-secrets/ks.yaml
