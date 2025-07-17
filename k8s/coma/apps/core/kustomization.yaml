@@ -8,3 +8,5 @@ resources:
   - ./openebs/ns.yaml
   - ./openebs/ks.yaml
   - ./cilium/ks.yaml
+  - ./cert-manager/ns.yaml
+  - ./cert-manager/ks.yaml
