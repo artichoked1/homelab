@@ -15,6 +15,10 @@ spec:
     substitute:
       APP: *app
       NAMESPACE: &namespace cert-manager
+    substituteFrom:
+      - kind: Secret
+        name: cluster-secrets
+        optional: false
   prune: true
   retryInterval: 2m
   sourceRef:
@@ -24,3 +28,6 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: false
+  dependsOn:
+    - name: secrets
+      namespace: flux-system
