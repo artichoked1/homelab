@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - ./envoy-gateway/ns.yaml
   - ./envoy-gateway/ks.yaml
+  - ./longhorn/ns.yaml
+  - ./longhorn/ks.yaml
