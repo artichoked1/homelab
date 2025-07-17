@@ -5,3 +5,5 @@ resources:
   - ./envoy-gateway/ks.yaml
   - ./longhorn/ns.yaml
   - ./longhorn/ks.yaml
+  - ./openebs/ns.yaml
+  - ./openebs/ks.yaml
