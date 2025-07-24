@@ -47,7 +47,7 @@ spec:
     k8sServiceHost: localhost
     k8sServicePort: 7445
     gatewayAPI:
-      enabled: true
+      enabled: false
       enableAlpn: true
       enableAppProtocol: true
     hubble:
