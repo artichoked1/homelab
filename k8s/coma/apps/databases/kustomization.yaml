@@ -20,3 +20,5 @@ resources:
 
   - ./objectstore.yaml
   - ./imagecatalog.yaml
+
+  - ./timescaledb/database.yaml
