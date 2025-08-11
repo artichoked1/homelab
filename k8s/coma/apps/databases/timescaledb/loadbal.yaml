@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: timescaledb-external
+  namespace: databases
+spec:
+  selector:
+    cnpg.io/cluster: timesacaledb
+  type: LoadBalancer
+  ports:
+    - name: timescaledb-external
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
