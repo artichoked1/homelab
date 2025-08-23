@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/linuxserver-labs/prarr
-              tag: lidarr-plugins
+              tag: lidarr-plugins-2.13.3.4692
               pullPolicy: IfNotPresent
 
     service:
