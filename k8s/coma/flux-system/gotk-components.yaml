@@ -145,9 +145,7 @@ rules:
 - apiGroups:
   - ""
   resources:
-  - eventsoverwrite path ("./k8s/coma/cluster-settings") of existing Kustomization
-
-[🐟] homelab on  master 
+  - events
   verbs:
   - create
   - patch
@@ -165,9 +163,7 @@ rules:
   - delete
 - apiGroups:
   - ""
-  resources:overwrite path ("./k8s/coma/cluster-settings") of existing Kustomization
-
-[🐟] homelab on  master 
+  resources:
   - configmaps/status
   verbs:
   - get
@@ -208,9 +204,7 @@ metadata:
   name: flux-edit-flux-system
 rules:
 - apiGroups:
-  - notification.toolkit.fluxcd.iooverwrite path ("./k8s/coma/cluster-settings") of existing Kustomization
-
-[🐟] homelab on  master 
+  - notification.toolkit.fluxcd.io
   - source.toolkit.fluxcd.io
   - helm.toolkit.fluxcd.io
   - image.toolkit.fluxcd.io
