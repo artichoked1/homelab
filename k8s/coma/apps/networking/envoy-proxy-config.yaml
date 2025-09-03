@@ -12,3 +12,17 @@ spec:
         externalTrafficPolicy: Cluster
         annotations:
           service.cilium.io/lb-mode: dsr
+      envoyDaemonSet:
+        patch:
+          value:
+            spec:
+              template:
+                spec:
+                  nodeSelector: {}
+                  tolerations:
+                    - key: "node-role.kubernetes.io/control-plane"
+                      operator: "Exists"
+                      effect: "NoSchedule"
+                    - key: "node-role.kubernetes.io/master"
+                      operator: "Exists"
+                      effect: "NoSchedule"
