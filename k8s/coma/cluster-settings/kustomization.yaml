@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - ./apps-kustomization.yaml
   - ./secrets-kustomization.yaml
+  - ./gotk-components.yaml
+  - ./gotk-sync.yaml
