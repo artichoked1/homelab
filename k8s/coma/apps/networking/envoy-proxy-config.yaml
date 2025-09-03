@@ -9,7 +9,7 @@ spec:
     kubernetes:
       envoyService:
         type: LoadBalancer
-        externalTrafficPolicy: Cluster
+        externalTrafficPolicy: Local
         annotations:
           service.cilium.io/lb-mode: dsr
       envoyDaemonSet:
