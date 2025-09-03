@@ -1,3 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  image: ghcr.io/immich-app/immich-server
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  imageRepositoryRef:
+    name: immich
+  policy:
+    semver:
+      range: 1.140.x
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
