@@ -10,3 +10,5 @@ spec:
       envoyService:
         type: LoadBalancer
         externalTrafficPolicy: Cluster
+        annotations:
+          service.cilium.io/lb-mode: dsr
