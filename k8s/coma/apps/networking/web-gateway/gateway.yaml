@@ -6,6 +6,11 @@ metadata:
   annotations:
     # cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
+  infrastructure:
+    parametersRef:
+      group: gateway.envoyproxy.io
+      kind: EnvoyProxy
+      name: envoy-proxy-config
   gatewayClassName: envoy
   addresses:
     - type: IPAddress
