@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: influxdata
         namespace: flux-system
-      version: 0.1.7
+      version: 0.1.19
   install:
     crds: CreateReplace
   interval: 1m0s
