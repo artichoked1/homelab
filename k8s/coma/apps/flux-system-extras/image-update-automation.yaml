@@ -11,14 +11,14 @@ spec:
   git:
     checkout:
       ref:
-        branch: staging
+        branch: master
     commit:
       author:
         email: fluxcdbot@users.noreply.github.com
         name: fluxcapacitor
       messageTemplate: "{{range .Changed.Changes}}{{print .OldValue}} -> {{println .NewValue}}{{end}}"
     push:
-      branch: staging
+      branch: master
   update:
     path: ./k8s/coma
     strategy: Setters
