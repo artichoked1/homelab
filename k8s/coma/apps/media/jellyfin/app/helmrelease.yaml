@@ -1,3 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: jellyfin
+  namespace: ${NAMESPACE}
+spec:
+  image: jellyfin/jellyfin
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: jellyfin
+  namespace: ${NAMESPACE}
+spec:
+  imageRepositoryRef:
+    name: jellyfin
+  policy:
+    semver:
+      range: 10.10.x
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -27,7 +48,7 @@ spec:
             #   gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin
-              tag: 10.10.7
+              tag: 10.10.7 # {"$imagepolicy": "media:jellyfin:tag"}
               pullPolicy: IfNotPresent
 
     service:
