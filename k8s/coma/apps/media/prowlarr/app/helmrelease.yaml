@@ -18,23 +18,20 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           main:
             env:
               TZ: Australia/Adelaide
             image:
               repository: lscr.io/linuxserver/prowlarr # {"$imagepolicy": "flux-system:prowlarr:name"}
-              tag: 1.37.0 # {"$imagepolicy": "flux-system:prowlarr:tag"}
+              tag: 2.0.5 # {"$imagepolicy": "flux-system:prowlarr:tag"}
               pullPolicy: IfNotPresent
-
     service:
       main:
         controller: main
         ports:
           http:
             port: 9696
-
     persistence:
       data:
         storageClass: "longhorn"
