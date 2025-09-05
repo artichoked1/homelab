@@ -46,7 +46,7 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/linuxserver-labs/prarr
+              repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "media:lidarr:name"}
               tag: lidarr-plugins-2.13.3.4692 # {"$imagepolicy": "media:lidarr:tag"}
               pullPolicy: IfNotPresent
 
