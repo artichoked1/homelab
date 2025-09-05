@@ -18,7 +18,6 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           main:
             env:
@@ -37,16 +36,14 @@ spec:
                   key: password
             image:
               repository: fallenbagel/jellyseerr # {"$imagepolicy": "flux-system:jellyseerr:name"}
-              tag: 2.7.0 # {"$imagepolicy": "flux-system:jellyseerr:tag"}
+              tag: 2.7.3 # {"$imagepolicy": "flux-system:jellyseerr:tag"}
               pullPolicy: IfNotPresent
-
     service:
       main:
         controller: main
         ports:
           http:
             port: 5055
-
     persistence:
       data:
         storageClass: "longhorn"
