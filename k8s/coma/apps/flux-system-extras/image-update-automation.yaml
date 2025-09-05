@@ -20,5 +20,5 @@ spec:
     push:
       branch: master
   update:
-    path: ./k8s/coma
+    path: k8s/coma
     strategy: Setters
