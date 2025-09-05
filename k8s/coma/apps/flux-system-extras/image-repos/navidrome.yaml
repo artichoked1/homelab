@@ -17,4 +17,4 @@ spec:
     name: navidrome
   policy:
     semver:
-      range: 0.x.x
+      range: 0.58.x
