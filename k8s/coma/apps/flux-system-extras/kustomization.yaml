@@ -33,6 +33,7 @@ resources:
   - ./helm-repos/cilium.yaml
   - ./helm-repos/cnpg.yaml
   - ./helm-repos/agones.yaml
+  - ./helm-repos/tailscale.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml
