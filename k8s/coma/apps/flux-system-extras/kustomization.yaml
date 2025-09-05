@@ -39,6 +39,7 @@ resources:
   - ./image-repos/jellyfin.yaml
   - ./image-repos/lidarr.yaml
   - ./image-repos/radarr.yaml
+  - ./image-repos/sonarr.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml

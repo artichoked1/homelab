@@ -43,8 +43,8 @@ spec:
               #       name: sonarr-postgres-auth
               #       key: password
             image:
-              repository: lscr.io/linuxserver/sonarr
-              tag: 4.0.15
+              repository: lscr.io/linuxserver/sonarr # {"$imagepolicy": "flux-system:sonarr:name"}
+              tag: 4.0.15 # {"$imagepolicy": "flux-system:sonarr:tag"}
               pullPolicy: IfNotPresent
 
     service:
