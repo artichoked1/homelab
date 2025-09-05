@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: immich
+  namespace: flux-system
+spec:
+  image: ghcr.io/immich-app/immich-server
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: immich
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: immich
+  policy:
+    semver:
+      range: 1.140.x

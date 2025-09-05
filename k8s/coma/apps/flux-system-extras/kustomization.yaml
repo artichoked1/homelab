@@ -35,6 +35,10 @@ resources:
   - ./helm-repos/agones.yaml
   - ./helm-repos/tailscale.yaml
 
+  - ./image-repos/immich.yaml
+  - ./image-repos/jellyfin.yaml
+  - ./image-repos/lidarr.yaml
+
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml
