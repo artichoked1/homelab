@@ -38,3 +38,5 @@ resources:
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml
   - ./flux-webhook/receiver.yaml
+
+  - ./image-update-automation.yaml
