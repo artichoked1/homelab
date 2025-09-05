@@ -38,6 +38,7 @@ resources:
   - ./image-repos/immich.yaml
   - ./image-repos/jellyfin.yaml
   - ./image-repos/lidarr.yaml
+  - ./image-repos/radarr.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml

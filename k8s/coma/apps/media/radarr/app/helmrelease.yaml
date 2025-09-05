@@ -22,8 +22,8 @@ spec:
         containers:
           radarr:
             image:
-              repository: lscr.io/linuxserver/radarr
-              tag: 5.26.2
+              repository: lscr.io/linuxserver/radarr # {"$imagepolicy": "flux-system:radarr:name"}
+              tag: 5.26.2 # {"$imagepolicy": "flux-system:radarr:tag"}
               pullPolicy: IfNotPresent
           exportarr:
             image:
