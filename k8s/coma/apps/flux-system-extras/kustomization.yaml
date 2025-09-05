@@ -43,6 +43,7 @@ resources:
   - ./image-repos/prowlarr.yaml
   - ./image-repos/bazarr.yaml
   - ./image-repos/jellyseerr.yaml
+  - ./image-repos/navidrome.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml

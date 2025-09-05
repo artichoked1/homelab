@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: navidrome
+  namespace: flux-system
+spec:
+  image: deluan/navidrome
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: navidrome
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: navidrome
+  policy:
+    semver:
+      range: 0.x.x
