@@ -69,7 +69,7 @@ spec:
       data:
         storageClass: longhorn
         accessMode: ReadWriteOnce
-        size: 1Gi
+        size: 4Gi
         globalMounts:
           - path: /data
       media:
