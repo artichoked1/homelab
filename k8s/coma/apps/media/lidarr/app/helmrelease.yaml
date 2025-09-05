@@ -1,3 +1,27 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: lidarr
+  namespace: ${NAMESPACE}
+spec:
+  image: ghcr.io/linuxserver-labs/prarr
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: lidarr
+  namespace: ${NAMESPACE}
+spec:
+  imageRepositoryRef:
+    name: lidarr
+  filterTags:
+    pattern: '^lidarr-plugins-(?P<maj>\d+)\.(?P<min>\d+)\.(?P<patch>\d+)\.(?P<build>\d+)$'
+    extract: "$maj.$min.$patch-$build"
+  policy:
+    semver:
+      range: ">=2.0.0-0 <3.0.0-0"
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -23,7 +47,7 @@ spec:
           main:
             image:
               repository: ghcr.io/linuxserver-labs/prarr
-              tag: lidarr-plugins-2.13.3.4692
+              tag: lidarr-plugins-2.13.3.4692 # {"$imagepolicy": "media:lidarr:tag"}
               pullPolicy: IfNotPresent
 
     service:
