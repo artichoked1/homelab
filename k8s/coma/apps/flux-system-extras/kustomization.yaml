@@ -42,6 +42,7 @@ resources:
   - ./image-repos/sonarr.yaml
   - ./image-repos/prowlarr.yaml
   - ./image-repos/bazarr.yaml
+  - ./image-repos/jellyseerr.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml

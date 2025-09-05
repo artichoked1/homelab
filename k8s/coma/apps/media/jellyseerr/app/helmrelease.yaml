@@ -36,8 +36,8 @@ spec:
                   name: jellyseerr-postgres-auth
                   key: password
             image:
-              repository: fallenbagel/jellyseerr
-              tag: 2.7.0
+              repository: fallenbagel/jellyseerr # {"$imagepolicy": "flux-system:jellyseerr:name"}
+              tag: 2.7.0 # {"$imagepolicy": "flux-system:jellyseerr:tag"}
               pullPolicy: IfNotPresent
 
     service:
