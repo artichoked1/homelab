@@ -18,12 +18,11 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           radarr:
             image:
               repository: lscr.io/linuxserver/radarr # {"$imagepolicy": "flux-system:radarr:name"}
-              tag: 5.26.2 # {"$imagepolicy": "flux-system:radarr:tag"}
+              tag: 5.27.5 # {"$imagepolicy": "flux-system:radarr:tag"}
               pullPolicy: IfNotPresent
           exportarr:
             image:
@@ -40,7 +39,6 @@ spec:
                   secretKeyRef:
                     name: radarr-api-key
                     key: api-key
-
     serviceMonitor:
       main:
         enabled: true
@@ -52,7 +50,6 @@ spec:
             interval: 4m
             scrapeTimeout: 90s
             path: /metrics
-
     service:
       main:
         controller: main
@@ -64,7 +61,6 @@ spec:
         ports:
           monitoring:
             port: 9707
-
     persistence:
       data:
         storageClass: "longhorn"
