@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: immich
-  namespace: immich
+  namespace: flux-system
 spec:
   image: ghcr.io/immich-app/immich-server
   interval: 5m
@@ -11,7 +11,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: immich
-  namespace: immich
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: immich
@@ -52,7 +52,7 @@ spec:
             key: password
 
     image:
-      tag: v1.140.1 # {"$imagepolicy": "immich:immich:tag"}
+      tag: v1.140.1 # {"$imagepolicy": "flux-system:immich:tag"}
 
     immich:
       metrics:

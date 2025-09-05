@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: jellyfin
-  namespace: ${NAMESPACE}
+  namespace: flux-system
 spec:
   image: jellyfin/jellyfin
   interval: 5m
@@ -11,7 +11,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: jellyfin
-  namespace: ${NAMESPACE}
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: jellyfin
@@ -47,8 +47,8 @@ spec:
             # limits:
             #   gpu.intel.com/i915: 1000m
             image:
-              repository: jellyfin/jellyfin
-              tag: 10.10.7 # {"$imagepolicy": "media:jellyfin:tag"}
+              repository: jellyfin/jellyfin # {"$imagepolicy": "flux-system:jellyfin:name"}
+              tag: 10.10.7 # {"$imagepolicy": "flux-system:jellyfin:tag"}
               pullPolicy: IfNotPresent
 
     service:

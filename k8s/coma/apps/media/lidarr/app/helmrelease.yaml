@@ -2,7 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
   name: lidarr
-  namespace: ${NAMESPACE}
+  namespace: flux-system
 spec:
   image: ghcr.io/linuxserver-labs/prarr
   interval: 5m
@@ -11,7 +11,7 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: lidarr
-  namespace: ${NAMESPACE}
+  namespace: flux-system
 spec:
   imageRepositoryRef:
     name: lidarr
@@ -46,8 +46,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "media:lidarr:name"}
-              tag: lidarr-plugins-2.13.3.4692 # {"$imagepolicy": "media:lidarr:tag"}
+              repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "flux-system:lidarr:name"}
+              tag: lidarr-plugins-2.13.3.4692 # {"$imagepolicy": "flux-system:lidarr:tag"}
               pullPolicy: IfNotPresent
 
     service:
