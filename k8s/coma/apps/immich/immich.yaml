@@ -52,7 +52,7 @@ spec:
             key: password
 
     image:
-      tag: v1.140.1 # {"$imagepolicy": "flux-system:immich:tag"}
+      tag: v1.140.1 # {"$imagepolicy": "immich:immich:tag"}
 
     immich:
       metrics:
