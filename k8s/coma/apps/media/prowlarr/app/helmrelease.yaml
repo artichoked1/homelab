@@ -24,8 +24,8 @@ spec:
             env:
               TZ: Australia/Adelaide
             image:
-              repository: lscr.io/linuxserver/prowlarr
-              tag: 1.37.0
+              repository: lscr.io/linuxserver/prowlarr # {"$imagepolicy": "flux-system:prowlarr:name"}
+              tag: 1.37.0 # {"$imagepolicy": "flux-system:prowlarr:tag"}
               pullPolicy: IfNotPresent
 
     service:
