@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ${APP}
+  namespace: ${NAMESPACE}
+spec:
+  chart:
+    spec:
+      chart: chart-name
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale
+        namespace: flux-system
+      version: 1.86.5
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  interval: 1m0s
+  values:
+    clientId: ${TAILSCALE_OAUTH_CLIENT_ID}
+    clientSecret: ${TAILSCALE_OAUTH_CLIENT_SECRET}
