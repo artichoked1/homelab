@@ -18,21 +18,18 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           main:
             image:
               repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "flux-system:lidarr:name"}
-              tag: lidarr-plugins-2.13.3.4692 # {"$imagepolicy": "flux-system:lidarr:tag"}
+              tag: lidarr-plugins-2.14.1.4723 # {"$imagepolicy": "flux-system:lidarr:tag"}
               pullPolicy: IfNotPresent
-
     service:
       main:
         controller: main
         ports:
           http:
             port: 8686
-
     persistence:
       data:
         storageClass: "longhorn"
