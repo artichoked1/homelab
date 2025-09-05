@@ -18,7 +18,6 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           main:
             env:
@@ -27,9 +26,8 @@ spec:
               TORRENTING_PORT: 52545
             image:
               repository: lscr.io/linuxserver/qbittorrent # {"$imagepolicy": "flux-system:qbittorrent:name"}
-              tag: 5.0.4 # {"$imagepolicy": "flux-system:qbittorrent:tag"}
+              tag: 5.1.2 # {"$imagepolicy": "flux-system:qbittorrent:tag"}
               pullPolicy: IfNotPresent
-
     service:
       webui:
         controller: main
@@ -47,7 +45,6 @@ spec:
           torrents-udp:
             port: 52545
             protocol: UDP
-
     persistence:
       data:
         storageClass: "longhorn"

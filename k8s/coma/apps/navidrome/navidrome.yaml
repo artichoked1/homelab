@@ -18,7 +18,6 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
         containers:
           main:
             env:
@@ -49,22 +48,18 @@ spec:
                     key: client-secret
               ND_SCANNER_ENABLED: "true"
               ND_SCANNER_SCHEDULE: "0 6 * * 1"
-
             image:
               repository: deluan/navidrome # {"$imagepolicy": "flux-system:navidrome:name"}
-              tag: 0.57.0 # {"$imagepolicy": "flux-system:navidrome:tag"}
+              tag: 0.58.0 # {"$imagepolicy": "flux-system:navidrome:tag"}
               pullPolicy: IfNotPresent
-
             securityContext:
               fsGroup: 3004
-
     service:
       main:
         controller: main
         ports:
           http:
             port: 4533
-
     persistence:
       data:
         storageClass: longhorn
