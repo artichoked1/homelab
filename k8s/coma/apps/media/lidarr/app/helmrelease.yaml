@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "flux-system:lidarr:name"}
-              tag: lidarr-plugins-2.14.1.4754 # {"$imagepolicy": "flux-system:lidarr:tag"}
+              tag: lidarr-plugins-2.14.2.4764 # {"$imagepolicy": "flux-system:lidarr:tag"}
               pullPolicy: IfNotPresent
     service:
       main:
