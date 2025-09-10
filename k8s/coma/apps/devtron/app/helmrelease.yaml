@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: devtron
+  namespace: devtroncd
+spec:
+  chart:
+    spec:
+      chart: devtron-operator
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: devtron
+        namespace: flux-system
+      version: 0.22.95
+  interval: 1m0s
+  values:
