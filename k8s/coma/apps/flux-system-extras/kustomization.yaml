@@ -34,6 +34,7 @@ resources:
   - ./helm-repos/cnpg.yaml
   - ./helm-repos/agones.yaml
   - ./helm-repos/tailscale.yaml
+  - ./helm-repos/devtron.yaml
 
   - ./image-repos/immich.yaml
   - ./image-repos/jellyfin.yaml
