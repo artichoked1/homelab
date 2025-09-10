@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./ns.yaml
   - ./app/helmrelease.yaml
+  - ./app/httproute.yaml
