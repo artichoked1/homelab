@@ -46,6 +46,7 @@ resources:
   - ./image-repos/jellyseerr.yaml
   - ./image-repos/navidrome.yaml
   - ./image-repos/qbittorrent.yaml
+  - ./image-repos/vaultwarden.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml
