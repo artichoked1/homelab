@@ -32,7 +32,7 @@ spec:
         server:
           ROOT_URL: https://git.artichoke.cc/
           START_SSH_SERVER: true
-          SSH_DOMAIN: git.artichoke.cc
+          SSH_DOMAIN: git-ssh.artichoke.cc
         mailer:
           PROTOCOL: smtps
           SMTP_ADDR: ${NOREPLY_EMAIL_HOST}
