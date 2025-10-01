@@ -15,3 +15,16 @@ spec:
       version: 0.22.95
   interval: 1m0s
   values:
+    externalPostgres:
+      enabled: true
+      PG_PASSWORD: ${DEVTRON_POSTGRES_PASS}
+      PG_ADDR: main-postgres-rw.databases.svc.cluster.local
+      PG_PORT: 5432
+      PG_USER: devtron
+      PG_DATABASE: devtron
+    dbconfig:
+      PG_PASSWORD: ${DEVTRON_POSTGRES_PASS}
+      PG_ADDR: main-postgres-rw.databases.svc.cluster.local
+      PG_PORT: 5432
+      PG_USER: devtron
+      PG_DATABASE: devtron
