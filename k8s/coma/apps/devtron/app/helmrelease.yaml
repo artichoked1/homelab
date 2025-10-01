@@ -28,6 +28,7 @@ spec:
       PG_PORT: 5432
       PG_USER: devtron
       PG_DATABASE: devtron
-    devtron:
-      service:
-        type: ClusterIP
+    components:
+      devtron:
+        service:
+          type: ClusterIP
