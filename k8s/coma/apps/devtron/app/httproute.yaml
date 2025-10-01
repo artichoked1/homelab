@@ -18,3 +18,10 @@ spec:
       backendRefs:
         - name: devtron-service
           port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /orchestrator
+      backendRefs:
+        - name: devtron-service
+          port: 80
