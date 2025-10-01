@@ -22,7 +22,7 @@ spec:
       PG_PORT: 5432
       PG_USER: devtron
       PG_DATABASE: devtron
-    dbconfig:
+    dbConfig:
       PG_PASSWORD: ${DEVTRON_POSTGRES_PASS}
       PG_ADDR: main-postgres-rw.databases.svc.cluster.local
       PG_PORT: 5432
