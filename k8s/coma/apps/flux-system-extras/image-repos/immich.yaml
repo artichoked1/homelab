@@ -17,4 +17,4 @@ spec:
     name: immich
   policy:
     semver:
-      range: 1.140.x
+      range: 2.0.x
