@@ -29,10 +29,8 @@ spec:
           secretKeyRef:
             name: immich-postgres-auth
             key: password
-
     image:
-      tag: v1.140.1 # {"$imagepolicy": "flux-system:immich:tag"}
-
+      tag: v2.0.0 # {"$imagepolicy": "flux-system:immich:tag"}
     immich:
       metrics:
         enabled: true
@@ -41,7 +39,6 @@ spec:
       persistence:
         library:
           existingClaim: immich-uploads-pvc
-
       # configuration is immich-config.json converted to yaml
       # ref: https://immich.app/docs/install/config-file/
       #
@@ -77,17 +74,12 @@ spec:
               port: 465
               username: ${NOREPLY_EMAIL}
               password: ${NOREPLY_EMAIL_PASS}
-
     # Dependencies
-
     postgresql:
       enabled: false
-
     redis:
       enabled: false
-
     # Immich components
-
     server:
       enabled: true
       image:
@@ -104,7 +96,6 @@ spec:
               paths:
                 - path: "/"
           tls: []
-
     machine-learning:
       enabled: true
       image:
@@ -120,7 +111,6 @@ spec:
           type: emptyDir
           accessMode: ReadWriteMany
           storageClass: longhorn
-
     persistence:
       existing-photos:
         enabled: true
