@@ -30,7 +30,7 @@ spec:
             name: immich-postgres-auth
             key: password
     image:
-      tag: v2.0.0 # {"$imagepolicy": "flux-system:immich:tag"}
+      tag: v2.0.1 # {"$imagepolicy": "flux-system:immich:tag"}
     immich:
       metrics:
         enabled: true
