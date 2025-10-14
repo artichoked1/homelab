@@ -34,7 +34,7 @@ spec:
       data:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
-        size: 3Gi
+        size: 2Gi
         globalMounts:
           - path: /config
       music:
