@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./ks.yaml
   - ./ns.yaml
+  - ./app/helmrelease.yaml

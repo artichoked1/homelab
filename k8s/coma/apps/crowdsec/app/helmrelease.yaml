@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: crowdsec
+  namespace: crowdsec
+spec:
+  chart:
+    spec:
+      chart: crowdsec
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: crowdsec
+        namespace: flux-system
+      version: 0.20.1
+  interval: 1m0s
+  values:
+    agent:
+      # we are not setting up traefik but the acquisition section is required.
+      acquisition:
+        - namespace: traefik
+          podName: traefik-*
+          program: traefik
+    container_runtime: containerd
+    lapi:
+      replicas: 2
+      extraSecrets:
+        dbPassword: ${CROWDSEC_DB_PASSWORD}
+      storeCAPICredentialsInSecret: true
+      persistentVolume:
+        config:
+          enabled: false
+        data:
+          enabled: false
+      env:
+        - name: ENROLL_KEY
+          value: ${CROWDSEC_ENROLL_KEY}
+        - name: ENROLL_INSTANCE_NAME
+          value: "coma-cluster"
+        - name: ENROLL_TAGS
+          value: "k8s production envoy"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: crowdsec-lapi-secrets
+              key: dbPassword
+    config:
+      config.yaml.local: |
+        db_config:
+          type:     postgresql
+          user:     crowdsec
+          password: ${DB_PASSWORD}
+          db_name:  crowdsec
+          host:     main-postgres-rw.databases.svc.cluster.local
+          port:     5432
+        api:
+          server:
+            auto_registration: # Activate if not using TLS for authentication
+              enabled: true
+              token: "${REGISTRATION_TOKEN}"  # /!\ do not change
+              allowed_ranges:
+                - "127.0.0.1/32"
+                - "192.168.0.0/16"
+                - "10.43.0.0/16"
+                - "10.42.0.0/16"
+                - "172.16.0.0/12"
