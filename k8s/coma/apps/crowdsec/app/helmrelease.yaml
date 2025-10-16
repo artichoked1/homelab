@@ -49,15 +49,15 @@ spec:
         db_config:
           type:     postgresql
           user:     crowdsec
-          password: ${DB_PASSWORD}
+          password: $${DB_PASSWORD}
           db_name:  crowdsec
           host:     main-postgres-rw.databases.svc.cluster.local
           port:     5432
         api:
           server:
-            auto_registration: # Activate if not using TLS for authentication
+            auto_registration:
               enabled: true
-              token: "${REGISTRATION_TOKEN}"  # /!\ do not change
+              token: "$${REGISTRATION_TOKEN}"
               allowed_ranges:
                 - "127.0.0.1/32"
                 - "192.168.0.0/16"
