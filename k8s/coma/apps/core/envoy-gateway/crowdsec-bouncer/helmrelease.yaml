@@ -17,6 +17,7 @@ spec:
   values:
     config:
       bouncer:
+        metrics: true
         lapiURL: http://crowdsec-service.crowdsec.svc.cluster.local:8080
         apiKeySecretRef:
           name: envoy-bouncer-api-key
