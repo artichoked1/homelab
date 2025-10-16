@@ -17,7 +17,9 @@ spec:
   values:
     config:
       bouncer:
-        apiKey: ${ENVOY_BOUNCER_API_KEY}
         lapiURL: http://crowdsec-service.crowdsec.svc.cluster.local:8080
+        apiKeySecretRef:
+          name: envoy-bouncer-api-key
+          key: key
     referenceGrant:
       create: false
