@@ -23,4 +23,6 @@ spec:
           name: envoy-bouncer-api-key
           key: key
     referenceGrant:
-      create: false
+      create: true
+      fromNamespaces:
+        - media
