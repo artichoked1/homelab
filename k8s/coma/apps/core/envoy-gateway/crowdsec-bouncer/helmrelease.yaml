@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy-proxy-bouncer
+  namespace: envoy-gateway-system
+spec:
+  chart:
+    spec:
+      chart: envoy-proxy-bouncer
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: envoy-proxy-crowdsec-bouncer
+        namespace: flux-system
+      version: 0.3.0
+  interval: 1m0s
+  values:
+    config:
+      bouncer:
+        apiKey: ${ENVOY_BOUNCER_API_KEY}
+        lapiURL: http://crowdsec-service.crowdsec.svc.cluster.local:8080
+    referenceGrant:
+      create: false
