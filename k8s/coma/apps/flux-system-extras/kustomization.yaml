@@ -38,6 +38,7 @@ resources:
   - ./helm-repos/tailscale.yaml
   - ./helm-repos/devtron.yaml
   - ./helm-repos/crowdsec.yaml
+  - ./helm-repos/envoy-proxy-crowdsec-bouncer.yaml
 
   - ./image-repos/immich.yaml
   - ./image-repos/jellyfin.yaml
