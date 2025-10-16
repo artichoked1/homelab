@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./k8s/coma/apps/core/envoy-gateway/app
+  path: ./k8s/coma/apps/core/envoy-gateway
   postBuild:
     substitute:
       APP: *app
