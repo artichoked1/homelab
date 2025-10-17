@@ -22,7 +22,7 @@ spec:
           radarr:
             image:
               repository: lscr.io/linuxserver/radarr # {"$imagepolicy": "flux-system:radarr:name"}
-              tag: 5.27.5 # {"$imagepolicy": "flux-system:radarr:tag"}
+              tag: 5.28.0 # {"$imagepolicy": "flux-system:radarr:tag"}
               pullPolicy: IfNotPresent
           exportarr:
             image:
