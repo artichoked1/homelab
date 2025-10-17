@@ -73,3 +73,6 @@ spec:
           appsec_config: crowdsecurity/virtual-patching
           labels:
             type: appsec
+      env:
+        - name: COLLECTIONS
+          value: "crowdsecurity/appsec-virtual-patching"
