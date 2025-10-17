@@ -26,3 +26,9 @@ spec:
       create: true
       fromNamespaces:
         - media
+    waf:
+      enabled: true
+      appSecURL: http://crowdsec-appsec-service.crowdsec.svc.cluster.local:7422
+      appSecKeySecretRef:
+        name: envoy-bouncer-api-key
+        key: appsec-key
