@@ -66,9 +66,9 @@ spec:
                 - "172.16.0.0/12"
     appsec:
       enabled: true
-      aquisitions:
+      acquisitions:
         - source: appsec
-          listen_addr: "0.0.0.0:7422"
+          listen_addr: 0.0.0.0:7422
           path: /
           appsec_config: crowdsecurity/virtual-patching
           labels:
