@@ -27,16 +27,14 @@ spec:
             #   gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin # {"$imagepolicy": "flux-system:jellyfin:name"}
-              tag: 10.10.7 # {"$imagepolicy": "flux-system:jellyfin:tag"}
+              tag: 10.11.0 # {"$imagepolicy": "flux-system:jellyfin:tag"}
               pullPolicy: IfNotPresent
-
     service:
       main:
         controller: main
         ports:
           http:
             port: 8096
-
     persistence:
       config:
         # storageClass: "longhorn"
