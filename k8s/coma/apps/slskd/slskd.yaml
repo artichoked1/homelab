@@ -26,6 +26,7 @@ spec:
               tag: 0.21.3
               pullPolicy: IfNotPresent
             env:
+              SLSKD_REMOTE_CONFIGURATION: true
               SLSKD_DOWNLOADS_DIR: /media/soulseek
               SLSKD_INCOMPLETE_DIR: /media/soulseek/incomplete
               SLSKD_SHARED_DIR: /media/imports/Music
