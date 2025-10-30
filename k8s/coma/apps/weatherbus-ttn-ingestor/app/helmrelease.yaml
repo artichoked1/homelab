@@ -44,5 +44,5 @@ spec:
                     key: url
             image:
               repository: ghcr.io/artichoked1/weatherbus-lorawan-ingestor
-              tag: sha256-c6445d6aea99cb51248006ba5cce314999f6731d700b78df199f3c8005f2b018.sig
+              tag: master
               pullPolicy: IfNotPresent
