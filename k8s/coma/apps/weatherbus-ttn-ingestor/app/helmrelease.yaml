@@ -34,19 +34,11 @@ spec:
                     key: password
               MQTT_TOPIC: "weatherbus/coordinator/sensor_data"
               MQTT_USE_AUTH: false
-
-              PGHOST: "cloudweatherbus-postgresql"
-              PGUSER:
+              PG_DSN:
                 valueFrom:
                   secretKeyRef:
                     name: weatherbus-ttn-ingestor-db-auth
-                    key: username
-              PGPASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: weatherbus-ttn-ingestor-db-auth
-                    key: password
-              PGDATABASE: "app"
+                    key: url
             image:
               repository: ghcr.io/artichoked1/weatherbus-lorawan-ingestor
               tag: master
