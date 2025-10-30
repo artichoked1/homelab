@@ -1,0 +1,53 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: weatherbus-ttn-ingestor
+  namespace: weatherbus-ttn-ingestor
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+        containers:
+          main:
+            env:
+              TTN_REGION_HOST: "test.mosquitto.org"
+              TTN_APP_ID:
+                valueFrom:
+                  secretKeyRef:
+                    name: weatherbus-ttn-ingestor-mqtt-auth
+                    key: username
+              TTN_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: weatherbus-ttn-ingestor-mqtt-auth
+                    key: password
+              MQTT_TOPIC: "weatherbus/coordinator/sensor_data"
+              MQTT_USE_AUTH: false
+
+              PGHOST: "cloudweatherbus-postgresql"
+              PGUSER:
+                valueFrom:
+                  secretKeyRef:
+                    name: weatherbus-ttn-ingestor-db-auth
+                    key: username
+              PGPASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: weatherbus-ttn-ingestor-db-auth
+                    key: password
+              PGDATABASE: "app"
+            image:
+              repository: ghcr.io/artichoked1/weatherbus-lorawan-ingestor
+              tag: master
+              pullPolicy: IfNotPresent
