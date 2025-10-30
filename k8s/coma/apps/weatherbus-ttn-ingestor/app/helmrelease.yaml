@@ -34,6 +34,9 @@ spec:
                     key: password
               MQTT_TOPIC: "weatherbus/coordinator/sensor_data"
               MQTT_USE_AUTH: false
+              TTN_MQTT_PROTOCOL: "mqtt"
+              TTN_MQTT_PORT: "1883"
+
               PG_DSN:
                 valueFrom:
                   secretKeyRef:
