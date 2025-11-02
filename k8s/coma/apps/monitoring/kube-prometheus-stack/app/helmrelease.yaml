@@ -86,8 +86,3 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-    nodeExporter:
-      enabled: true
-      operatingSystems:
-        linux:
-          enabled: true
