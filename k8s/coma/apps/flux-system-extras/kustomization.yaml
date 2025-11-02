@@ -39,6 +39,7 @@ resources:
   - ./helm-repos/devtron.yaml
   - ./helm-repos/crowdsec.yaml
   - ./helm-repos/envoy-proxy-crowdsec-bouncer.yaml
+  - ./helm-repos/grafana.yaml
 
   - ./image-repos/immich.yaml
   - ./image-repos/jellyfin.yaml
