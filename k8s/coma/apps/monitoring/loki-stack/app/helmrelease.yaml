@@ -19,3 +19,5 @@ spec:
       enabled: true
     promtail:
       enabled: false
+    loki:
+      auth_enabled: false
