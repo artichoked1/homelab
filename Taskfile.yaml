@@ -1,33 +1,356 @@
 version: "3"
 
 vars:
-  app_name:
-    sh: echo ${APP_NAME}
+  ROOT_DIR:
+    sh: git rev-parse --show-toplevel
 
 tasks:
-  create-app:
-    desc: "Create a new app directory, namespace, and kustomization files"
-    vars:
-      app_dir: "homelab/k8s/coma/apps/${app_name}"
+  new-app:
+    desc: "Interactive wizard to scaffold a new app"
+    dir: "{{.ROOT_DIR}}"
     cmds:
-      - echo "Creating directory structure for ${app_name}..."
-      - mkdir -p {{.app_dir}}
-      - echo "Creating Namespace file..."
-      - |
-        cat <<EOF > {{.app_dir}}/namespace.yaml
-        apiVersion: v1
-        kind: Namespace
-        metadata:
-          name: {{.app_name}}
-        EOF
-      - echo "Creating Kustomization file..."
-      - |
-        cat <<EOF > {{.app_dir}}/kustomization.yaml
-        apiVersion: kustomize.config.k8s.io/v1beta1
-        kind: Kustomization
-        resources:
-          - ./namespace.yaml
-        EOF
-      - echo "App ${app_name} created successfully."
+      - task: _new-app-wizard
 
-    silent: false
+  _new-app-wizard:
+    internal: true
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - |
+        set -euo pipefail
+
+        slugify() {
+          echo "$1" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9-]/-/g' \
+            | sed 's/-\{2,\}/-/g' \
+            | sed 's/^-//' \
+            | sed 's/-$//' 
+        }
+
+        yesno() {
+          local prompt="$1"
+          local default="${2:-n}"
+          local response
+          read -r -p "$prompt " response || response=""
+          response="${response:-$default}"
+          case "${response,,}" in
+            y|yes) return 0 ;;
+            *) return 1 ;;
+          esac
+        }
+
+        require_non_empty() {
+          local value="$1"
+          local message="$2"
+          if [ -z "$value" ]; then
+            echo "$message" >&2
+            exit 1
+          fi
+        }
+
+        ROOT_DIR="{{.ROOT_DIR}}"
+        APPS_DIR="$ROOT_DIR/k8s/coma/apps"
+
+        read -r -p "App name (kebab-case): " RAW_APP_NAME || RAW_APP_NAME=""
+        APP_NAME="$(slugify "$RAW_APP_NAME")"
+        require_non_empty "$APP_NAME" "App name is required."
+
+        APP_DIR="$APPS_DIR/$APP_NAME"
+        if [ -e "$APP_DIR" ]; then
+          echo "Error: $APP_DIR already exists." >&2
+          exit 1
+        fi
+
+        read -r -p "Namespace [$APP_NAME]: " RAW_NAMESPACE || RAW_NAMESPACE=""
+        NAMESPACE_INPUT="${RAW_NAMESPACE:-$APP_NAME}"
+        NAMESPACE="$(slugify "$NAMESPACE_INPUT")"
+        require_non_empty "$NAMESPACE" "Namespace is required."
+
+        CREATE_HELMRELEASE=1
+        if ! yesno "Create HelmRelease? (Y/n):" "y"; then
+          CREATE_HELMRELEASE=0
+        fi
+
+        CHART_NAME=""
+        HELM_REPO_NAME=""
+        HELM_REPO_NAMESPACE="flux-system"
+        CHART_VERSION=""
+        HR_INTERVAL="1m0s"
+
+        if [ "$CREATE_HELMRELEASE" -eq 1 ]; then
+          read -r -p "Chart name [app-template]: " RAW_CHART || RAW_CHART=""
+          CHART_NAME="${RAW_CHART:-app-template}"
+          read -r -p "HelmRepository name [bjw-s]: " RAW_HELM_REPO || RAW_HELM_REPO=""
+          HELM_REPO_NAME="${RAW_HELM_REPO:-bjw-s}"
+          read -r -p "HelmRepository namespace [flux-system]: " RAW_HELM_NS || RAW_HELM_NS=""
+          HELM_REPO_NAMESPACE="${RAW_HELM_NS:-flux-system}"
+          read -r -p "Chart version (leave blank to omit): " RAW_VERSION || RAW_VERSION=""
+          CHART_VERSION="$RAW_VERSION"
+          read -r -p "HelmRelease interval [1m0s]: " RAW_INTERVAL || RAW_INTERVAL=""
+          HR_INTERVAL="${RAW_INTERVAL:-1m0s}"
+        fi
+
+        ADD_HELM_REPO=0
+        if yesno "Add HelmRepository/OCIRepository to flux-system-extras? (y/N):" "n"; then
+          ADD_HELM_REPO=1
+        fi
+
+        if [ "$CREATE_HELMRELEASE" -eq 0 ] && [ "$ADD_HELM_REPO" -eq 0 ]; then
+          echo "Warning: no HelmRelease and no Helm repository selected. Continuing with basic namespace scaffolding." >&2
+        fi
+
+        if [ "$ADD_HELM_REPO" -eq 1 ]; then
+          read -r -p "Repository metadata.name [${HELM_REPO_NAME:-example}]: " RAW_REPO_META || RAW_REPO_META=""
+          if [ -n "$RAW_REPO_META" ]; then
+            REPO_METADATA_NAME="$RAW_REPO_META"
+          elif [ -n "$HELM_REPO_NAME" ]; then
+            REPO_METADATA_NAME="$HELM_REPO_NAME"
+          else
+            REPO_METADATA_NAME="example"
+          fi
+
+          read -r -p "Repository file name (kebab-case) [$(slugify "$REPO_METADATA_NAME")]: " RAW_REPO_FILE || RAW_REPO_FILE=""
+          REPO_FILE_SLUG="$(slugify "${RAW_REPO_FILE:-$REPO_METADATA_NAME}")"
+          require_non_empty "$REPO_FILE_SLUG" "Repository file name is required."
+
+          read -r -p "Repository kind [HelmRepository/OCIRepository] (HelmRepository): " RAW_KIND || RAW_KIND=""
+          REPO_KIND="${RAW_KIND:-HelmRepository}"
+          case "$REPO_KIND" in
+            HelmRepository|OCIRepository) ;;
+            helmrepository)
+              REPO_KIND="HelmRepository"
+              ;;
+            ocirepository)
+              REPO_KIND="OCIRepository"
+              ;;
+            *)
+              echo "Unsupported repository kind: $REPO_KIND" >&2
+              exit 1
+              ;;
+          esac
+
+          if [ "$REPO_KIND" = "OCIRepository" ]; then
+            DEFAULT_REPO_INTERVAL="5m0s"
+          else
+            DEFAULT_REPO_INTERVAL="2h"
+          fi
+
+          read -r -p "Repository interval [$DEFAULT_REPO_INTERVAL]: " RAW_REPO_INTERVAL || RAW_REPO_INTERVAL=""
+          REPO_INTERVAL="${RAW_REPO_INTERVAL:-$DEFAULT_REPO_INTERVAL}"
+
+          read -r -p "Repository URL: " REPO_URL || REPO_URL=""
+          require_non_empty "$REPO_URL" "Repository URL is required."
+
+          REPO_TAG=""
+          if [ "$REPO_KIND" = "OCIRepository" ]; then
+            read -r -p "OCI tag [latest]: " RAW_TAG || RAW_TAG=""
+            REPO_TAG="${RAW_TAG:-latest}"
+          fi
+        fi
+
+        echo "\nScaffolding new app at $APP_DIR"
+        mkdir -p "$APP_DIR/app"
+
+        NS_FILE="$APP_DIR/ns.yaml"
+        cat <<'EOF' > "$NS_FILE"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${NAMESPACE}
+EOF
+
+        KS_FILE="$APP_DIR/ks.yaml"
+        cat <<EOF > "$KS_FILE"
+---
+# yaml-language-server: \$schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app $APP_NAME
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  path: ./k8s/coma/apps/$APP_NAME
+  postBuild:
+    substitute:
+      APP: *app
+      NAMESPACE: &namespace $NAMESPACE
+    substituteFrom:
+      - kind: Secret
+        name: cluster-secrets
+        optional: false
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  targetNamespace: *namespace
+  timeout: 5m
+  wait: false
+  dependsOn:
+    - name: secrets
+      namespace: flux-system
+EOF
+
+        KUSTOMIZATION_FILE="$APP_DIR/kustomization.yaml"
+        cat <<EOF > "$KUSTOMIZATION_FILE"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./ns.yaml
+EOF
+
+        if [ "$CREATE_HELMRELEASE" -eq 1 ]; then
+          echo "  - ./app/helmrelease.yaml" >> "$KUSTOMIZATION_FILE"
+        fi
+
+        cat <<'EOF' >> "$KUSTOMIZATION_FILE"
+
+# Add additional manifests under ./app and include them above as needed.
+EOF
+
+        if [ "$CREATE_HELMRELEASE" -eq 1 ]; then
+          HR_FILE="$APP_DIR/app/helmrelease.yaml"
+          cat <<EOF > "$HR_FILE"
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: \${APP}
+  namespace: \${NAMESPACE}
+spec:
+  chart:
+    spec:
+      chart: $CHART_NAME
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: $HELM_REPO_NAME
+        namespace: $HELM_REPO_NAMESPACE
+EOF
+          if [ -n "$CHART_VERSION" ]; then
+            cat <<EOF >> "$HR_FILE"
+      version: $CHART_VERSION
+EOF
+          fi
+
+          cat <<EOF >> "$HR_FILE"
+  interval: $HR_INTERVAL
+EOF
+
+          if [ "$CHART_NAME" = "app-template" ]; then
+            cat <<'EOF' >> "$HR_FILE"
+  values:
+    controllers:
+      main:
+        replicas: 1
+        strategy: RollingUpdate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/REPLACE_ME/IMAGE
+              tag: latest
+            env:
+              TZ: Australia/Adelaide
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: false
+EOF
+          else
+            cat <<'EOF' >> "$HR_FILE"
+  values: {}
+EOF
+          fi
+        else
+          touch "$APP_DIR/app/.gitkeep"
+        fi
+
+        if [ "$ADD_HELM_REPO" -eq 1 ]; then
+          HELM_REPO_DIR="$ROOT_DIR/k8s/coma/apps/flux-system-extras/helm-repos"
+          mkdir -p "$HELM_REPO_DIR"
+          REPO_FILE_PATH="$HELM_REPO_DIR/$REPO_FILE_SLUG.yaml"
+
+          if [ -e "$REPO_FILE_PATH" ]; then
+            echo "Repository file $REPO_FILE_PATH already exists, skipping creation." >&2
+          else
+            if [ "$REPO_KIND" = "OCIRepository" ]; then
+              cat <<EOF > "$REPO_FILE_PATH"
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: $REPO_METADATA_NAME
+  namespace: flux-system
+spec:
+  interval: $REPO_INTERVAL
+  url: $REPO_URL
+  ref:
+    tag: $REPO_TAG
+EOF
+            else
+              cat <<EOF > "$REPO_FILE_PATH"
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: $REPO_METADATA_NAME
+  namespace: flux-system
+spec:
+  interval: $REPO_INTERVAL
+  url: $REPO_URL
+EOF
+            fi
+          fi
+
+          KUSTOMIZATION_PATH="$ROOT_DIR/k8s/coma/apps/flux-system-extras/kustomization.yaml"
+          if [ -f "$KUSTOMIZATION_PATH" ]; then
+            python - "$KUSTOMIZATION_PATH" "$REPO_FILE_SLUG" <<'PYHELPER'
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+slug = sys.argv[2]
+entry = f"  - ./helm-repos/{slug}.yaml"
+
+lines = path.read_text().splitlines()
+if entry in lines:
+    sys.exit(0)
+
+insert_index = len(lines)
+for idx, line in enumerate(lines):
+    if line.strip().startswith('- ./image-repos/'):
+        insert_index = idx
+        break
+
+if insert_index > 0 and lines[insert_index - 1].strip() == '':
+    insert_index -= 1
+
+lines.insert(insert_index, entry)
+path.write_text("\n".join(lines) + "\n")
+PYHELPER
+          else
+            echo "Warning: kustomization file not found at $KUSTOMIZATION_PATH" >&2
+          fi
+        fi
+
+        cat <<EOF
+
+Done! Files created:
+  - $NS_FILE
+  - $KS_FILE
+  - $KUSTOMIZATION_FILE
+EOF
+        if [ "$CREATE_HELMRELEASE" -eq 1 ]; then
+          echo "  - $HR_FILE"
+        fi
+        if [ "$ADD_HELM_REPO" -eq 1 ]; then
+          echo "  - $REPO_FILE_PATH (if newly created)"
+        fi
