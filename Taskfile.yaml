@@ -1,33 +1,12 @@
 version: "3"
 
 vars:
-  app_name:
-    sh: echo ${APP_NAME}
+  ROOT_DIR:
+    sh: git rev-parse --show-toplevel
 
 tasks:
-  create-app:
-    desc: "Create a new app directory, namespace, and kustomization files"
-    vars:
-      app_dir: "homelab/k8s/coma/apps/${app_name}"
+  new-app:
+    desc: "Interactive wizard to scaffold a new app"
+    dir: "{{.ROOT_DIR}}"
     cmds:
-      - echo "Creating directory structure for ${app_name}..."
-      - mkdir -p {{.app_dir}}
-      - echo "Creating Namespace file..."
-      - |
-        cat <<EOF > {{.app_dir}}/namespace.yaml
-        apiVersion: v1
-        kind: Namespace
-        metadata:
-          name: {{.app_name}}
-        EOF
-      - echo "Creating Kustomization file..."
-      - |
-        cat <<EOF > {{.app_dir}}/kustomization.yaml
-        apiVersion: kustomize.config.k8s.io/v1beta1
-        kind: Kustomization
-        resources:
-          - ./namespace.yaml
-        EOF
-      - echo "App ${app_name} created successfully."
-
-    silent: false
+      - python3 scripts/new_app.py
