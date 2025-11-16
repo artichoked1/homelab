@@ -34,8 +34,8 @@ spec:
                     key: password
               MQTT_TOPIC: "v3/openclimate@ttn/devices/+/up"
               MQTT_USE_AUTH: true
-              TTN_MQTT_PROTOCOL: "mqtts"
-              TTN_MQTT_PORT: "8883"
+              MQTT_PROTOCOL: "mqtts"
+              MQTT_PORT: "8883"
 
               PG_DSN:
                 valueFrom:
