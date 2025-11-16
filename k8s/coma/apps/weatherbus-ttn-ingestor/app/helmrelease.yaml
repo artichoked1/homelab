@@ -21,21 +21,21 @@ spec:
         containers:
           main:
             env:
-              TTN_REGION_HOST: "test.mosquitto.org"
-              TTN_APP_ID:
+              MQTT_HOST: "au1.cloud.thethings.network"
+              MQTT_USERNAME:
                 valueFrom:
                   secretKeyRef:
                     name: weatherbus-ttn-ingestor-mqtt-auth
                     key: username
-              TTN_API_KEY:
+              MQTT_PASSWORD:
                 valueFrom:
                   secretKeyRef:
                     name: weatherbus-ttn-ingestor-mqtt-auth
                     key: password
-              MQTT_TOPIC: "weatherbus/coordinator/sensor_data"
-              MQTT_USE_AUTH: false
-              TTN_MQTT_PROTOCOL: "mqtt"
-              TTN_MQTT_PORT: "1883"
+              MQTT_TOPIC: "v3/openclimate@ttn/devices/+/up"
+              MQTT_USE_AUTH: true
+              TTN_MQTT_PROTOCOL: "mqtts"
+              TTN_MQTT_PORT: "8883"
 
               PG_DSN:
                 valueFrom:
@@ -43,6 +43,6 @@ spec:
                     name: weatherbus-ttn-ingestor-db-auth
                     key: url
             image:
-              repository: ghcr.io/artichoked1/weatherbus-lorawan-ingestor
+              repository: sha256-8e7dbb31859390d0e193fcd31f2cff53ecfd1b3a7a7eb8ba16fdf6448bba8935.sig
               tag: master
               pullPolicy: IfNotPresent
