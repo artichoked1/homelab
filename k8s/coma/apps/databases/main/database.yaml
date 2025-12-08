@@ -5,7 +5,7 @@ metadata:
   namespace: databases
 spec:
   instances: 3
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-bullseye
   superuserSecret:
     name: main-postgres-superuser-auth
   storage:
