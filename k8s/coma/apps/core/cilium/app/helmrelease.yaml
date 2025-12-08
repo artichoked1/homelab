@@ -19,6 +19,11 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    prometheus:
+      enabled: true
+    operator:
+      prometheus:
+        enabled: true
     ipam:
       mode: kubernetes
     kubeProxyReplacement: true
@@ -51,6 +56,9 @@ spec:
       enableAlpn: true
       enableAppProtocol: true
     hubble:
+      metrics:
+        enabled: "{dns,drop,tcp,flow,port-distribution,icmp,httpV2:exemplars=true;labelsContext=source_ip\,source_namespace\,source_workload\,destination_ip\,destination_namespace\,destination_workload\,traffic_direction}"
+        enableOpenMetrics: true
       enabled: true
       relay:
         enabled: true
