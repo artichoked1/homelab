@@ -1,10 +1,12 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
+  # name of cluster must not be the same as the restore source cluster when doing recovery.
   name: main-postgres-v2
   namespace: databases
 spec:
   instances: 3
+  # Always keep the same debian version when doing major PG upgrades! Upgrade debian version while keeping same PG version first!
   imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
   superuserSecret:
     name: main-postgres-superuser-auth
@@ -16,15 +18,16 @@ spec:
       isWALArchiver: true
       parameters:
         barmanObjectName: r2-backup
-  bootstrap:
-    recovery:
-      source: origin
-      # recoveryTarget:
-      #   targetTime: "2025-12-08 02:17:47+00"
-  externalClusters:
-    - name: origin
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: r2-backup
-          serverName: main-postgres
+  # Restore from backup
+  # bootstrap:
+  #   recovery:
+  #     source: origin
+  #     # recoveryTarget: # PITR recovery - will restore to last backup if not specified.
+  #     #   targetTime: "2025-12-08 02:17:47+00"
+  # externalClusters:
+  #   - name: origin
+  #     plugin:
+  #       name: barman-cloud.cloudnative-pg.io
+  #       parameters:
+  #         barmanObjectName: r2-backup
+  #         serverName: main-postgres
