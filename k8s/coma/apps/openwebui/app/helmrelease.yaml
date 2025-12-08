@@ -27,7 +27,7 @@ spec:
             env:
               TZ: Australia/Adelaide
               WEBUI_URL: https://ai.artichoke.cc
-              ENABLE_SIGNUP: false
+              ENABLE_SIGNUP: true
               ENABLE_LOGIN_FORM: true
               ENABLE_PASSWORD_AUTH: true
               DEFAULT_USER_ROLE: pending
