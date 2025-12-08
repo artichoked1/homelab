@@ -39,6 +39,24 @@ spec:
                     name: openwebui-postgres-auth
                     key: url
               ENABLE_OAUTH_SIGNUP: true
+              OAUTH_CLIENT_ID:
+                valueFrom:
+                  secretKeyRef:
+                    name: openwebui-oidc-auth
+                    key: client-id
+              OAUTH_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: openwebui-oidc-auth
+                    key: client-secret
+              OPENID_PROVIDER_URL: "https://auth.artichoke.cc/application/o/openwebui/.well-known/openid-configuration"
+              OAUTH_PROVIDER_NAME: "Artichoke Technologies"
+              OPENID_REDIRECT_URI: "https://ai.artichoke.cc/oauth/oidc/callback"
+              OAUTH_ROLES_CLAIM: "groups"
+              OAUTH_ALLOWED_ROLES: "friends of the federation"
+              OAUTH_ADMIN_ROLES: "OpenWebUI Admins"
+              OAUTH_GROUP_CLAIM: "groups"
+              ENABLE_OAUTH_GROUP_CREATION: "true"
     service:
       main:
         controller: main
