@@ -19,6 +19,8 @@ spec:
   bootstrap:
     recovery:
       source: origin
+      recoveryTarget:
+        targetTime: "2025-12-08 02:17:47+00"
   externalClusters:
     - name: origin
       plugin:
