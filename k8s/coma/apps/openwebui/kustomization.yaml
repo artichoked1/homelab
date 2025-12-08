@@ -4,4 +4,5 @@ resources:
   - ./ks.yaml
   - ./ns.yaml
   - ./secrets.yaml
-  # - ./app/helmrelease.yaml
+  - ./app/helmrelease.yaml
+  - ./app/httproute.yaml
