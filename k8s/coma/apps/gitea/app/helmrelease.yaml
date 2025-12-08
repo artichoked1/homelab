@@ -43,7 +43,7 @@ spec:
         APP_NAME: "Artichoke's Gitea Server"
         database:
           DB_TYPE: postgres
-          HOST: main-postgres-rw.databases.svc.cluster.local
+          HOST: main-postgres-v2-rw.databases.svc.cluster.local
           NAME: gitea
           USER: gitea
           PASSWD: ${GITEA_POSTGRES_PASS}

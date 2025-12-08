@@ -17,7 +17,7 @@ spec:
   values:
     connections:
       dbType: postgres
-      dbHost: main-postgres-rw.databases.svc.cluster.local
+      dbHost: main-postgres-v2-rw.databases.svc.cluster.local
       dbPort: "5432"
       dbUser: onlyoffice
       dbName: onlyoffice

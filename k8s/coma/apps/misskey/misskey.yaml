@@ -38,7 +38,7 @@ spec:
                     name: misskey-postgres-auth
                     key: username
               DATABASE_DB: misskey
-              DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
+              DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@main-postgres-v2-rw.databases.svc.cluster.local:5432/${POSTGRES_DB}
         initContainers:
           chmod-files-dir:
             image:

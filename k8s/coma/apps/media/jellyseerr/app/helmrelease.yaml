@@ -23,7 +23,7 @@ spec:
             env:
               TZ: Australia/Adelaide
               DB_TYPE: "postgres"
-              DB_HOST: "main-postgres-rw.databases.svc.cluster.local"
+              DB_HOST: "main-postgres-v2-rw.databases.svc.cluster.local"
               DB_PORT: "5432"
               DB_NAME: "jellyseerr"
               DB_USER:

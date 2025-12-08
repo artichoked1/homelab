@@ -18,13 +18,13 @@ spec:
     externalPostgres:
       enabled: true
       PG_PASSWORD: ${DEVTRON_POSTGRES_PASS}
-      PG_ADDR: main-postgres-rw.databases.svc.cluster.local
+      PG_ADDR: main-postgres-v2-rw.databases.svc.cluster.local
       PG_PORT: 5432
       PG_USER: devtron
       PG_DATABASE: devtron
     dbConfig:
       PG_PASSWORD: ${DEVTRON_POSTGRES_PASS}
-      PG_ADDR: main-postgres-rw.databases.svc.cluster.local
+      PG_ADDR: main-postgres-v2-rw.databases.svc.cluster.local
       PG_PORT: 5432
       PG_USER: devtron
       PG_DATABASE: devtron

@@ -51,7 +51,7 @@ spec:
 
               # Database configuration
               CF_DATABASE_DRIVERCLASS: org.postgresql.Driver
-              QUARKUS_DATASOURCE_JDBC_URL: "jdbc:postgresql://main-postgres-rw.databases.svc.cluster.local:5432/commafeed"
+              QUARKUS_DATASOURCE_JDBC_URL: "jdbc:postgresql://main-postgres-v2-rw.databases.svc.cluster.local:5432/commafeed"
               QUARKUS_DATASOURCE_USERNAME:
                 valueFrom:
                   secretKeyRef:

@@ -29,7 +29,7 @@ spec:
 
       username: mailu
       existingSecret: mailu-postgres-auth
-      host: main-postgres-rw.databases.svc.cluster.local
+      host: main-postgres-v2-rw.databases.svc.cluster.local
       port: 5432
       type: postgresql
     global:
