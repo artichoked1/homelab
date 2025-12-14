@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/artichoked1/onkaparingait-ssg
-              tag: master
+              tag: master-fcba615
             env:
               TZ: Australia/Adelaide
     service:
