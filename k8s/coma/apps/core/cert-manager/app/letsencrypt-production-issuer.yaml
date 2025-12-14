@@ -10,9 +10,27 @@ spec:
       name: letsencrypt-production
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-      - dns01:
+      # ArtichokeMC Cloudflare account
+      - selector:
+          dnsZones:
+            - artichokemc.net
+            - onkaparingait.com
+        dns01:
           cloudflare:
             apiTokenSecretRef:
+              name: cloudflare-api-token-artichokemc
               key: token
+            email: services@artichokemc.net
+
+      # Main Cloudflare account
+      - selector:
+          dnsZones:
+            - artichoke.cc
+            - nikolaipatrick.com
+            - artichokenetwork.com
+        dns01:
+          cloudflare:
+            apiTokenSecretRef:
               name: cloudflare-api-token
+              key: token
             email: ${ACME_EMAIL}
