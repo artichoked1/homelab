@@ -19,6 +19,7 @@ spec:
     - name: http
       port: 80
       protocol: HTTP
+
     - name: artichoke-cc-https
       port: 443
       protocol: HTTPS
@@ -30,6 +31,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: artichoke-cc-root
       port: 443
       protocol: HTTPS
@@ -41,6 +43,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: coma-artichoke-network-https
       port: 443
       protocol: HTTPS
@@ -52,6 +55,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: artichoke-cc-authentik
       port: 443
       protocol: HTTPS
@@ -63,6 +67,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: artichoke-cc-coder
       port: 443
       protocol: HTTPS
@@ -74,6 +79,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: artichoke-cc-teleport-wildcard
       port: 443
       protocol: TLS
@@ -83,12 +89,35 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: artichoke-cc-teleport-root
       port: 443
       protocol: TLS
       hostname: "teleport.artichoke.cc"
       tls:
         mode: Passthrough
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: onkaparingait-https
+      port: 443
+      protocol: HTTPS
+      hostname: "*.onkaparingait.com"
+      tls:
+        certificateRefs:
+          - name: onkaparinagit-wildcard-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: onkaparingait-root
+      port: 443
+      protocol: HTTPS
+      hostname: "onkaparingait.com"
+      tls:
+        certificateRefs:
+          - name: onkaparinagit-wildcard-cert
+            kind: Secret
       allowedRoutes:
         namespaces:
           from: All
