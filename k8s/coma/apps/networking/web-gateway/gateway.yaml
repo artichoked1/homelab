@@ -123,12 +123,14 @@ spec:
           from: All
     - name: onkaparingait-http
       port: 80
+      hostname: "*.onkaparingait.com"
       protocol: HTTP
       allowedRoutes:
         namespaces:
           from: All
     - name: onkaparingait-root-http
       port: 80
+      hostname: "onkaparingait.com"
       protocol: HTTP
       allowedRoutes:
         namespaces:
