@@ -44,3 +44,18 @@ spec:
   issuerRef:
     name: vault-issuer
     kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: onkaparingait-cert
+  namespace: networking
+spec:
+  secretName: onkaparingait-wildcard-cert
+  dnsNames:
+    - "onkaparingait.com"
+    - "*.onkaparingait.com"
+    - "www.onkaparingait.com"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
