@@ -55,7 +55,6 @@ spec:
   dnsNames:
     - "onkaparingait.com"
     - "*.onkaparingait.com"
-    - "www.onkaparingait.com"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
