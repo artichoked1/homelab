@@ -1,20 +1,53 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: onkaparingait
+  name: onkaparingait-http-canonical
+  namespace: onkaparingait
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: onkaparingait-root-http
+    - name: web-gateway
+      namespace: networking
+      sectionName: onkaparingait-http
+  hostnames:
+    - onkaparingait.com
+    - www.onkaparingait.com
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            hostname: onkaparingait.com
+            statusCode: 301
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: onkaparingait-https-canonical
   namespace: onkaparingait
 spec:
   parentRefs:
     - name: web-gateway
       namespace: networking
       sectionName: onkaparingait-root
+    - name: web-gateway
+      namespace: networking
+      sectionName: onkaparingait-https
   hostnames:
-    - onkaparingait.com
+    - www.onkaparingait.com
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /
-      backendRefs:
-        - name: onkaparingait
-          port: 80
+      filters:
+        - type: RequestRedirect
+          requestRedirect:
+            hostname: onkaparingait.com
+            statusCode: 301
