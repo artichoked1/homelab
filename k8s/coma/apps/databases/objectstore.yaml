@@ -35,4 +35,4 @@ spec:
         key: access-key-secret
     wal:
       maxParallel: 8
-    retentionPolicy: "7d"
+  retentionPolicy: "7d"
