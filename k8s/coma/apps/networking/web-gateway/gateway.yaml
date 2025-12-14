@@ -105,7 +105,7 @@ spec:
       hostname: "*.onkaparingait.com"
       tls:
         certificateRefs:
-          - name: artichokecc-wildcard-cert
+          - name: onkaparingait-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:
@@ -116,7 +116,7 @@ spec:
       hostname: "onkaparingait.com"
       tls:
         certificateRefs:
-          - name: artichokecc-wildcard-cert
+          - name: onkaparingait-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:
