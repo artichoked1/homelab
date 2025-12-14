@@ -3,5 +3,3 @@ kind: Kustomization
 resources:
   - ./ns.yaml
   - ./app/helmrelease.yaml
-
-# Add additional manifests under ./app and include them above as needed.
