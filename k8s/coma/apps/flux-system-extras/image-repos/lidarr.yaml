@@ -20,4 +20,4 @@ spec:
     extract: "$maj.$min.$patch-$build"
   policy:
     semver:
-      range: ">=2.0.0-0 <4.0.0-0"
+      range: ">=3.0.0-0 <4.0.0-0"
