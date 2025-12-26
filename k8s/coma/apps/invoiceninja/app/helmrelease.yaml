@@ -22,7 +22,7 @@ spec:
         containers:
           main:
             image:
-              repository: invoiceninja/invoiceninja
+              repository: invoiceninja/invoiceninja-debian
               tag: latest
             env:
               TZ: Australia/Adelaide
@@ -46,6 +46,17 @@ spec:
                   secretKeyRef:
                     name: invoiceninja-mysql-auth
                     key: mariadb-password
+              CACHE_DRIVER: redis
+              QUEUE_CONNECTION: redis
+              SESSION_DRIVER: redis
+              REDIS_HOST: main.redis-clusters.svc.cluster.local
+              REDIS_PASSWORD: "null"
+              REDIS_PORT: 6379
+              FILESYSTEM_DISK: debian_docker
+              PDF_GENERATOR: snappdf
+              TRUSTED_PROXIES: '*'
+              PHANTOMJS_PDF_GENERATION: false
+
     service:
       main:
         controller: main
