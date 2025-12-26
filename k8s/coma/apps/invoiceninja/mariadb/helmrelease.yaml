@@ -11,18 +11,18 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: invoiceninja-mysql
+  name: invoiceninja-mariadb
   namespace: invoiceninja
 spec:
   chart:
     spec:
-      chart: mysql
+      chart: mariadb
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: bitnami-oci
         namespace: invoiceninja
-      version: 14.0.3
+      version: 24.0.2
   interval: 1m0s
   values:
     auth:
