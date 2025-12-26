@@ -81,9 +81,15 @@ spec:
         globalMounts:
           - path: /var/www/html/public
           - path: /var/www/html/storage
-          - path: /var/www/html/storage/framework/sessions
-          - path: /var/www/html/storage/framework/views
-          - path: /var/www/html/storage/framework/cache
+      runtime:
+        type: emptyDir
+        enabled: true
+        advancedMounts:
+          main:
+            main:
+              - path: /var/www/html/storage/framework/sessions
+              - path: /var/www/html/storage/framework/views
+              - path: /var/www/html/storage/framework/cache
       php-memory:
         enabled: true
         type: configMap
