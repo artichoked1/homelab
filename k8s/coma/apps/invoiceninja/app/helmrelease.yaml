@@ -29,6 +29,10 @@ spec:
               - -c
               - |
                 mkdir -p /var/www/html/public && exec /usr/local/bin/init.sh "$@"
+            args:
+              - supervisord
+              - -c
+              - /etc/supervisor/supervisord.conf
             env:
               TZ: Australia/Adelaide
               APP_ENV: production
