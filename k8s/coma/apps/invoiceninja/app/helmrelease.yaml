@@ -60,3 +60,13 @@ spec:
         globalMounts:
           - path: /var/www/app/public
           - path: /var/www/app/storage
+      php-config:
+        enabled: true
+        type: configMap
+        name: php-config
+        advancedMounts:
+          main:
+            main:
+              - path: /usr/local/etc/php/conf.d/99-memory.ini
+                subPath: 99-memory.ini
+                readOnly: true
