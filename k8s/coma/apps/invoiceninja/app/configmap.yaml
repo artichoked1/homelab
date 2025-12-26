@@ -4,5 +4,5 @@ metadata:
   name: php-memory
   namespace: invoiceninja
 data:
-  memory.ini: |
+  99-memory.ini: |
     memory_limit = 512M
