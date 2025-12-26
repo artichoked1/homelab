@@ -75,21 +75,21 @@ spec:
             port: 9000
     persistence:
       data:
-        storageClass: "openebs-hostpath"
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        globalMounts:
-          - path: /var/www/html/public
-          - path: /var/www/html/storage
-      runtime:
-        type: emptyDir
         enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        globalMounts:
+          - path: /var/www/html/storage/app
+          - path: /var/www/html/storage/logs
+      runtime:
+        enabled: true
+        type: emptyDir
         advancedMounts:
           main:
             main:
-              - path: /var/www/html/storage/framework/sessions
-              - path: /var/www/html/storage/framework/views
-              - path: /var/www/html/storage/framework/cache
+              - path: /var/www/html/storage/framework
+              - path: /var/www/html/bootstrap/cache
       php-memory:
         enabled: true
         type: configMap
