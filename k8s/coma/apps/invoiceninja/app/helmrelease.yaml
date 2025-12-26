@@ -28,7 +28,7 @@ spec:
               - sh
               - -c
               - |
-                mkdir -p /var/www/html/public && exec /usr/local/bin/init.sh
+                mkdir -p /var/www/html/public && exec /usr/local/bin/init.sh "$@"
             env:
               TZ: Australia/Adelaide
               APP_ENV: production
