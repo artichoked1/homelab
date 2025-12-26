@@ -6,3 +6,5 @@ resources:
   # - ./app/helmrelease.yaml
   - ./mariadb/secrets.yaml
   - ./mariadb/helmrelease.yaml
+
+  - ./app/secrets.yaml
