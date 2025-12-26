@@ -60,10 +60,10 @@ spec:
         globalMounts:
           - path: /var/www/app/public
           - path: /var/www/app/storage
-      php-config:
+      php-memory:
         enabled: true
         type: configMap
-        name: php-config
+        name: php-memory
         advancedMounts:
           main:
             main:
