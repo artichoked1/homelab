@@ -4,3 +4,4 @@ resources:
   - ./ns.yaml
   # - ./app/helmrelease.yaml
   - ./mysql/secrets.yaml
+  - ./mysql/helmrelease.yaml
