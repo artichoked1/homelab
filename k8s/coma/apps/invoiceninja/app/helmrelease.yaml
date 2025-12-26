@@ -56,6 +56,16 @@ spec:
               PDF_GENERATOR: snappdf
               TRUSTED_PROXIES: '*'
               PHANTOMJS_PDF_GENERATION: false
+              IN_USER_EMAIL:
+                valueFrom:
+                  secretKeyRef:
+                    name: invoiceninja-initial-user
+                    key: email
+              IN_USER_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: invoiceninja-initial-user
+                    key: password
 
     service:
       main:
