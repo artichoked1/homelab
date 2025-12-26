@@ -24,6 +24,11 @@ spec:
             image:
               repository: invoiceninja/invoiceninja-debian
               tag: latest
+            command:
+              - sh
+              - -c
+              - |
+                mkdir -p /var/www/html/public && exec /usr/local/bin/init.sh
             env:
               TZ: Australia/Adelaide
               APP_ENV: production
@@ -66,18 +71,6 @@ spec:
                   secretKeyRef:
                     name: invoiceninja-initial-user
                     key: password
-        initContainers:
-          init-public-dir:
-            image:
-              repository: busybox
-              tag: latest
-            command:
-              - sh
-              - -c
-              - |
-                mkdir -p /var/www/html/public
-            securityContext:
-              runAsUser: 0
 
     service:
       main:
