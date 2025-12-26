@@ -68,7 +68,9 @@ spec:
                     key: password
         initContainers:
           init-public-dir:
-            image: busybox
+            image:
+              repository: busybox
+              tag: latest
             command:
               - sh
               - -c
