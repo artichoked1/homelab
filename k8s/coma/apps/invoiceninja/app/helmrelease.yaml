@@ -54,7 +54,7 @@ spec:
             port: 80
     persistence:
       data:
-        storageClass: "longhorn"
+        storageClass: "openebs-hostpath"
         accessMode: ReadWriteOnce
         size: 1Gi
         globalMounts:
