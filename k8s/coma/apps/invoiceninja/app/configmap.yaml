@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: php-memory
+  namespace: invoiceninja
+data:
+  memory.ini: |
+    memory_limit = 512M

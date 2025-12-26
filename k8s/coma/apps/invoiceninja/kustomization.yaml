@@ -3,10 +3,11 @@ kind: Kustomization
 resources:
   - ./ks.yaml
   - ./ns.yaml
-  
+
   - ./mariadb/secrets.yaml
   - ./mariadb/helmrelease.yaml
 
   - ./app/secrets.yaml
   - ./app/helmrelease.yaml
   - ./app/httproute.yaml
+  - ./app/configmap.yaml
