@@ -72,13 +72,16 @@ spec:
                   secretKeyRef:
                     name: invoiceninja-initial-user
                     key: password
-
+          nginx:
+            image:
+              repository: nginx
+              tag: 1.27-alpine
     service:
       main:
         controller: main
         ports:
           http:
-            port: 9000
+            port: 80
     persistence:
       data:
         enabled: true
@@ -105,4 +108,17 @@ spec:
             main:
               - path: /usr/local/etc/php/conf.d/99-memory.ini
                 subPath: 99-memory.ini
+                readOnly: true
+      nginx:
+        enabled: true
+        type: configMap
+        name: nginx-config
+        advancedMounts:
+          main:
+            nginx:
+              - path: /etc/nginx/conf.d/invoiceninja.conf
+                subPath: invoiceninja.conf
+                readOnly: true
+              - path: /etc/nginx/conf.d/laravel.conf
+                subPath: laravel.conf
                 readOnly: true

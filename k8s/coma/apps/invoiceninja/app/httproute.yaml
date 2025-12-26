@@ -17,4 +17,4 @@ spec:
             value: /
       backendRefs:
         - name: invoiceninja
-          port: 9000
+          port: 80
