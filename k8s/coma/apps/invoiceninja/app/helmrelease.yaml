@@ -30,6 +30,7 @@ spec:
               - |
                 set -eux
 
+                # Ensure Laravel dirs exist
                 mkdir -p \
                   /var/www/html/storage/framework/views \
                   /var/www/html/storage/framework/cache/data \
@@ -38,6 +39,10 @@ spec:
 
                 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true
                 chmod -R ug+rwX /var/www/html/storage /var/www/html/bootstrap/cache || true
+
+                rm -f /var/www/html/bootstrap/cache/config.php
+                rm -f /var/www/html/bootstrap/cache/routes-v7.php
+                rm -rf /var/www/html/storage/framework/views/*
 
                 exec /usr/local/bin/init.sh supervisord -c /etc/supervisor/supervisord.conf
             env:
