@@ -89,21 +89,21 @@ spec:
         accessMode: ReadWriteOnce
         size: 5Gi
         globalMounts:
-          - path: /var/www/html/storage/app
-          - path: /var/www/html/storage/logs
-      app:
-        enabled: true
-        type: emptyDir
-        globalMounts:
           - path: /var/www/html/public
-      runtime:
-        enabled: true
-        type: emptyDir
-        advancedMounts:
-          main:
-            main:
-              - path: /var/www/html/storage/framework
-              - path: /var/www/html/bootstrap/cache
+          - path: /var/www/html/storage
+      # app:
+      #   enabled: true
+      #   type: emptyDir
+      #   globalMounts:
+      #     - path: /var/www/html/public
+      # runtime:
+      #   enabled: true
+      #   type: emptyDir
+      #   advancedMounts:
+      #     main:
+      #       main:
+      #         - path: /var/www/html/storage/framework
+      #         - path: /var/www/html/bootstrap/cache
       php-memory:
         enabled: true
         type: configMap
