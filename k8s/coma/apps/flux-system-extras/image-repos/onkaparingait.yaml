@@ -1,4 +1,13 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: onkaparingait
+  namespace: flux-system
+spec:
+  image: ghcr.io/artichoked1/onkaparingait-ssg
+  interval: 5m
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
   name: onkaparingait
