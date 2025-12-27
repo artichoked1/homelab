@@ -26,24 +26,9 @@ spec:
               tag: latest
             command:
               - sh
-              - -lc
+              - -c
               - |
-                set -eux
-
-                # Ensure Laravel dirs exist
-                mkdir -p \
-                  /var/www/html/storage/framework/views \
-                  /var/www/html/storage/framework/cache/data \
-                  /var/www/html/storage/framework/sessions \
-                  /var/www/html/bootstrap/cache
-
-                chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true
-                chmod -R ug+rwX /var/www/html/storage /var/www/html/bootstrap/cache || true
-
-                rm -f /var/www/html/bootstrap/cache/config.php
-                rm -f /var/www/html/bootstrap/cache/routes-v7.php
-                rm -rf /var/www/html/storage/framework/views/*
-
+                mkdir -p /var/www/html/public && \
                 exec /usr/local/bin/init.sh supervisord -c /etc/supervisor/supervisord.conf
             env:
               TZ: Australia/Adelaide
@@ -106,19 +91,16 @@ spec:
         globalMounts:
           - path: /var/www/html/public
           - path: /var/www/html/storage
-      # app:
-      #   enabled: true
-      #   type: emptyDir
-      #   globalMounts:
-      #     - path: /var/www/html/public
-      # runtime:
-      #   enabled: true
-      #   type: emptyDir
-      #   advancedMounts:
-      #     main:
-      #       main:
-      #         - path: /var/www/html/storage/framework
-      #         - path: /var/www/html/bootstrap/cache
+      runtime:
+        enabled: true
+        type: emptyDir
+        advancedMounts:
+          main:
+            main:
+              - path: /var/www/html/storage/framework
+              - path: /var/www/html/bootstrap/cache
+              - path: /var/www/html/storage/framework/views
+              - path: /var/www/html/storage/framework/sessions
       php-memory:
         enabled: true
         type: configMap
