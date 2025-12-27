@@ -52,6 +52,7 @@ resources:
   - ./image-repos/navidrome.yaml
   - ./image-repos/qbittorrent.yaml
   - ./image-repos/vaultwarden.yaml
+  - ./image-repos/onkaparingait.yaml
 
   - ./flux-webhook/httproute.yaml
   - ./flux-webhook/token-secret.yaml
