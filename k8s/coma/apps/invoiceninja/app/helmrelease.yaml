@@ -28,10 +28,7 @@ spec:
               - sh
               - -c
               - |
-                set -e
-                mkdir -p /var/www/html/storage/framework/cache \
-                        /var/www/html/storage/framework/views \
-                        /var/www/html/storage/framework/sessions && \
+                mkdir -p /var/www/html/public && \
                 exec /usr/local/bin/init.sh supervisord -c /etc/supervisor/supervisord.conf
             env:
               TZ: Australia/Adelaide
