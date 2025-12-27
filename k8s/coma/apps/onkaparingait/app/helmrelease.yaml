@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/artichoked1/onkaparingait-ssg
-              tag: master-fba8704
+              tag: build-21
             env:
               TZ: Australia/Adelaide
     service:
