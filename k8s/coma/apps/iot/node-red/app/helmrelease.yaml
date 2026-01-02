@@ -17,6 +17,10 @@ spec:
   values:
     controllers:
       main:
+        pod:
+          securityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
         strategy: Recreate
         containers:
           main:
