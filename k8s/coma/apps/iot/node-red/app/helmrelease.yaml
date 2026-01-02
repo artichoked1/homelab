@@ -26,6 +26,7 @@ spec:
           main:
             env:
               TZ: Australia/Adelaide
+              NODE_RED_HTTP_NODE_ROOT: /hooks
             image:
               repository: nodered/node-red
               tag: 3.1.10
