@@ -18,3 +18,24 @@ spec:
       backendRefs:
         - name: node-red
           port: 1880
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: node-red-webhooks
+  namespace: iot
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: artichoke-cc-https
+  hostnames:
+    - node-red.artichoke.cc
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /hooks
+      backendRefs:
+        - name: node-red
+          port: 1880
