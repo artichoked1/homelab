@@ -58,7 +58,7 @@ spec:
                   secretKeyRef:
                     name: autobrr-oidc-auth
                     key: client-secret  
-              AUTOBRR__OIDC_REDIRECT_URL: https://autobrr.artichoke.cc/api/auth/oidc/callback
+              AUTOBRR__OIDC_REDIRECT_URL: https://autobrr.coma.artichoke.network/api/auth/oidc/callback
               AUTOBRR__OIDC_DISABLE_BUILT_IN_LOGIN: true
     service:
       main:
