@@ -47,7 +47,7 @@ spec:
                     name: autobrr-postgres-auth
                     key: password
               AUTOBRR__OIDC_ENABLED: true
-              AUTOBRR__OIDC_ISSUER: https://autobrr.coma.artichoke.network/application/o/autobrr
+              AUTOBRR__OIDC_ISSUER: https://auth.artichoke.cc/application/o/autobrr
               AUTOBRR__OIDC_CLIENT_ID:
                 valueFrom:
                   secretKeyRef:
