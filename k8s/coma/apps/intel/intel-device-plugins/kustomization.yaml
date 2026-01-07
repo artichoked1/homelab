@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./intel-device-plugins-operator.yaml
+  - ./ns.yaml
+  - ./operator/helmrelease.yaml
+  - ./gpu/helmrelease.yaml
