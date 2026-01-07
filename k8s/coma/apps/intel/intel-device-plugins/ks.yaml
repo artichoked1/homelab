@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./k8s/coma/apps/intel/intel-nfd
+  path: ./k8s/coma/apps/intel/intel-device-plugins
   prune: true
   retryInterval: 2m
   sourceRef:
