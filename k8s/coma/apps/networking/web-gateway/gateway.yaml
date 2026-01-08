@@ -135,3 +135,9 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: tdarr-tcp
+      protocol: TCP
+      port: 8266
+      allowedRoutes:
+        namespaces:
+          from: All
