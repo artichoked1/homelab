@@ -35,8 +35,10 @@ spec:
               tag: latest
               pullPolicy: IfNotPresent
             ports:
-              - 8265
-              - 8266
+              webui:
+                - 8265
+              server:
+                - 8266
 
     service:
       main:
