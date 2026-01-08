@@ -18,10 +18,18 @@ spec:
       backendRefs:
         - name: tdarr-master
           port: 8265
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /api
-      backendRefs:
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: tdarr-server
+  namespace: media
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: tdarr-tcp
+  rules:
+    - backendRefs:
         - name: tdarr-master
           port: 8266
