@@ -16,12 +16,12 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: tdarr-master-main
+        - name: tdarr-master
           port: 8265
     - matches:
         - path:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: tdarr-master-main
+        - name: tdarr-master
           port: 8266
