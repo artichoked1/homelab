@@ -34,12 +34,17 @@ spec:
               repository: ghcr.io/haveagitgat/tdarr
               tag: latest
               pullPolicy: IfNotPresent
+        ports:
+          webui:
+            port: 8265
+          server:
+            port: 8266
 
     service:
       main:
         controller: main
         ports:
-          http:
+          webui:
             port: 8265
       server:
         controller: main
