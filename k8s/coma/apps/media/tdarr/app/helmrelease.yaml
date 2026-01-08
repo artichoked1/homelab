@@ -35,7 +35,7 @@ spec:
               tag: latest
               pullPolicy: IfNotPresent
             ports:
-              - name: http
+              - name: webui
                 containerPort: 8265
               - name: server
                 containerPort: 8266
