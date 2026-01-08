@@ -30,12 +30,12 @@ spec:
       namespace: networking
       sectionName: coma-artichoke-network-https
   hostnames:
-    - tdarr-server.coma.artichoke.network
+    - tdarr.coma.artichoke.network
   rules:
     - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /api
       backendRefs:
         - name: tdarr-master-server
           port: 8266
