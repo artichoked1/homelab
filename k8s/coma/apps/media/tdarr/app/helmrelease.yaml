@@ -46,9 +46,6 @@ spec:
         ports:
           webui:
             port: 8265
-      server:
-        controller: main
-        ports:
           server:
             port: 8266
 

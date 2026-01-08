@@ -23,5 +23,5 @@ spec:
             type: PathPrefix
             value: /api
       backendRefs:
-        - name: tdarr-master-server
+        - name: tdarr-master-main
           port: 8266
