@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: ananace-charts
         namespace: flux-system
-      version: 3.12.0
+      version: 3.12.17
   interval: 1m0s
   values:
     serverName: "artichoke.cc"
