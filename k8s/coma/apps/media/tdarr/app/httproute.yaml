@@ -18,6 +18,13 @@ spec:
       backendRefs:
         - name: tdarr-master
           port: 8265
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /socket.io
+      backendRefs:
+        - name: tdarr-master
+          port: 8266
 ---
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
