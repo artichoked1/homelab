@@ -141,3 +141,9 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: tdarr-web-tcp
+      protocol: TCP
+      port: 8265
+      allowedRoutes:
+        namespaces:
+          from: All
