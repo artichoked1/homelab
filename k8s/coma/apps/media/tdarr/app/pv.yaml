@@ -13,3 +13,19 @@ spec:
     server: truenas2.artichoke.network
     readOnly: false
   persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: tdarr-cache-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/MoonShapedPool/Media/transcodeCache
+    server: truenas2.artichoke.network
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

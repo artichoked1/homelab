@@ -11,3 +11,17 @@ spec:
     requests:
       storage: 1Gi
   volumeName: tdarr-media-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tdarr-cache-pvc
+  namespace: media
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: tdarr-cache-pv
