@@ -59,7 +59,7 @@ spec:
           - path: /app/configs
           - path: /app/logs
       temp:
-        existingClaim: tdarr-temp-pvc
+        existingClaim: tdarr-cache-pvc
         globalMounts:
           - path: /temp
       media:
