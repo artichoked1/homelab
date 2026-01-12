@@ -24,6 +24,9 @@ spec:
               repository: lscr.io/linuxserver/radarr # {"$imagepolicy": "flux-system:radarr:name"}
               tag: 6.0.4 # {"$imagepolicy": "flux-system:radarr:tag"}
               pullPolicy: IfNotPresent
+            env:
+              TZ: Australia/Adelaide
+              DOCKER_MODS: linuxserver/mods:radarr-striptracks
           exportarr:
             image:
               repository: ghcr.io/onedr0p/exportarr
