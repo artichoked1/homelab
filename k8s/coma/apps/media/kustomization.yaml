@@ -14,3 +14,4 @@ resources:
   - ./jellyseerr/ks.yaml
   - ./autobrr/ks.yaml
   - ./tdarr/ks.yaml
+  - ./unmanic/ks.yaml
