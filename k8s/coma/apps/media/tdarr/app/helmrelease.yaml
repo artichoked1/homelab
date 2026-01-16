@@ -58,10 +58,6 @@ spec:
           - path: /app/server
           - path: /app/configs
           - path: /app/logs
-      temp:
-        existingClaim: tdarr-cache-pvc
-        globalMounts:
-          - path: /media/transcodeCache
       media:
         existingClaim: tdarr-media-pvc
         globalMounts:
