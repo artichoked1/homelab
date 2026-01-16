@@ -61,7 +61,7 @@ spec:
       temp:
         existingClaim: tdarr-cache-pvc
         globalMounts:
-          - path: /temp
+          - path: /media/transcodeCache
       media:
         existingClaim: tdarr-media-pvc
         globalMounts:
