@@ -27,7 +27,7 @@ spec:
             #   gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin # {"$imagepolicy": "flux-system:jellyfin:name"}
-              tag: 10.11.5 # {"$imagepolicy": "flux-system:jellyfin:tag"}
+              tag: 10.11.6 # {"$imagepolicy": "flux-system:jellyfin:tag"}
               pullPolicy: IfNotPresent
     service:
       main:
