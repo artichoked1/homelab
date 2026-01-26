@@ -60,3 +60,6 @@ resources:
   - ./flux-webhook/receiver.yaml
 
   - ./image-update-automation.yaml
+
+  - ./capacitor/httproute.yaml
+  - ./capacitor/app.yaml
