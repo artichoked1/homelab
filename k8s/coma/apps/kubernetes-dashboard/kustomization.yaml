@@ -4,3 +4,4 @@ resources:
   - ./ks.yaml
   - ./ns.yaml
   - ./app/helmrelease.yaml
+  - ./app/rbac.yaml
