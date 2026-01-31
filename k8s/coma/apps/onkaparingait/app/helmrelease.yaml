@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/artichoked1/onkaparingait-ssg
-              tag: build-63 # {"$imagepolicy": "flux-system:onkaparingait:tag"}
+              tag: build-64 # {"$imagepolicy": "flux-system:onkaparingait:tag"}
             env:
               TZ: Australia/Adelaide
     service:
