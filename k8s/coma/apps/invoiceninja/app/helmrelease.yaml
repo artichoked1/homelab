@@ -91,6 +91,11 @@ spec:
         globalMounts:
           - path: /var/www/html/storage/app
           - path: /var/www/html/storage/logs
+      app:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /var/www/html/public
       runtime:
         enabled: true
         type: emptyDir
