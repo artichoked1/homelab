@@ -15,3 +15,4 @@ resources:
   - ./autobrr/ks.yaml
   - ./tdarr/ks.yaml
   - ./unmanic/ks.yaml
+  - ./profilarr/ks.yaml
