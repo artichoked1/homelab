@@ -21,8 +21,8 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/dictionarry-hub/profilarr
-              tag: develop
+              repository: santiagosayshey/profilarr
+              tag: v1.1.4
               pullPolicy: IfNotPresent
             env:
               PUID: 1000
