@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: ghcr.io/dictionarry-hub/profilarr
-              tag: latest
+              tag: develop
               pullPolicy: IfNotPresent
             env:
               PUID: 1000
