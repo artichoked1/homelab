@@ -26,6 +26,7 @@ spec:
               pullPolicy: IfNotPresent
             env:
               TZ: Australia/Adelaide
+              QUI__OIDC_ENABLED: true
               QUI__OIDC_ISSUER: https://auth.artichoke.cc/application/o/qui/
               QUI__OIDC_CLIENT_ID:
                 valueFrom:
