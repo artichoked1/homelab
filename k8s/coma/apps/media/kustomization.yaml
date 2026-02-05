@@ -16,3 +16,4 @@ resources:
   - ./tdarr/ks.yaml
   - ./unmanic/ks.yaml
   - ./profilarr/ks.yaml
+  - ./qui/ks.yaml
