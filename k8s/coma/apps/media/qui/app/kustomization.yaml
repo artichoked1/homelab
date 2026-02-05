@@ -4,3 +4,5 @@ resources:
   - ./httproute.yaml
   - ./helmrelease.yaml
   - ./secrets.yaml
+  - ./pv.yaml
+  - ./pvc.yaml

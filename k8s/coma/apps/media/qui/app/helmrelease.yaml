@@ -53,3 +53,7 @@ spec:
         size: 1Gi
         globalMounts:
           - path: /config
+      torrents:
+        existingClaim: qui-media-pvc
+        globalMounts:
+          - path: /media
