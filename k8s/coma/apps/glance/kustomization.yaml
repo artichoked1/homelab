@@ -4,5 +4,5 @@ resources:
   - ./ns.yaml
   - ./ks.yaml
   - ./app/config
-  # - ./app/helmrelease.yaml
-  # - ./app/httproute.yaml]
+  - ./app/helmrelease.yaml
+  - ./app/httproute.yaml
