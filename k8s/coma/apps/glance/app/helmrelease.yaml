@@ -55,6 +55,6 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: /assets/user.css
+              - path: /app/assets/user.css
                 subPath: user.css
                 readOnly: true
