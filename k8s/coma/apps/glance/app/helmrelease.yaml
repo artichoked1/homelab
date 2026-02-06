@@ -48,7 +48,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: glance-config-home
+        name: glance-config
         advancedMounts:
           main:
             main:
