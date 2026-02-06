@@ -45,13 +45,23 @@ spec:
               - path: /app/config
                 subPath: glance.yml
                 readOnly: true
-      glance-home-config:
+      glance-config-home:
         enabled: true
         type: configMap
-        name: glance-home-config
+        name: glance-config-home
         advancedMounts:
           main:
             main:
               - path: /app/config
                 subPath: home.yml
+                readOnly: true
+      glance-user-css:
+        enabled: true
+        type: configMap
+        name: glance-user-css
+        advancedMounts:
+          main:
+            main:
+              - path: /assets
+                subPath: user.css
                 readOnly: true

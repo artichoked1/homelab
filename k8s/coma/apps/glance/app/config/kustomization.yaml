@@ -4,4 +4,10 @@ configMapGenerator:
   - name: glance-config
     files:
       - glance.yml
+  - name: glance-config-home
+    files:
+      - home.yml
+  - name: glance-user-css
+    files:
+      - user.css
 namespace: glance
