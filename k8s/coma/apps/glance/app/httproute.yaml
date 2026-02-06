@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: glance
+  namespace: glance
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: coma-artichoke-network-https
+  hostnames:
+    - glance.coma.artichoke.network
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: glance
+          port: 8080

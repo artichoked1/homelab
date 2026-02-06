@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: glance
+  namespace: glance
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: 3.2.1
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: glanceapp/glance
+              tag: latest
+              pullPolicy: IfNotPresent
+            env:
+              TZ: Australia/Adelaide
+
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8080
+
+    persistence:
+      glance-config:
+        enabled: true
+        type: configMap
+        name: glance-config
+        advancedMounts:
+          main:
+            main:
+              - path: /app/config
+                subPath: glance.yml
+                readOnly: true
+      glance-home-config:
+        enabled: true
+        type: configMap
+        name: glance-home-config
+        advancedMounts:
+          main:
+            main:
+              - path: /app/config
+                subPath: home.yml
+                readOnly: true
