@@ -5,9 +5,3 @@ resources:
   - ./ks.yaml
   # - ./app/helmrelease.yaml
   # - ./app/httproute.yaml]
-
-configMapGenerator:
-  - name: glance-config
-    behavior: replace
-    files:
-      - ./app/config/glance.yml
