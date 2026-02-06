@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./ns.yaml
   - ./ks.yaml
-  - ./app/config/kustomization.yaml
+  - ./app/config
   # - ./app/helmrelease.yaml
   # - ./app/httproute.yaml]
