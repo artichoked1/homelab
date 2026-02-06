@@ -45,7 +45,7 @@ spec:
               - path: /app/config
                 subPath: glance.yml
                 readOnly: true
-      config:
+      app-config:
         enabled: true
         type: configMap
         name: glance-config
@@ -58,6 +58,12 @@ spec:
               - path: /app/config/glance.yml
                 subPath: glance.yml
                 readOnly: true
+      config:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /app/config
       glance-user-css:
         enabled: true
         type: configMap
