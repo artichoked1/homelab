@@ -4,10 +4,16 @@ configMapGenerator:
   - name: glance-config
     files:
       - glance.yml
+    options:
+      disableNameSuffixHash: true
   - name: glance-config-home
     files:
       - home.yml
+    options:
+      disableNameSuffixHash: true
   - name: glance-user-css
     files:
       - user.css
+    options:
+      disableNameSuffixHash: true
 namespace: glance
