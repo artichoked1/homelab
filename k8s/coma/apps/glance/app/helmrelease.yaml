@@ -52,10 +52,10 @@ spec:
         advancedMounts:
           main:
             main:
-              - path: /app/config
+              - path: /app/config/home.yml
                 subPath: home.yml
                 readOnly: true
-              - path: /app/config
+              - path: /app/config/glance.yml
                 subPath: glance.yml
                 readOnly: true
       glance-user-css:
