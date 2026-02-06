@@ -45,7 +45,7 @@ spec:
               - path: /app/config
                 subPath: glance.yml
                 readOnly: true
-      glance-config-home:
+      config:
         enabled: true
         type: configMap
         name: glance-config-home
@@ -54,6 +54,9 @@ spec:
             main:
               - path: /app/config
                 subPath: home.yml
+                readOnly: true
+              - path: /app/config
+                subPath: glance.yml
                 readOnly: true
       glance-user-css:
         enabled: true
