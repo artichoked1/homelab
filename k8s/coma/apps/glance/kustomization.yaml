@@ -6,3 +6,4 @@ resources:
   - ./app/config
   - ./app/helmrelease.yaml
   - ./app/httproute.yaml
+  - ./app/secrets.yaml
