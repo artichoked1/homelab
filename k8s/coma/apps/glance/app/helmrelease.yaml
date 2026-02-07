@@ -26,6 +26,9 @@ spec:
               pullPolicy: IfNotPresent
             env:
               TZ: Australia/Adelaide
+            envFrom:
+              - secretRef:
+                  name: glance-env-vars
 
     service:
       main:
