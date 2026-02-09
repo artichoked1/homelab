@@ -12,3 +12,6 @@ configMapGenerator:
     behavior: replace
     files:
       - nfd-worker.conf
+
+patchesStrategicMerge:
+  - ./patches/nfd-namespace-labels.yaml
