@@ -22,13 +22,23 @@ spec:
           main:
             env:
               TZ: Australia/Adelaide
-            # resources:
-            # limits:
-            #   gpu.intel.com/i915: 1000m
+            resources:
+              limits:
+                gpu.intel.com/i915: 1000m
             image:
               repository: jellyfin/jellyfin # {"$imagepolicy": "flux-system:jellyfin:name"}
               tag: 10.11.6 # {"$imagepolicy": "flux-system:jellyfin:tag"}
               pullPolicy: IfNotPresent
+        pod:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: feature.node.kubernetes.io/cpu-model.id
+                        operator: In
+                        values:
+                          - "158" # Schedule on nodes with later-gen QSV hardware
     service:
       main:
         controller: main
