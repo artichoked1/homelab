@@ -1,17 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": true,
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/^k8s\\/coma\\/apps\\/immich\\/app\\/helmrelease\\.ya?ml$/"],
+      "managerFilePatterns": ["^k8s/coma/apps/immich/app/helmrelease\\.ya?ml$"],
       "matchStrings": [
         "image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[^\\s#]+)"
       ],
-      "depNameTemplate": "ghcr.io/immich-app/immich-server",
       "datasourceTemplate": "docker",
+      "packageNameTemplate": "ghcr.io/immich-app/immich-server",
       "versioningTemplate": "semver",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "registryUrls": ["https://ghcr.io"]
+      "extractVersionTemplate": "^v?(?<version>.*)$"
     }
   ],
   "packageRules": [
