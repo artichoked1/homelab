@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^k8s/coma/apps/immich/app/helmrelease\\.ya?ml$"],
+      "customType": "regex",
+      "managerFilePatterns": ["/^k8s\\/coma\\/apps\\/immich\\/app\\/helmrelease\\.ya?ml$/"],
       "matchStrings": [
         "image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[^\\s#]+)"
       ],
@@ -15,14 +16,14 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["regex"],
+      "matchManagers": ["custom.regex"],
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
       "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "branch"
     },
     {
-      "matchManagers": ["regex"],
+      "matchManagers": ["custom.regex"],
       "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
       "matchUpdateTypes": ["minor", "major"],
       "automerge": false
