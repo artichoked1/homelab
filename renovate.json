@@ -1,32 +1,65 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dependencyDashboard": true,
+  "extends": [
+    "config:recommended"
+  ],
+  "enabledManagers": [
+    "flux",
+    "kubernetes",
+    "custom.regex"
+  ],
+  "ignorePaths": [
+    "**/gotk-components.yaml"
+  ],
+  "flux": {
+    "managerFilePatterns": [
+      "/(^|/)k8s/.+\\.ya?ml$/"
+    ]
+  },
+  "kubernetes": {
+    "managerFilePatterns": [
+      "/(^|/)k8s/.+\\.ya?ml$/"
+    ]
+  },
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["^k8s/coma/apps/immich/app/helmrelease\\.ya?ml$"],
+      "managerFilePatterns": [
+        "/^k8s\\/coma\\/apps\\/immich\\/app\\/helmrelease\\.ya?ml$/"
+      ],
       "matchStrings": [
-        "image:\\s*\\n\\s*tag:\\s*(?<currentValue>v?[^\\s#]+)"
+        "(?m)^\\s{4}image:\\s*\\n\\s{6}tag:\\s*(?<currentValue>[^\\s#]+)"
       ],
       "datasourceTemplate": "docker",
-      "packageNameTemplate": "ghcr.io/immich-app/immich-server",
-      "versioningTemplate": "semver",
-      "extractVersionTemplate": "^v?(?<version>.*)$"
+      "depNameTemplate": "ghcr.io/immich-app/immich-server",
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^k8s\\/coma\\/apps\\/nextcloud\\/nextcloud\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "(?m)^\\s{4}image:\\s*\\n\\s{6}flavour:\\s*[^\\n]+\\n\\s{6}tag:\\s*(?<currentValue>[^\\s#]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "nextcloud"
     }
   ],
   "packageRules": [
     {
-      "matchManagers": ["custom.regex"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchUpdateTypes": ["patch"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchPackageNames": ["ghcr.io/immich-app/immich-server"],
-      "matchUpdateTypes": ["minor", "major"],
-      "automerge": false
+      "description": "For app-template releases, update app image tags but not the app-template chart version",
+      "matchManagers": [
+        "flux"
+      ],
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "app-template"
+      ],
+      "enabled": false
     }
   ]
 }
