@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: eclipse-mosquitto
-              tag: 2.0.18
+              tag: 2.0.22
               pullPolicy: IfNotPresent
     service:
       main:
