@@ -29,7 +29,9 @@ spec:
               internalNode: true
               inContainer: true
               ffmpegVersion: 6
-              nodeName: Coma
+              transcodegpuWorkers: 1
+              transcodecpuWorkers: 0
+              nodeName: "coma-master-1"
             image:
               repository: ghcr.io/haveagitgat/tdarr
               tag: latest
@@ -39,6 +41,19 @@ spec:
                 containerPort: 8265
               - name: server
                 containerPort: 8266
+            resources:
+              limits:
+                gpu.intel.com/i915: 1000m
+        pod:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: feature.node.kubernetes.io/cpu-model.id
+                        operator: In
+                        values:
+                          - "158" # Schedule on nodes with later-gen QSV hardware
 
     service:
       main:
@@ -62,4 +77,3 @@ spec:
         existingClaim: tdarr-media-pvc
         globalMounts:
           - path: /media
-
