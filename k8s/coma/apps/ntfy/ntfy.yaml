@@ -30,7 +30,7 @@ spec:
               NTFY_BEHIND_PROXY: true
             image:
               repository: binwiederhier/ntfy
-              tag: v2.13.0
+              tag: v2.17.0
               pullPolicy: IfNotPresent
             args: ["serve"]
 
