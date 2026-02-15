@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: quay.io/hedgedoc/hedgedoc
-              tag: 1.10.0
+              tag: 1.10.6
               pullPolicy: IfNotPresent
 
             env:
