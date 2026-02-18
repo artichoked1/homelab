@@ -83,13 +83,20 @@ spec:
           http:
             port: 80
     persistence:
-      data:
+      public:
         enabled: true
         storageClass: longhorn
         accessMode: ReadWriteOnce
         size: 5Gi
         globalMounts:
           - path: /var/www/html/public
+
+      storage:
+        enabled: true
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        globalMounts:
           - path: /var/www/html/storage
 
       php-memory:
