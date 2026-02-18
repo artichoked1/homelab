@@ -60,7 +60,7 @@ spec:
               REDIS_PORT: 6379
               FILESYSTEM_DISK: debian_docker
               PDF_GENERATOR: snappdf
-              TRUSTED_PROXIES: '*'
+              TRUSTED_PROXIES: "*"
               PHANTOMJS_PDF_GENERATION: false
               IN_USER_EMAIL:
                 valueFrom:
@@ -89,21 +89,9 @@ spec:
         accessMode: ReadWriteOnce
         size: 5Gi
         globalMounts:
-          - path: /var/www/html/storage/app
-          - path: /var/www/html/storage/logs
-      app:
-        enabled: true
-        type: emptyDir
-        globalMounts:
           - path: /var/www/html/public
-      runtime:
-        enabled: true
-        type: emptyDir
-        advancedMounts:
-          main:
-            main:
-              - path: /var/www/html/storage/framework
-              - path: /var/www/html/bootstrap/cache
+          - path: /var/www/html/storage
+
       php-memory:
         enabled: true
         type: configMap
