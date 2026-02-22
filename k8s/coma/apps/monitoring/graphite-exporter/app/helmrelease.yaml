@@ -25,7 +25,7 @@ spec:
               tag: v0.16.0
               pullPolicy: IfNotPresent
             args:
-              - --graphite.mapping-config=/config/graphite_mapping.conf
+              - --graphite.mapping-config=/config/graphite_mapping.yaml
               # Keep samples around longer than the upstream default (5m) for bursty senders.
               - --graphite.sample-expiry=30m
     serviceMonitor:
