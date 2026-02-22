@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: graphite-exporter
+  namespace: monitoring
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: graphite-exporter-tcp
+  rules:
+    - backendRefs:
+        - name: graphite-exporter
+          port: 9109

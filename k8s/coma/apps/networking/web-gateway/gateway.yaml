@@ -147,3 +147,9 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: graphite-exporter-tcp
+      protocol: TCP
+      port: 9109
+      allowedRoutes:
+        namespaces:
+          from: All
