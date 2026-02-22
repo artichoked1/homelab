@@ -44,10 +44,10 @@ spec:
         controller: main
         ports:
           graphite-tcp:
-            port: 9109
+            port: 9108
             protocol: TCP
           graphite-udp:
-            port: 9109
+            port: 9108
             protocol: UDP
       metrics:
         controller: main

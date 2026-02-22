@@ -11,4 +11,4 @@ spec:
   rules:
     - backendRefs:
         - name: graphite-exporter
-          port: 9109
+          port: 9108
