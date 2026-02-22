@@ -21,13 +21,13 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/supporterino/truenas-graphite-to-prometheus
-              tag: v2.2.1
+              repository: prom/graphite-exporter
+              tag: v0.16.0
               pullPolicy: IfNotPresent
-            # args:
-            #   - --graphite.mapping-config=/config/graphite_mapping.yaml
-            #   # Keep samples around longer than the upstream default (5m) for bursty senders.
-            #   - --graphite.sample-expiry=30m
+            args:
+              - --graphite.mapping-config=/config/graphite_mapping.conf
+              # Keep samples around longer than the upstream default (5m) for bursty senders.
+              - --graphite.sample-expiry=30m
     serviceMonitor:
       main:
         enabled: true
