@@ -45,8 +45,8 @@ spec:
     server:
       metrics:
         enabled: true
-      serviceMonitor:
-        enabled: true
+        serviceMonitor:
+          enabled: true
     global:
       volumes:
         - name: custom-css
