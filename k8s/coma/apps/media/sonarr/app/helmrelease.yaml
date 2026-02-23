@@ -46,12 +46,43 @@ spec:
               repository: lscr.io/linuxserver/sonarr # {"$imagepolicy": "flux-system:sonarr:name"}
               tag: 4.0.16 # {"$imagepolicy": "flux-system:sonarr:tag"}
               pullPolicy: IfNotPresent
+          exportarr:
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.3.0
+              pullPolicy: IfNotPresent
+            args:
+              - sonarr
+            env:
+              URL: "http://sonarr-main:7878"
+              PORT: 9707
+              APIKEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr-api-key
+                    key: api-key
+    serviceMonitor:
+      main:
+        enabled: true
+        serviceName: sonarr-metrics
+        labels:
+          release: prometheus-stack
+        endpoints:
+          - port: monitoring
+            interval: 4m
+            scrapeTimeout: 90s
+            path: /metrics
     service:
       main:
         controller: main
         ports:
           http:
             port: 8989
+      metrics:
+        controller: main
+        ports:
+          monitoring:
+            port: 9707
     persistence:
       data:
         storageClass: "longhorn"
