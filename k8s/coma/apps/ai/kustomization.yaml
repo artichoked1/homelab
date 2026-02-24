@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./ns.yaml
   - ./openwebui/ks.yaml
+  - ./mcpjungle/ks.yaml
