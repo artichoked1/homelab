@@ -8,7 +8,7 @@ spec:
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
-      # - "vectors.so"
+      - "vectors.so"
   instances: 1
   superuserSecret:
     name: immich-postgres-superuser-auth
