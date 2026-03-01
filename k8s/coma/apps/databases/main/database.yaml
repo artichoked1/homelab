@@ -7,7 +7,12 @@ metadata:
 spec:
   instances: 3
   # Always keep the same debian version when doing major PG upgrades! Upgrade debian version while keeping same PG version first!
-  imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
+  # imageName: ghcr.io/cloudnative-pg/postgresql:18.1-standard-trixie
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ClusterImageCatalog
+    name: postgresql-standard-trixie
+    major: 18
   superuserSecret:
     name: main-postgres-superuser-auth
   storage:
