@@ -24,8 +24,8 @@ spec:
         # - CREATE EXTENSION IF NOT EXISTS "vectors";
     recovery:
       source: origin
-      # recoveryTarget:
-      #   targetTime: "2025-06-09 00:00:54+00"
+      recoveryTarget:
+        targetTime: "2026-03-01 00:00:03+00"
   plugins:
     - name: barman-cloud.cloudnative-pg.io
       isWALArchiver: true
