@@ -5,3 +5,4 @@ resources:
   - ./pvc.yaml
   - ./httproute.yaml
   - ./secrets.yaml
+  - ./configmap.yaml

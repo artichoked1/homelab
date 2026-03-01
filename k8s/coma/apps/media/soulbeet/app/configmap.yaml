@@ -1,0 +1,20 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: soulbeet-beets-config
+  namespace: media
+data:
+  config.yaml: |
+    import:
+      # quiet_fallback: asis # Optional: If no strong match, import with existing tags instead of skipping
+      timid: no
+
+    match:
+      strong_rec_thresh: 0.10  # Lower threshold to accept less confident matches
+      max_rec:
+        missing_tracks: strong
+        unmatched_tracks: strong
+      distance_weights:
+        missing_tracks: 0.1  # Reduce weight (I think default is 0.9) to penalize less for missing tracks, improving the overall score.
+        # unmatched_tracks: 0.2  # Optional: Similar for extra tracks.

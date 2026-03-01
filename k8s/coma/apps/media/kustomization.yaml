@@ -17,3 +17,4 @@ resources:
   - ./unmanic/ks.yaml
   - ./profilarr/ks.yaml
   - ./qui/ks.yaml
+  - ./soulbeet/ks.yaml
