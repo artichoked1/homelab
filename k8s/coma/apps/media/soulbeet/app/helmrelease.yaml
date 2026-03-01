@@ -34,7 +34,7 @@ spec:
                   secretKeyRef:
                     name: soulbeet-secret-key
                     key: secret-key
-              SLSKD_URL: http://slskd.slskd.svc.cluster.local:5030
+              SLSKD_URL: http://slskd-main.slskd.svc.cluster.local:5030
               SLSKD_API_KEY:
                 valueFrom:
                   secretKeyRef:
