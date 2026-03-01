@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: immich-postgres-v4
+  name: immich-postgres-v5
   namespace: databases
 spec:
   imageName: ghcr.io/artichoked1/cnpg-pgvector-vectorchord:18-migration-vectors-0.2.1
