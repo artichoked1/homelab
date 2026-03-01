@@ -57,3 +57,7 @@ spec:
               - path: /config/config.yaml
                 subPath: config.yaml
                 readOnly: true
+      media:
+        existingClaim: soulbeet-media-pvc
+        globalMounts:
+          - path: /media
