@@ -17,7 +17,7 @@ spec:
   values:
     env:
       REDIS_HOSTNAME: "main.redis-clusters.svc.cluster.local"
-      DB_HOSTNAME: "immich-postgres-rw.databases.svc.cluster.local"
+      DB_HOSTNAME: "immich-postgres-v4-rw.databases.svc.cluster.local"
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
