@@ -13,15 +13,15 @@ spec:
   superuserSecret:
     name: immich-postgres-superuser-auth
   bootstrap:
-    initdb:
-      database: immich
-      owner: immich
-      secret:
-        name: immich-postgres-auth
-      postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-        # - ALTER SYSTEM SET search_path TO "$user", public, vectors;
-        # - CREATE EXTENSION IF NOT EXISTS "vectors";
+    # initdb:
+    #   database: immich
+    #   owner: immich
+    #   secret:
+    #     name: immich-postgres-auth
+    #   postInitSQL:
+    #     - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+    #     # - ALTER SYSTEM SET search_path TO "$user", public, vectors;
+    #     # - CREATE EXTENSION IF NOT EXISTS "vectors";
     recovery:
       source: origin
       recoveryTarget:
