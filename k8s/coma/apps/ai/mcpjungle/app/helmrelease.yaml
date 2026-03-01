@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/mcpjungle/mcpjungle
-              tag: 0.3.4
+              tag: 0.3.5
             env:
               TZ: Australia/Adelaide
               POSTGRES_HOST: main-postgres-v2-rw.databases.svc.cluster.local
