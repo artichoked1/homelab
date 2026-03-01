@@ -1,14 +1,14 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: immich-postgres-v2
+  name: immich-postgres-v3
   namespace: databases
 spec:
-  imageName: ghcr.io/artichoked1/cnpg-pgvector-vectorchord:17-migration-vectors-0.2.0
+  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:16-1.1.1
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
-      - "vectors.so"
+      # - "vectors.so"
   instances: 1
   superuserSecret:
     name: immich-postgres-superuser-auth
