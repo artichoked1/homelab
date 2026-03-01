@@ -23,3 +23,5 @@ resources:
 
   - ./timescaledb/database.yaml
   - ./timescaledb/loadbal.yaml
+
+  - https://github.com/cloudnative-pg/artifacts//image-catalogs?ref=main
