@@ -4,11 +4,11 @@ metadata:
   name: immich-postgres-v2
   namespace: databases
 spec:
-  imageName: ghcr.io/tensorchord/cloudnative-vectorchord:17-1.1.1
+  imageName: ghcr.io/artichoked1/cnpg-pgvector-vectorchord:17-migration
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
-      # - "vectors.so"
+      - "vectors.so"
   instances: 1
   superuserSecret:
     name: immich-postgres-superuser-auth
