@@ -9,7 +9,7 @@ spec:
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io
     kind: ClusterImageCatalog
-    name: postgresql-minimal-trixie
+    name: postgresql-standard-trixie
     major: 17
   superuserSecret:
     name: authentik-postgres-superuser-auth
