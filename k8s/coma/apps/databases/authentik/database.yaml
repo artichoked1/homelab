@@ -5,6 +5,7 @@ metadata:
   namespace: databases
 spec:
   instances: 1
+  image: null
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io
     kind: ClusterImageCatalog
