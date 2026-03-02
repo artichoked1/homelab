@@ -29,7 +29,7 @@ spec:
               NODE_RED_HTTP_NODE_ROOT: /hooks
             image:
               repository: nodered/node-red
-              tag: 3.1.10
+              tag: 3.1.15
               pullPolicy: IfNotPresent
     service:
       main:
