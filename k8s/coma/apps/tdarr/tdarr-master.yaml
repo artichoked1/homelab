@@ -32,7 +32,7 @@ spec:
               nodeName: Coma
             image:
               repository: ghcr.io/haveagitgat/tdarr
-              tag: 2.23.01
+              tag: 2.59.03
               pullPolicy: IfNotPresent
 
     service:
