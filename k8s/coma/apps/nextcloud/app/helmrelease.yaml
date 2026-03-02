@@ -121,22 +121,17 @@ spec:
           runAsGroup: null
           # runAsNonRoot: true
 
-        command:
-          - /bin/sh
-          - -c
-          - |
-            set -e
+      command:
+        - /bin/sh
+        - -c
+        - |
+          set -e
+          CRONFILE=/tmp/nextcloud.cron
+          echo '*/5 * * * * php -f /var/www/html/cron.php' > "$CRONFILE"
+          curl -fsSL -o /tmp/supercronic https://github.com/aptible/supercronic/releases/download/v0.2.33/supercronic-linux-amd64
+          chmod +x /tmp/supercronic
+          exec /tmp/supercronic --debug "$CRONFILE"
 
-            CRONFILE=/tmp/nextcloud.cron
-
-            echo "*/5 * * * * php -f /var/www/html/cron.php" > ${CRONFILE}
-
-            curl -fsSL -o /tmp/supercronic \
-              https://github.com/aptible/supercronic/releases/download/v0.2.33/supercronic-linux-amd64
-
-            chmod +x /tmp/supercronic
-
-            exec /tmp/supercronic --debug ${CRONFILE}
     persistence:
       enabled: true
       size: 4Gi
