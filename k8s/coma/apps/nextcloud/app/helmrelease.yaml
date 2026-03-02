@@ -17,7 +17,7 @@ spec:
   values:
     image:
       flavour: fpm
-      tag: 32.0.6
+      tag: 32-fpm
     nginx:
       enabled: true
     nextcloud:
