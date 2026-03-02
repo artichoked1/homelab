@@ -10,3 +10,8 @@ spec:
   storage:
     size: 40Gi
     storageClass: openebs-hostpath
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ClusterImageCatalog
+    name: postgresql-standard-trixie
+    major: 17
