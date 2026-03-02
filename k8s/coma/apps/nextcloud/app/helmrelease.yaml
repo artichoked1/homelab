@@ -98,19 +98,42 @@ spec:
           opcache.max_wasted_percentage=5
           opcache.fast_shutdown=1
           opcache.enable_file_override=0
+    # cronjob:
+    #   enabled: true
+    #   securityContext:
+    #     runAsUser: 33
+    #     runAsGroup: 33
+    #     fsGroup: 33
+    #     capabilities:
+    #       add:
+    #         - SETGID
+    #         - SETUID
+    #   podSecurityContext:
+    #     fsGroup: 33
+    #     fsGroupChangePolicy: "Always"
     cronjob:
       enabled: true
-      securityContext:
-        runAsUser: 33
-        runAsGroup: 33
-        fsGroup: 33
-        capabilities:
-          add:
-            - SETGID
-            - SETUID
-      podSecurityContext:
-        fsGroup: 33
-        fsGroupChangePolicy: "Always"
+      type: sidecar
+
+      sidecar:
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+
+        command:
+          - /bin/bash
+          - -c
+          - |
+            set -e
+
+            CRONFILE=/tmp/nextcloud-cron
+            echo "*/5 * * * * php -f /var/www/html/cron.php" > ${CRONFILE}
+
+            curl -L -o /tmp/supercronic https://github.com/aptible/supercronic/releases/download/v0.2.33/supercronic-linux-amd64
+            chmod +x /tmp/supercronic
+
+            exec /tmp/supercronic ${CRONFILE}
     persistence:
       enabled: true
       size: 4Gi
