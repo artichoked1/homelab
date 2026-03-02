@@ -119,7 +119,7 @@ spec:
         securityContext:
           runAsUser: null
           runAsGroup: null
-          runAsNonRoot: true
+          # runAsNonRoot: true
 
         command:
           - /bin/bash
