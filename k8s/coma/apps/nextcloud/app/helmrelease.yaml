@@ -117,23 +117,28 @@ spec:
 
       sidecar:
         securityContext:
+          runAsUser: null
+          runAsGroup: null
           runAsNonRoot: true
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: false
 
         command:
           - /bin/bash
-          - -c
+          - "-x"
+          - "-c"
           - |
-            set -e
-
-            CRONFILE=/tmp/nextcloud-cron
-            echo "*/5 * * * * php -f /var/www/html/cron.php" > ${CRONFILE}
-
-            curl -L -o /tmp/supercronic https://github.com/aptible/supercronic/releases/download/v0.2.33/supercronic-linux-amd64
-            chmod +x /tmp/supercronic
-
-            exec /tmp/supercronic ${CRONFILE}
+            # This is the original content of /var/spool/cron/crontabs/www-data
+            cronPath="/var/spool/cron/crontabs/$(id -nu)"
+            cat <<EOF >"${cronPath}"
+            SHELL=/bin/sh
+            */5 * * * * php -f /var/www/html/cron.php
+            EOF
+            chgrp root "${cronPath}"
+            #exec /cron.sh
+            #exec busybox crond -f -L /dev/stdout -c /var/spool/cron/crontabs -l0
+            cd /var/spool/cron/crontabs
+            curl -L -o supercronic https://github.com/aptible/supercronic/releases/download/v0.2.33/supercronic-linux-amd64
+            chmod 755 supercronic
+            exec ./supercronic --debug "${cronPath}"
     persistence:
       enabled: true
       size: 4Gi
