@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: devtron
         namespace: flux-system
-      version: 0.22.95
+      version: 0.23.0
   interval: 1m0s
   values:
     externalPostgres:
