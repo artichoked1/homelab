@@ -4,7 +4,7 @@ resources:
   - ./ks.yaml
   - ./ns.yaml
   - ./rabbitmq/helmrelease.yaml
-  - ./rabbitmq/secrets.yaml
   - ./statsd-exporter/helmrelease.yaml
   - ./app/helmrelease.yaml
+  - ./app/secrets.yaml
   - ./app/httproute.yaml
