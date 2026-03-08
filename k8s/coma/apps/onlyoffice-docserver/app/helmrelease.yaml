@@ -37,25 +37,25 @@ spec:
       amqpExistingSecret: "onlyoffice-docserver-rabbitmq-auth"
       amqpSecretKeyName: "password"
 
-    docservice:
-      image:
-        repository: onlyoffice/docs-docservice
+    # docservice:
+    #   image:
+    #     repository: onlyoffice/docs-docservice
 
-    proxy:
-      image:
-        repository: onlyoffice/docs-proxy
-        tag: 8.3.3-1
+    # proxy:
+    #   image:
+    #     repository: onlyoffice/docs-proxy
+    #     tag: 8.3.3-1
 
-    converter:
-      image:
-        repository: onlyoffice/docs-converter
-        tag: 8.3.3-1
+    # converter:
+    #   image:
+    #     repository: onlyoffice/docs-converter
+    #     tag: 8.3.3-1
 
     adminpanel:
       enabled: true
-      image:
-        repository: onlyoffice/docs-adminpanel
-        tag: 8.3.3-1
+      # image:
+      #   repository: onlyoffice/docs-adminpanel
+      #   tag: 8.3.3-1
 
     example:
       image:
