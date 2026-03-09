@@ -66,6 +66,11 @@ spec:
                   secretKeyRef:
                     name: slskd-slsk-user
                     key: password
+              SLSKD_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: slskd-api-key
+                    key: key
 
     service:
       main:
