@@ -173,13 +173,11 @@
 #   disk: false
 #   no_color: false
 #   loki: ~
-# metrics:
-#   enabled: false
-#   url: /metrics
-#   authentication:
-#     disabled: false
-#     username: slskd
-#     password: slskd
+metrics:
+  enabled: true
+  url: /metrics
+  authentication:
+    disabled: true
 # feature:
 #   swagger: false
 soulseek:

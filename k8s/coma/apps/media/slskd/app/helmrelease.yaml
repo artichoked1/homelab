@@ -109,3 +109,11 @@ spec:
         existingClaim: slskd-media-pvc
         globalMounts:
           - path: /media
+      config:
+        enabled: true
+        type: configMap
+        name: slskd-config
+        globalMounts:
+          - path: /app
+            subPath: slskd.yml
+            readOnly: true
