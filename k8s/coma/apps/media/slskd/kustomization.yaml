@@ -14,3 +14,5 @@ configMapGenerator:
       - ./app/config/slskd.yml
     options:
       disableNameSuffixHash: true
+
+namespace: media
