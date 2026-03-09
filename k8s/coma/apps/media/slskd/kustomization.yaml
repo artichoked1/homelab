@@ -7,3 +7,10 @@ resources:
   - ./app/secrets.yaml
   - ./app/helmrelease.yaml
   - ./app/httproute.yaml
+
+configMapGenerator:
+  - name: slskd-config
+    files:
+      - ./app/config/slskd.yml
+    options:
+      disableNameSuffixHash: true
