@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - ./ks.yaml
   - ./ns.yaml
-  - ./app/secret.yaml
+  - ./app/secrets.yaml
   - ./app/helmrelease.yaml
   - ./app/httproute.yaml
