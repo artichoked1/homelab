@@ -114,6 +114,6 @@ spec:
         type: configMap
         name: slskd-config
         globalMounts:
-          - path: /app
+          - path: /app/slskd.yaml
             subPath: slskd.yml
             readOnly: true
