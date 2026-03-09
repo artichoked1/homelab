@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: slskd-media-pvc
-  namespace: slskd
+  namespace: media
 spec:
   storageClassName: ""
   accessModes:
