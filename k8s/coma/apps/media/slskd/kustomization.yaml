@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./ks.yaml
-  - ./slskd/pv.yaml
-  - ./slskd/pvc.yaml
-  - ./slskd/secrets.yaml
-  - ./slskd/helmrelease.yaml
-  - ./slskd/httproute.yaml
+  - ./app/pv.yaml
+  - ./app/pvc.yaml
+  - ./app/secrets.yaml
+  - ./app/helmrelease.yaml
+  - ./app/httproute.yaml
