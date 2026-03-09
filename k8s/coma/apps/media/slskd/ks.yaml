@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./k8s/cluster/apps/media/slskd
+  path: ./k8s/coma/apps/media/slskd
   prune: true
   retryInterval: 2m
   sourceRef:
