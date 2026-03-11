@@ -22,7 +22,7 @@ spec:
         kind: HelmRepository
         name: bitnami-oci
         namespace: invoiceninja
-      version: 24.0.2
+      version: 24.2.0
   interval: 1m0s
   values:
     auth:
