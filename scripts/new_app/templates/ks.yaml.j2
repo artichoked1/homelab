@@ -1,0 +1,39 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: &app {{ app_name }}
+  namespace: flux-system
+spec:
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  interval: 1h
+  path: ./k8s/{{ cluster_name }}/apps/{{ app_path }}
+{% if include_postbuild %}
+  postBuild:
+    substitute:
+      APP: *app
+      NAMESPACE: &namespace {{ namespace }}
+    substituteFrom:
+      - kind: Secret
+        name: cluster-secrets
+        optional: false
+{% endif %}
+  prune: true
+  retryInterval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+{% if include_postbuild %}
+  targetNamespace: *namespace
+{% endif %}
+  timeout: 5m
+  wait: false
+{% if include_postbuild %}
+  dependsOn:
+    - name: secrets
+      namespace: flux-system
+{% endif %}

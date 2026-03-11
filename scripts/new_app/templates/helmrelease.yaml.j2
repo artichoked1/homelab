@@ -1,0 +1,65 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ${APP}
+  namespace: ${NAMESPACE}
+spec:
+  chart:
+    spec:
+      chart: {{ chart_name }}
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: {{ source_ref_kind }}
+        name: {{ source_ref_name }}
+        namespace: {{ source_ref_namespace }}
+{% if chart_version %}
+      version: {{ chart_version }}
+{% endif %}
+  interval: {{ interval }}
+{% if profile == "external-secrets" %}
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+  releaseName: {{ app_name }}
+  targetNamespace: ${NAMESPACE}
+  values:
+    installCRDs: true
+{% elif profile == "app-template" %}
+  values:
+    controllers:
+      main:
+        replicas: 1
+        strategy: RollingUpdate
+        containers:
+          main:
+            image:
+              repository: "{{ image_repository }}"
+              tag: "{{ image_tag }}"
+              pullPolicy: IfNotPresent
+            env:
+              TZ: "{{ timezone }}"
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: {{ service_port }}
+{% if include_service_monitor %}
+    serviceMonitor:
+      main:
+        enabled: true
+        labels:
+          release: prometheus-stack
+        endpoints:
+          - port: http
+            interval: 4m
+            scrapeTimeout: 90s
+            path: /metrics
+{% endif %}
+    ingress:
+      main:
+        enabled: false
+{% else %}
+  values: {}
+{% endif %}
