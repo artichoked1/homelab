@@ -5,7 +5,7 @@ metadata:
   namespace: redis-clusters
 spec:
   kubernetesConfig:
-    image: quay.io/opstree/redis:v7.0.12
+    image: quay.io/opstree/redis:v8.4.2
     imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
