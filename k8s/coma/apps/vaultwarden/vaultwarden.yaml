@@ -39,6 +39,23 @@ spec:
                   secretKeyRef:
                     name: vaultwarden-postgres-auth
                     key: url
+              SSO_ENABLED: "true"
+              SSO_AUTHORITY: "https://auth.artichoke.cc/application/o/vaultwarden"
+              SSO_CLIENT_ID:
+                valueFrom:
+                  secretKeyRef:
+                    name: vaultwarden-oidc-auth
+                    key: client-id
+              SSO_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: vaultwarden-oidc-auth
+                    key: client-secret
+              SSO_SCOPES: "email profile offline_access"
+              SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION: "false"
+              SSO_CLIENT_CACHE_EXPIRATION: "0"
+              SSO_ONLY: "false"
+              SSO_SIGNUPS_MATCH_EMAIL: "true"
 
     service:
       main:
