@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: matrixconduit/matrix-conduit
-              tag: v0.9.0
+              tag: v0.10.12
               pullPolicy: IfNotPresent
 
             env:
