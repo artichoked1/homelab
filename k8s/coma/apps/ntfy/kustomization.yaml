@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - ./ks.yaml
   - ./ns.yaml
-  - ./app/ntfy.yaml
+  - ./app/helmrelease.yaml
   - ./app/httproute.yaml
 configMapGenerator:
   - name: ntfy-config
