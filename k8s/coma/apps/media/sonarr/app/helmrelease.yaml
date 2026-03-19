@@ -44,7 +44,7 @@ spec:
               DOCKER_MODS: linuxserver/mods:radarr-striptracks
             image:
               repository: lscr.io/linuxserver/sonarr # {"$imagepolicy": "flux-system:sonarr:name"}
-              tag: 4.0.16 # {"$imagepolicy": "flux-system:sonarr:tag"}
+              tag: 4.0.17 # {"$imagepolicy": "flux-system:sonarr:tag"}
               pullPolicy: IfNotPresent
           exportarr:
             image:
