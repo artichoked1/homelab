@@ -40,7 +40,7 @@ spec:
                     name: vaultwarden-postgres-auth
                     key: url
               SSO_ENABLED: "true"
-              SSO_AUTHORITY: "https://auth.artichoke.cc/application/o/vaultwarden"
+              SSO_AUTHORITY: "https://auth.artichoke.cc/application/o/vaultwarden/"
               SSO_CLIENT_ID:
                 valueFrom:
                   secretKeyRef:
