@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: ghcr.io/jeffvli/feishin
-              tag: 0.22.0
+              tag: 1.9.0
               pullPolicy: IfNotPresent
             env:
               SERVER_NAME: "Coma Navidrome Server"
