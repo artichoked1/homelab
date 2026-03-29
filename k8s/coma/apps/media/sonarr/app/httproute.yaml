@@ -19,5 +19,5 @@ spec:
         request: 120s
         backendRequest: 120s
       backendRefs:
-        - name: sonarr
+        - name: sonarr-main
           port: 8989
