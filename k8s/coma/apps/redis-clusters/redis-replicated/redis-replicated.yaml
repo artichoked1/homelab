@@ -11,7 +11,7 @@ spec:
   # redisConfig:
   #   additionalRedisConfig: redis-external-config
   kubernetesConfig:
-    image: quay.io/opstree/redis:v8.4.2
+    image: quay.io/opstree/redis:v8.6.2
     imagePullPolicy: IfNotPresent
     redisSecret:
       name: redis-replicated-auth
