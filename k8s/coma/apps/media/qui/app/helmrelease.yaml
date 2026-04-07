@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: ghcr.io/autobrr/qui
-              tag: v1.15.0
+              tag: v1.16.0
               pullPolicy: IfNotPresent
             env:
               TZ: Australia/Adelaide
