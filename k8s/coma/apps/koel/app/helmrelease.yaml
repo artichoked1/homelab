@@ -65,7 +65,7 @@ spec:
               FORCE_HTTPS: "true"
             image:
               repository: phanan/koel
-              tag: 7.15.1
+              tag: 9.0.0
               pullPolicy: IfNotPresent
             securityContext:
               fsGroup: 33
