@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: navidrome-media-pvc
-  namespace: navidrome
+  namespace: media
 spec:
   storageClassName: ""
   accessModes:
