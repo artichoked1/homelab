@@ -19,7 +19,6 @@ resources:
   - ./synapse/database.yaml
 
   - ./objectstore.yaml
-  - ./imagecatalog.yaml
 
   - ./timescaledb/database.yaml
   - ./timescaledb/loadbal.yaml
