@@ -16,11 +16,11 @@ spec:
   interval: 1m0s
   values:
     agent:
-      # we are not setting up traefik but the acquisition section is required.
       acquisition:
-        - namespace: traefik
-          podName: traefik-*
-          program: traefik
+        - namespace: envoy-gateway-system
+          podName: envoy-networking-web-gateway-*
+          program: envoy
+          poll_without_inotify: true
     container_runtime: containerd
     lapi:
       replicas: 2
@@ -75,4 +75,4 @@ spec:
             type: appsec
       env:
         - name: COLLECTIONS
-          value: "crowdsecurity/appsec-virtual-patching"
+          value: "crowdsecurity/appsec-virtual-patching yanis-kouidri/envoy"
