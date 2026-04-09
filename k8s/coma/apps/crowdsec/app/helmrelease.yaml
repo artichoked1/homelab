@@ -23,7 +23,7 @@ spec:
           poll_without_inotify: true
       env:
         - name: COLLECTIONS
-          value: yanis-kouidri/envoy
+          value: "yanis-kouidri/envoy"
     container_runtime: containerd
 
     lapi:
