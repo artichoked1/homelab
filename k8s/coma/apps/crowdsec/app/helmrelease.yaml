@@ -44,6 +44,8 @@ spec:
             secretKeyRef:
               name: crowdsec-lapi-secrets
               key: dbPassword
+        - name: COLLECTIONS
+          value: "yanis-kouidri/envoy"
     config:
       config.yaml.local: |
         db_config:
@@ -75,4 +77,4 @@ spec:
             type: appsec
       env:
         - name: COLLECTIONS
-          value: "crowdsecurity/appsec-virtual-patching yanis-kouidri/envoy"
+          value: "crowdsecurity/appsec-virtual-patching"
