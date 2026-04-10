@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   interval: 1h
-  path: ./k8s/cluster/apps/navidrome/app
+  path: ./k8s/cluster/apps/media/navidrome
   postBuild:
     substitute:
       APP: *app
