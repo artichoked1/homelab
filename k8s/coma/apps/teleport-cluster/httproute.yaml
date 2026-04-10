@@ -41,7 +41,7 @@ spec:
   from:
     - group: gateway.envoyproxy.io
       kind: SecurityPolicy
-      namespace: teleport
+      namespace: teleport-cluster
   to:
     - group: ""
       kind: Service
@@ -51,7 +51,7 @@ apiVersion: gateway.envoyproxy.io/v1alpha1
 kind: SecurityPolicy
 metadata:
   name: teleport-security
-  namespace: teleport
+  namespace: teleport-cluster
 spec:
   targetRefs:
     - group: gateway.networking.k8s.io
