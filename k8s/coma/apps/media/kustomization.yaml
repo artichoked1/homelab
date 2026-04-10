@@ -19,3 +19,4 @@ resources:
   - ./qui/ks.yaml
   - ./soulbeet/ks.yaml
   - ./slskd/ks.yaml
+  - ./navidrome/ks.yaml
