@@ -5,3 +5,4 @@ resources:
   - ./app/ocirepository.yaml
   - ./app/pv.yaml
   - ./app/pvc.yaml
+  - ./app/httproute.yaml
