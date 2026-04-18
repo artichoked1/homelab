@@ -65,8 +65,8 @@ spec:
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
     service:
-      main:
-        controller: main
+      app:
+        controller: plex
         ports:
           http:
             port: 32400
