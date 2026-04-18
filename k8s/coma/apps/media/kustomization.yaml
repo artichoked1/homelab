@@ -20,3 +20,4 @@ resources:
   - ./soulbeet/ks.yaml
   - ./slskd/ks.yaml
   - ./navidrome/ks.yaml
+  - ./plex/ks.yaml

@@ -41,6 +41,7 @@ resources:
   - ./helm-repos/envoy-proxy-crowdsec-bouncer.yaml
   - ./helm-repos/grafana.yaml
   - ./helm-repos/kubernetes-dashboard.yaml
+  - ./helm-repos/plex.yaml
 
   - ./image-repos/immich.yaml
   - ./image-repos/jellyfin.yaml
