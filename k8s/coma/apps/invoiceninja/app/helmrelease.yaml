@@ -75,7 +75,7 @@ spec:
           nginx:
             image:
               repository: nginx
-              tag: 1.29-alpine
+              tag: 1.30-alpine
     service:
       main:
         controller: main
