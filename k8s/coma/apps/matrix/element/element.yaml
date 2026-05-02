@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: vectorim/element-web
-              tag: v1.12.16
+              tag: v1.12.17
               pullPolicy: IfNotPresent
 
     service:
