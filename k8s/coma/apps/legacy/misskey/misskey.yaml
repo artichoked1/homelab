@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: misskey/misskey
-              tag: 2026.5.0
+              tag: 2026.5.1
               pullPolicy: IfNotPresent
             env:
               MISSKEY_URL: https://ms.artichoke.cc/
