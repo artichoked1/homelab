@@ -22,7 +22,7 @@ spec:
         kind: HelmRepository
         name: bitnami-oci
         namespace: wp-gliders
-      version: 30.0.13
+      version: 30.1.6
   interval: 1m0s
   values:
     wordpressBlogName: "Glider Sales"
