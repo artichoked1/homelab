@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: vaultwarden/server
-              tag: 1.35.8
+              tag: 1.36.0
               pullPolicy: IfNotPresent
             env:
               DOMAIN: "https://vaultwarden.artichoke.cc"
