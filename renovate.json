@@ -35,6 +35,13 @@
         "app-template"
       ],
       "enabled": false
+    },
+    {
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"],
+      "matchDatasources": ["docker"],
+      "automergeType": "pr",
+      "automerge": true
     }
   ]
 }
