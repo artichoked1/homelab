@@ -9,7 +9,8 @@
     "custom.regex"
   ],
   "ignorePaths": [
-    "**/gotk-components.yaml"
+    "**/gotk-components.yaml",
+    "k8s/coma/apps/legacy/*.yaml"
   ],
   "flux": {
     "managerFilePatterns": [
@@ -21,32 +22,6 @@
       "/(^|/)k8s/.+\\.ya?ml$/"
     ]
   },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^k8s\\/coma\\/apps\\/immich\\/app\\/helmrelease\\.ya?ml$/"
-      ],
-      "matchStrings": [
-        "(?m)^\\s{4}image:\\s*\\n\\s{6}tag:\\s*(?<currentValue>[^\\s#]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "ghcr.io/immich-app/immich-server",
-      "extractVersionTemplate": "^v?(?<version>.*)$",
-      "versioningTemplate": "semver"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^k8s\\/coma\\/apps\\/nextcloud\\/nextcloud\\.ya?ml$/"
-      ],
-      "matchStrings": [
-        "(?m)^\\s{4}image:\\s*\\n\\s{6}flavour:\\s*[^\\n]+\\n\\s{6}tag:\\s*(?<currentValue>[^\\s#]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "nextcloud"
-    }
-  ],
   "packageRules": [
     {
       "description": "For app-template releases, update app image tags but not the app-template chart version",
