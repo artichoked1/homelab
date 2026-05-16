@@ -10,7 +10,7 @@
   ],
   "ignorePaths": [
     "**/gotk-components.yaml",
-    "k8s/coma/apps/legacy/*.yaml"
+    "k8s/coma/apps/legacy/**"
   ],
   "flux": {
     "managerFilePatterns": [
