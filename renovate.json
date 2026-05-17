@@ -39,9 +39,9 @@
     {
       "description": "Automerge patch updates",
       "matchUpdateTypes": ["patch"],
-      "matchDatasources": ["docker"],
+      "automerge": true,
       "automergeType": "pr",
-      "automerge": true
+      "minimumReleaseAge": "2 days"
     }
   ]
 }
