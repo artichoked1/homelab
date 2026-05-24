@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
-      version: 85.2.0
+      version: 85.3.0
   interval: 1m0s
   install:
     crds: CreateReplace
