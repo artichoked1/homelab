@@ -72,6 +72,27 @@ spec:
                   secretKeyRef:
                     name: invoiceninja-initial-user
                     key: password
+              MAIL_MAILER: smtp
+              MAIL_HOST: smtp.migadu.com
+              MAIL_PORT: 465
+              MAIL_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: invoiceninja-smtp-auth
+                    key: username
+              MAIL_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: invoiceninja-smtp-auth
+                    key: password
+              MAIL_ENCRYPTION: ssl
+              MAIL_FROM_ADDRESS:
+                valueFrom:
+                  secretKeyRef:
+                    name: invoiceninja-smtp-auth
+                    key: from-address
+              MAIL_FROM_NAME: "Onkaparinga IT"
+
           nginx:
             image:
               repository: nginx
