@@ -4,3 +4,6 @@ resources:
   - ./ns.yaml
   - ./app/helmrelease.yaml
   - ./app/secrets.yaml
+  - ./app/httproute.yaml
+  - ./app/pv.yaml
+  - ./app/pvc.yaml
