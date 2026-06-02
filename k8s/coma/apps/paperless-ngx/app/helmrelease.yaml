@@ -43,6 +43,7 @@ spec:
               PAPERLESS_TIKA_ENABLED: "1"
               PAPERLESS_TIKA_GOTENBERG_ENDPOINT: "http://localhost:3000"
               PAPERLESS_TIKA_ENDPOINT: "http://localhost:9998"
+              PAPERLESS_TRUSTED_PROXIES: "127.0.0.1,::1,10.42.0.0/16,10.43.0.0/16,192.168.188.0/24"
           gotenberg:
             image:
               repository: "docker.io/gotenberg/gotenberg"
