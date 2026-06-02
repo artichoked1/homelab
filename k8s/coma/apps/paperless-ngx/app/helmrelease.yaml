@@ -34,7 +34,7 @@ spec:
                   secretKeyRef:
                     name: paperless-ngx-postgres-auth
                     key: username
-              PAPERLESS_DBPASSWORD:
+              PAPERLESS_DBPASS:
                 valueFrom:
                   secretKeyRef:
                     name: paperless-ngx-postgres-auth
