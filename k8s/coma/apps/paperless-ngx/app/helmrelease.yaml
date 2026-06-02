@@ -48,10 +48,10 @@ spec:
               repository: "docker.io/gotenberg/gotenberg"
               tag: "8.27"
               pullPolicy: IfNotPresent
-              command: ["gotenberg"]
-              args:
-                - "--chromium-disable-javascript=true"
-                - "--chromium-allow-list=file:///tmp/.*"
+            command: ["gotenberg"]
+            args:
+              - "--chromium-disable-javascript=true"
+              - "--chromium-allow-list=file:///tmp/.*"
           tika:
             image:
               repository: "docker.io/apache/tika"
