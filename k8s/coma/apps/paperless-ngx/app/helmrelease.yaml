@@ -1,0 +1,89 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: paperless-ngx
+  namespace: paperless-ngx
+spec:
+  chart:
+    spec:
+      chart: app-template
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 1m0s
+  values:
+    controllers:
+      main:
+        replicas: 1
+        strategy: RollingUpdate
+        containers:
+          main:
+            image:
+              repository: "ghcr.io/paperless-ngx/paperless-ngx"
+              tag: "2.20.15"
+              pullPolicy: IfNotPresent
+            env:
+              TZ: "Australia/Adelaide"
+              PAPERLESS_REDIS: "redis://main.redis-clusters.svc.cluster.local:6379"
+              PAPERLESS_DBHOST: "main-postgres-v2-rw.databases.svc.cluster.local"
+              PAPERLESS_DBNAME: "paperlessngx"
+              PAPERLESS_DBUSER:
+                valueFrom:
+                  secretKeyRef:
+                    name: paperless-ngx-postgres-auth
+                    key: username
+              PAPERLESS_DBPASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: paperless-ngx-postgres-auth
+                    key: password
+              PAPERLESS_DBENGINE: "postgresql"
+              PAPERLESS_TIKA_ENABLED: "1"
+              PAPERLESS_TIKA_GOTENBERG_ENDPOINT: "http://localhost:3000"
+              PAPERLESS_TIKA_ENDPOINT: "http://localhost:9998"
+          gotenberg:
+            image:
+              repository: "docker.io/gotenberg/gotenberg"
+              tag: "8.27"
+              pullPolicy: IfNotPresent
+              command: ["gotenberg"]
+              args:
+                - "--chromium-disable-javascript=true"
+                - "--chromium-allow-list=file:///tmp/.*"
+          tika:
+            image:
+              repository: "docker.io/apache/tika"
+              tag: "latest"
+              pullPolicy: IfNotPresent
+    service:
+      main:
+        controller: main
+        ports:
+          http:
+            port: 8000
+    ingress:
+      main:
+        enabled: false
+    persistence:
+      data:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        advancedMounts:
+          main:
+            main:
+              - path: /usr/src/paperless/data
+      media:
+        existingclaim: paperless-ngx-nsfiles-media-pvc
+        advancedMounts:
+          main:
+            main:
+              - path: /usr/src/paperless/media
+      consume:
+        existingclaim: paperless-ngx-nsfiles-consume-pvc
+        advancedMounts:
+          main:
+            main:
+              - path: /usr/src/paperless/consume

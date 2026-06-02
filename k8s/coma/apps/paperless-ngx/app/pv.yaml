@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: paperless-ngx-nsfiles-consume-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/MoonShapedPool/NsFiles/Documents/consume
+    server: truenas2.artichoke.network
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: paperless-ngx-nsfiles-media-pv
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/MoonShapedPool/NsFiles/Documents
+    server: truenas2.artichoke.network
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
