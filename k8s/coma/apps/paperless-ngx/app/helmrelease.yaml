@@ -76,13 +76,13 @@ spec:
             main:
               - path: /usr/src/paperless/data
       media:
-        existingclaim: paperless-ngx-nsfiles-media-pvc
+        existingClaim: paperless-ngx-nsfiles-media-pvc
         advancedMounts:
           main:
             main:
               - path: /usr/src/paperless/media
       consume:
-        existingclaim: paperless-ngx-nsfiles-consume-pvc
+        existingClaim: paperless-ngx-nsfiles-consume-pvc
         advancedMounts:
           main:
             main:
