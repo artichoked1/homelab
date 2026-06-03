@@ -46,6 +46,7 @@ spec:
               PAPERLESS_TRUSTED_PROXIES: "127.0.0.1,::1,10.42.0.0/16,10.43.0.0/16,192.168.188.0/24"
               PAPERLESS_URL: "https://paperless-ngx.coma.artichoke.network"
               PAPERLESS_CSRF_TRUSTED_ORIGINS: "https://paperless-ngx.coma.artichoke.network"
+              PAPERLESS_CONSUMER_POLLING: "30"
           gotenberg:
             image:
               repository: "docker.io/gotenberg/gotenberg"
