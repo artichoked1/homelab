@@ -47,6 +47,7 @@ spec:
               PAPERLESS_URL: "https://paperless-ngx.coma.artichoke.network"
               PAPERLESS_CSRF_TRUSTED_ORIGINS: "https://paperless-ngx.coma.artichoke.network"
               PAPERLESS_CONSUMER_POLLING: "30"
+              PAPERLESS_APPS: "allauth.socialaccount.providers.openid_connect"
               PAPERLESS_SOCIALACCOUNT_PROVIDERS:
                 valueFrom:
                   secretKeyRef:
