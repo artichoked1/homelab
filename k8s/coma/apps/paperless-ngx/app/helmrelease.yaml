@@ -47,6 +47,14 @@ spec:
               PAPERLESS_URL: "https://paperless-ngx.coma.artichoke.network"
               PAPERLESS_CSRF_TRUSTED_ORIGINS: "https://paperless-ngx.coma.artichoke.network"
               PAPERLESS_CONSUMER_POLLING: "30"
+              PAPERLESS_SOCIALACCOUNT_PROVIDERS:
+                valueFrom:
+                  secretKeyRef:
+                    name: paperless-ngx-socialaccount-providers
+                    key: provider-config
+              PAPERLESS_LOGOUT_REDIRECT_URL: "https://auth.artichoke.cc/application/o/paperless-ngx/end-session/"
+              PAPERLESS_SOCIAL_AUTO_SIGNUP: true
+              PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: true
           gotenberg:
             image:
               repository: "docker.io/gotenberg/gotenberg"
