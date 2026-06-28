@@ -15,6 +15,9 @@ spec:
         - path:
             type: PathPrefix
             value: /
+      timeouts:
+        request: 300s
+        backendRequest: 300s
       backendRefs:
         - name: paperless-ngx
           port: 8000
@@ -52,4 +55,3 @@ spec:
           name: envoy-proxy-bouncer
           port: 8080
           namespace: envoy-gateway-system
-  
