@@ -30,7 +30,7 @@ spec:
             name: immich-postgres-auth
             key: password
     image:
-      tag: 2.7.5
+      tag: 3.0.3
     immich:
       metrics:
         enabled: true
