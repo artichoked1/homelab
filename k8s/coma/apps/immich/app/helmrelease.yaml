@@ -114,7 +114,7 @@ spec:
     persistence:
       existing-photos:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         mountPath: /media/nsphotos
         readOnly: true
         existingClaim: immich-nsfiles-pvc
