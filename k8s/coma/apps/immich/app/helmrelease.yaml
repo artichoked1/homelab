@@ -74,11 +74,7 @@ spec:
               port: 465
               username: ${NOREPLY_EMAIL}
               password: ${NOREPLY_EMAIL_PASS}
-    # Dependencies
-    postgresql:
-      enabled: false
-    redis:
-      enabled: false
+
     # Immich components
     server:
       enabled: true
