@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1beta2.json
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1.json
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
@@ -7,9 +7,13 @@ metadata:
   namespace: immich
 spec:
   interval: 5m
-  ref:
-    tag: 0.13.1
   url: oci://ghcr.io/immich-app/immich-charts/immich
+  ref:
+    tag: "0.13.1"
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -17,16 +21,13 @@ metadata:
   name: immich
   namespace: immich
 spec:
-  chart:
-    spec:
-      chart: immich
-      reconcileStrategy: ChartVersion
-      sourceRef:
-        kind: HelmRepository
-        name: immich
-        namespace: flux-system
-      version: 0.13.1
-  interval: 1m0s
+  interval: 1m
+
+  chartRef:
+    kind: OCIRepository
+    name: immich
+    namespace: immich
+
   values:
     controllers:
       main:
@@ -38,24 +39,30 @@ spec:
     immich:
       metrics:
         enabled: true
+
       persistence:
         library:
           existingClaim: immich-uploads-pvc
+
       configuration:
         server:
           externalDomain: "https://immich.artichoke.cc"
+
         trash:
           enabled: true
           days: 30
+
         storageTemplate:
           enabled: true
           template: "{{y}}/{{album}}/{{ext}}/{{filename}}"
+
         machineLearning:
           enabled: true
           urls:
             - http://world-trade-centre-1.artichoke.network:3003
             - http://192.168.188.167:3003
             - http://immich-machine-learning:3003
+
         oauth:
           enabled: true
           autoRegister: true
@@ -63,6 +70,7 @@ spec:
           clientId: ${IMMICH_OAUTH_CLIENT_ID}
           clientSecret: ${IMMICH_OAUTH_CLIENT_SECRET}
           issuerUrl: "https://auth.artichoke.cc/application/o/immich/.well-known/openid-configuration"
+
         notifications:
           smtp:
             enabled: true
@@ -80,6 +88,7 @@ spec:
 
     server:
       enabled: true
+
       controllers:
         main:
           containers:
@@ -97,10 +106,12 @@ spec:
                     secretKeyRef:
                       name: immich-postgres-auth
                       key: password
+
       serviceMonitor:
         main:
           labels:
             release: prometheus-stack
+
       persistence:
         nsfiles:
           enabled: true
