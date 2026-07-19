@@ -12,36 +12,22 @@ spec:
         kind: HelmRepository
         name: immich
         namespace: flux-system
-      version: 0.12.0
+      version: 0.13.1
   interval: 1m0s
   values:
-    env:
-      REDIS_HOSTNAME: "main.redis-clusters.svc.cluster.local"
-      DB_HOSTNAME: "immich-postgres-v4-rw.databases.svc.cluster.local"
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-postgres-auth
-            key: username
-      DB_DATABASE_NAME: "immich"
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-postgres-auth
-            key: password
-    image:
-      tag: 3.0.3
+    controllers:
+      main:
+        containers:
+          main:
+            env:
+              REDIS_HOSTNAME: "main.redis-clusters.svc.cluster.local"
+
     immich:
       metrics:
         enabled: true
-        labels:
-          release: prometheus-stack
       persistence:
         library:
           existingClaim: immich-uploads-pvc
-      # configuration is immich-config.json converted to yaml
-      # ref: https://immich.app/docs/install/config-file/
-      #
       configuration:
         server:
           externalDomain: "https://immich.artichoke.cc"
@@ -72,45 +58,53 @@ spec:
             transport:
               host: ${NOREPLY_EMAIL_HOST}
               port: 465
+              secure: true
               username: ${NOREPLY_EMAIL}
               password: ${NOREPLY_EMAIL_PASS}
 
-    # Immich components
+    valkey:
+      enabled: false
+
     server:
       enabled: true
-      image:
-        repository: ghcr.io/immich-app/immich-server
-        pullPolicy: IfNotPresent
-      ingress:
+      controllers:
         main:
-          enabled: false
-          annotations:
-            # proxy-body-size is set to 0 to remove the body limit on file uploads
-            nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          hosts:
-            - host: immich.local
-              paths:
-                - path: "/"
-          tls: []
+          containers:
+            main:
+              env:
+                DB_HOSTNAME: "immich-postgres-v4-rw.databases.svc.cluster.local"
+                DB_USERNAME:
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-postgres-auth
+                      key: username
+                DB_DATABASE_NAME: "immich"
+                DB_PASSWORD:
+                  valueFrom:
+                    secretKeyRef:
+                      name: immich-postgres-auth
+                      key: password
+      serviceMonitor:
+        main:
+          labels:
+            release: prometheus-stack
+      persistence:
+        nsfiles:
+          enabled: true
+          type: persistentVolumeClaim
+          existingClaim: immich-nsfiles-pvc
+          advancedMounts:
+            main:
+              main:
+                - path: /media/nsphotos
+                  readOnly: true
+
     machine-learning:
       enabled: true
-      image:
-        repository: ghcr.io/immich-app/immich-machine-learning
-        pullPolicy: IfNotPresent
-      env:
-        TRANSFORMERS_CACHE: /cache
       persistence:
         cache:
           enabled: true
+          type: persistentVolumeClaim
           size: 10Gi
-          # Optional: Set this to pvc to avoid downloading the ML models every start.
-          type: emptyDir
           accessMode: ReadWriteMany
           storageClass: longhorn
-    persistence:
-      existing-photos:
-        enabled: true
-        type: persistentVolumeClaim
-        mountPath: /media/nsphotos
-        readOnly: true
-        existingClaim: immich-nsfiles-pvc
