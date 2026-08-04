@@ -21,9 +21,43 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/linuxserver-labs/prarr # {"$imagepolicy": "flux-system:lidarr:name"}
-              tag: lidarr-plugins-3.1.2.4913 # {"$imagepolicy": "flux-system:lidarr:tag"}
+              repository: ghcr.io/linuxserver-labs/prarr
+              tag: lidarr-plugins-3.1.2.4913
               pullPolicy: IfNotPresent
+      lidarr-similar:
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/drachenhort/lidarr-similar
+              tag: 0.4.1
+              pullPolicy: IfNotPresent
+            env:
+              DEEZER_ENABLED: true
+              LISTENBRAINZ_ENABLED: true
+              DISCOGS_ENABLED: true
+              LIDARR_ROOT_FOLDER: "/media/imports/Music/original"
+              LIDARR_QUALITY_PROFILE_ID: 2
+              LASTFM_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: lastfm-api-key
+                    key: api-key
+              LASTFM_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: lastfm-api-key
+                    key: lastfm-username
+              LIDARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: lidarr-api-key
+                    key: api-key
+              DISCOGS_TOKEN:
+                valueFrom:
+                  secretKeyRef:
+                    name: discogs-personal-access-token
+                    key: token
     service:
       main:
         controller: main
@@ -35,9 +69,19 @@ spec:
         storageClass: "longhorn"
         accessMode: ReadWriteOnce
         size: 4Gi
-        globalMounts:
-          - path: /config
+        advancedMounts:
+          main:
+            main:
+              - path: /config
       music:
         existingClaim: lidarr-media-pvc
         globalMounts:
           - path: /media
+      lidarr-similar:
+        storageClass: "longhorn"
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        advancedMounts:
+          lidarr-similar:
+            main:
+              - path: /data
