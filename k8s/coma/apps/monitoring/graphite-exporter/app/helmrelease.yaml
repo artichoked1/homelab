@@ -22,7 +22,7 @@ spec:
           main:
             image:
               repository: prom/graphite-exporter
-              tag: v0.16.0
+              tag: v0.17.0
               pullPolicy: IfNotPresent
             args:
               - --graphite.mapping-config=/config/graphite_mapping.conf

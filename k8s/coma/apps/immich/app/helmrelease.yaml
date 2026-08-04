@@ -33,6 +33,8 @@ spec:
       main:
         containers:
           main:
+            image:
+              tag: v3.1.0
             env:
               REDIS_HOSTNAME: "main.redis-clusters.svc.cluster.local"
 
