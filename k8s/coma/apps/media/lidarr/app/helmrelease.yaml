@@ -38,6 +38,7 @@ spec:
               DISCOGS_ENABLED: true
               LIDARR_ROOT_FOLDER: "/media/imports/Music/original"
               LIDARR_QUALITY_PROFILE_ID: 2
+              LIDARR_URL: "http://lidarr-main:8686"
               LASTFM_API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -64,6 +65,11 @@ spec:
         ports:
           http:
             port: 8686
+      lidarr-similar:
+        controller: lidarr-similar
+        ports:
+          http:
+            port: 8000
     persistence:
       data:
         storageClass: "longhorn"
