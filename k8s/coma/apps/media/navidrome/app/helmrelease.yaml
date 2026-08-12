@@ -48,6 +48,10 @@ spec:
                     key: client-secret
               ND_SCANNER_ENABLED: "true"
               ND_SCANNER_SCHEDULE: "0 6 * * 1"
+              ND_PLUGINS_ENABLED: "true"
+              ND_PLUGINS_AUTORELOAD: "true"
+              ND_AGENTS: "audiomuseai,lastfm,deezer"
+              ND_DEVARTISTINFOTIMETOLIVE: "1s"
             image:
               repository: deluan/navidrome # {"$imagepolicy": "flux-system:navidrome:name"}
               tag: 0.63.2
