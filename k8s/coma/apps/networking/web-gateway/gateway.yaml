@@ -20,6 +20,9 @@ spec:
       port: 80
       protocol: HTTP
 
+    # Keep TLS-terminating listener certificates scoped to the listener hostname.
+    # Envoy Gateway falls back to HTTP/1.1 when same-port HTTPS listeners have
+    # overlapping certificate DNS/SAN names to avoid HTTP/2 connection coalescing.
     - name: artichoke-cc-https
       port: 443
       protocol: HTTPS
@@ -38,7 +41,7 @@ spec:
       hostname: "artichoke.cc"
       tls:
         certificateRefs:
-          - name: artichokecc-wildcard-cert
+          - name: artichokecc-root-cert
             kind: Secret
       allowedRoutes:
         namespaces:
@@ -62,7 +65,7 @@ spec:
       hostname: "*.auth.artichoke.cc"
       tls:
         certificateRefs:
-          - name: artichokecc-wildcard-cert
+          - name: auth-artichokecc-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:
@@ -74,12 +77,14 @@ spec:
       hostname: "*.coder.artichoke.cc"
       tls:
         certificateRefs:
-          - name: artichokecc-wildcard-cert
+          - name: coder-artichokecc-wildcard-cert
             kind: Secret
       allowedRoutes:
         namespaces:
           from: All
 
+    # Teleport terminates TLS itself. Keep these as passthrough listeners and do
+    # not include Teleport names on certificates terminated by Envoy.
     - name: artichoke-cc-teleport-wildcard
       port: 443
       protocol: TLS
@@ -99,6 +104,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: onkaparingait-https
       port: 443
       protocol: HTTPS
@@ -110,17 +116,19 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: onkaparingait-root
       port: 443
       protocol: HTTPS
       hostname: "onkaparingait.com"
       tls:
         certificateRefs:
-          - name: onkaparingait-wildcard-cert
+          - name: onkaparingait-root-cert
             kind: Secret
       allowedRoutes:
         namespaces:
           from: All
+
     - name: onkaparingait-http
       port: 80
       hostname: "*.onkaparingait.com"
@@ -128,6 +136,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: onkaparingait-root-http
       port: 80
       hostname: "onkaparingait.com"
@@ -135,18 +144,21 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
     - name: tdarr-tcp
       protocol: TCP
       port: 8266
       allowedRoutes:
         namespaces:
           from: All
+
     - name: tdarr-web-tcp
       protocol: TCP
       port: 8265
       allowedRoutes:
         namespaces:
           from: All
+
     - name: graphite-exporter-tcp
       protocol: TCP
       port: 9108

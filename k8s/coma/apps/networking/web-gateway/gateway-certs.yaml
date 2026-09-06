@@ -1,3 +1,6 @@
+# Keep certificate SANs disjoint between HTTPS listeners sharing :443.
+# Envoy Gateway otherwise disables HTTP/2 on overlapping listeners to prevent
+# unsafe HTTP/2 connection coalescing across listener boundaries.
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -6,12 +9,46 @@ metadata:
 spec:
   secretName: artichokecc-wildcard-cert
   dnsNames:
-    - "artichoke.cc"
     - "*.artichoke.cc"
-    - "*.teleport.artichoke.cc"
-    - "*.coder.artichoke.cc"
-    - "*.git.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: artichokecc-root-cert
+  namespace: networking
+spec:
+  secretName: artichokecc-root-cert
+  dnsNames:
+    - "artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: auth-artichokecc-wildcard-cert
+  namespace: networking
+spec:
+  secretName: auth-artichokecc-wildcard-cert
+  dnsNames:
     - "*.auth.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: coder-artichokecc-wildcard-cert
+  namespace: networking
+spec:
+  secretName: coder-artichokecc-wildcard-cert
+  dnsNames:
+    - "*.coder.artichoke.cc"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
@@ -53,8 +90,20 @@ metadata:
 spec:
   secretName: onkaparingait-wildcard-cert
   dnsNames:
-    - "onkaparingait.com"
     - "*.onkaparingait.com"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: onkaparingait-root-cert
+  namespace: networking
+spec:
+  secretName: onkaparingait-root-cert
+  dnsNames:
+    - "onkaparingait.com"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
