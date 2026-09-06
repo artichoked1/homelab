@@ -1,0 +1,43 @@
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: ClientTrafficPolicy
+metadata:
+  name: web-gateway-http3
+  namespace: networking
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: artichoke-cc-https
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: artichoke-cc-root
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: coma-artichoke-network-https
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: artichoke-cc-authentik
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: artichoke-cc-coder
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: onkaparingait-https
+
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: web-gateway
+      sectionName: onkaparingait-root
+
+  http3: {}

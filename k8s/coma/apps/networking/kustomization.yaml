@@ -4,6 +4,7 @@ resources:
   - ./namespace.yaml
   - ./web-gateway/gateway.yaml
   - ./web-gateway/gateway-certs.yaml
+  - ./web-gateway/client-traffic-policy.yaml
   - ./envoy-gatewayclass.yaml
   - ./envoy-proxy-config.yaml
 #   - ./traefik/hsts-middleware.yaml
