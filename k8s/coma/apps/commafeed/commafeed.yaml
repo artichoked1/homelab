@@ -23,7 +23,7 @@ spec:
           main:
             image:
               repository: athou/commafeed
-              tag: 7.2.0-postgresql
+              tag: 7.3.2-postgresql
               pullPolicy: IfNotPresent
 
             env:
