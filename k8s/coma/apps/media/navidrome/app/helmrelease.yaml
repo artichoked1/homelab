@@ -54,7 +54,7 @@ spec:
               ND_DEVARTISTINFOTIMETOLIVE: "1s"
             image:
               repository: deluan/navidrome # {"$imagepolicy": "flux-system:navidrome:name"}
-              tag: 0.64.0
+              tag: 0.64.1
               pullPolicy: IfNotPresent
             securityContext:
               fsGroup: 3004
