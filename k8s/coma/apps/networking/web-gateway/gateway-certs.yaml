@@ -17,6 +17,32 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: matrix-auth-cert
+  namespace: networking
+spec:
+  secretName: matrix-auth-cert
+  dnsNames:
+    - "auth.matrix.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: matrix-calls-cert
+  namespace: networking
+spec:
+  secretName: matrix-calls-cert
+  dnsNames:
+    - "calls.matrix.artichoke.cc"
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: artichokecc-root-cert
   namespace: networking
 spec:

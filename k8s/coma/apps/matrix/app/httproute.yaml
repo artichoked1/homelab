@@ -1,0 +1,185 @@
+# Mirrors the Ingress templates rendered by matrix-stack 26.9.3.
+# Keep MAS compatibility paths ahead of the generic Synapse prefixes.
+# No rewrites: LiveKit uses /rtc and /rtc/* WebSockets on the root backend.
+# Disable request deadlines for Matrix long polls and RTC WebSockets.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: element
+  namespace: matrix
+spec:
+  parentRefs:
+  - name: web-gateway
+    namespace: networking
+    sectionName: artichoke-cc-https
+  hostnames:
+  - element.artichoke.cc
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: matrix-stack-element-web
+      port: 80
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mas
+  namespace: matrix
+spec:
+  parentRefs:
+  - name: web-gateway
+    namespace: networking
+    sectionName: matrix-auth-https
+  hostnames:
+  - auth.matrix.artichoke.cc
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: matrix-stack-matrix-authentication-service
+      port: 8080
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix-rtc
+  namespace: matrix
+spec:
+  parentRefs:
+  - name: web-gateway
+    namespace: networking
+    sectionName: matrix-calls-https
+  hostnames:
+  - calls.matrix.artichoke.cc
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /sfu/get
+    - path:
+        type: PathPrefix
+        value: /get_token
+    - path:
+        type: PathPrefix
+        value: /delegate_delayed_leave
+    backendRefs:
+    - name: matrix-stack-matrix-rtc-authorisation-service
+      port: 8080
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: matrix-stack-matrix-rtc-sfu
+      port: 7880
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: matrix
+  namespace: matrix
+spec:
+  parentRefs:
+  - name: web-gateway
+    namespace: networking
+    sectionName: artichoke-cc-https
+  hostnames:
+  - matrix.artichoke.cc
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/api/v1/login
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/api/v1/refresh
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/api/v1/logout
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/r0/login
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/r0/refresh
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/r0/logout
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/v3/login
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/v3/refresh
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/v3/logout
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/unstable/login
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/unstable/refresh
+    - path:
+        type: PathPrefix
+        value: /_matrix/client/unstable/logout
+    backendRefs:
+    - name: matrix-stack-matrix-authentication-service
+      port: 8080
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /_matrix
+    - path:
+        type: PathPrefix
+        value: /_synapse
+    backendRefs:
+    - name: matrix-stack-synapse
+      port: 8008
+    timeouts:
+      request: 0s
+      backendRequest: 0s
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: artichoke-wellknown
+  namespace: matrix
+spec:
+  parentRefs:
+  - name: web-gateway
+    namespace: networking
+    sectionName: artichoke-cc-root
+  hostnames:
+  - artichoke.cc
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /.well-known/matrix
+    backendRefs:
+    - name: matrix-stack-well-known
+      port: 8010
+    timeouts:
+      request: 0s
+      backendRequest: 0s

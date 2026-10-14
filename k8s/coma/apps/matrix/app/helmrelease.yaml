@@ -1,0 +1,258 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: matrix-stack
+  namespace: matrix
+spec:
+  interval: 1h
+  url: oci://ghcr.io/element-hq/ess-helm/matrix-stack
+  ref:
+    tag: "26.9.3"
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: matrix-stack
+  namespace: matrix
+spec:
+  suspend: true
+  releaseName: matrix-stack
+  interval: 10m
+  timeout: 15m
+  chartRef:
+    kind: OCIRepository
+    name: matrix-stack
+  # postRenderers:
+  #   - kustomize:
+  #       patches:
+  #         # 26.9.3 has no ingress.enabled switch. Keep host values for public URLs,
+  #         # but delete every chart Ingress before Helm installs anything.
+  #         - target:
+  #             group: networking.k8s.io
+  #             version: v1
+  #             kind: Ingress
+  #           patch: |-
+  #             $patch: delete
+  #             apiVersion: networking.k8s.io/v1
+  #             kind: Ingress
+  #             metadata:
+  #               name: unused
+  #         # Chart key_file entries omit the legacy custom kids, and matrix-tools
+  #         # appends nested arrays. Reset only secrets, then restore the exact old
+  #         # encryption secret and all key/kid pairs AFTER chart-owned defaults.
+  #         - target:
+  #             group: apps
+  #             version: v1
+  #             kind: Deployment
+  #             name: matrix-stack-matrix-authentication-service
+  #           patch: |-
+  #             - op: test
+  #               path: /spec/template/spec/initContainers/0/name
+  #               value: render-config
+  #             - op: add
+  #               path: /spec/template/spec/initContainers/0/args/-
+  #               value: /secrets/matrix-mas-credentials/reset-secrets.yaml
+  #             - op: add
+  #               path: /spec/template/spec/initContainers/0/args/-
+  #               value: /secrets/matrix-mas-credentials/identity.yaml
+  #         # Old chart: PVC/media -> /synapse/data/media. ESS: /media/media_store.
+  #         # Mount the existing directory directly, without moving any NFS data.
+  #         - target:
+  #             group: apps
+  #             version: v1
+  #             kind: StatefulSet
+  #             name: matrix-stack-synapse-main
+  #           patch: |-
+  #             apiVersion: apps/v1
+  #             kind: StatefulSet
+  #             metadata:
+  #               name: matrix-stack-synapse-main
+  #             spec:
+  #               template:
+  #                 spec:
+  #                   containers:
+  #                     - name: synapse
+  #                       volumeMounts:
+  #                         - mountPath: /media
+  #                           $patch: delete
+  #                         - name: media
+  #                           mountPath: /media/media_store
+  #                           subPath: media
+  values:
+    serverName: artichoke.cc
+    # All credentials are supplied by ExternalSecrets; never generate a new identity.
+    initSecrets:
+      enabled: false
+    postgres:
+      enabled: false
+    elementAdmin:
+      enabled: false
+    hookshot:
+      enabled: false
+
+    synapse:
+      ingress:
+        host: matrix.artichoke.cc
+      postgres:
+        host: synapse-postgres-rw.databases.svc.cluster.local
+        port: 5432
+        database: matric_stack_synapse
+        user: matrix_stack
+        sslMode: prefer
+        password:
+          secret: matrix-stack-postgres-auth
+          secretKey: password
+      # signingKey:
+      #   secret: matrix-synapse-identity
+      #   secretKey: signing-key
+      # macaroon:
+      #   secret: matrix-synapse-identity
+      #   secretKey: macaroon
+      # registrationSharedSecret:
+      #   secret: matrix-synapse-identity
+      #   secretKey: registration-shared-secret
+      media:
+        storage:
+          existingClaim: synapse-media
+        maxUploadSize: 100M
+      workers:
+        federation-sender:
+          enabled: true
+          replicas: 1
+      additional:
+        10-server.yaml:
+          config: |
+            enable_registration: false
+            presence:
+              enabled: false
+            admin_contact: "${ACME_EMAIL}"
+            experimental_features:
+              msc3266_enabled: true
+              msc4076_enabled: true
+        # 20-email.yaml:
+        #   configSecret: matrix-synapse-mas
+        #   configSecretKey: synapse-email.yaml
+
+    matrixAuthenticationService:
+      ingress:
+        host: auth.matrix.artichoke.cc
+      postgres:
+        host: main-postgres-v2-rw.databases.svc.cluster.local
+        port: 5432
+        database: matrix_synapse_mas
+        user: matrix_stack
+        sslMode: prefer
+        password:
+          secret: matrix-stack-postgres-auth
+          secretKey: postgres-password
+      # encryptionSecret:
+      #   secret: matrix-mas-credentials
+      #   secretKey: encryption
+      # synapseSharedSecret:
+      #   secret: matrix-synapse-mas
+      #   secretKey: shared-secret
+      # privateKeys:
+      #   rsa:
+      #     secret: matrix-mas-credentials
+      #     secretKey: rsa
+      #   ecdsaPrime256v1:
+      #     secret: matrix-mas-credentials
+      #     secretKey: ec
+      syn2mas:
+        enabled: false
+      additional:
+        10-account.yaml:
+          config: |
+            passwords:
+              enabled: true
+              minimum_complexity: 3
+              schemes:
+                - version: 1
+                  algorithm: argon2id
+            account:
+              password_registration_enabled: true
+              password_recovery_enabled: true
+            http:
+              issuer: https://auth.matrix.artichoke.cc/
+              trusted_proxies:
+                - 10.42.0.0/16
+                - 192.168.0.0/16
+                - 172.16.0.0/12
+                - 10.0.0.0/10
+                - 127.0.0.1/8
+                - fd00::/8
+                - ::1/128
+
+    elementWeb:
+      ingress:
+        host: element.artichoke.cc
+      additional:
+        config.json: |
+          {
+            "default_country_code": "AU",
+            "default_theme": "dark",
+            "show_labs_settings": true,
+            "room_directory": {"servers": ["artichoke.cc"]},
+            "setting_defaults": {"breadcrumbs": true}
+          }
+
+    wellKnownDelegation:
+      enabled: true
+      baseDomainRedirect:
+        enabled: false
+      # additional:
+      #   client: |
+      #     {
+      #       "org.matrix.msc2965.authentication": {
+      #         "issuer": "https://auth.matrix.artichoke.cc/",
+      #         "account": "https://auth.matrix.artichoke.cc/account/"
+      #       }
+      #     }
+
+    valkey:
+      replicas: 1
+
+    matrixRTC:
+      enabled: true
+      ingress:
+        host: calls.matrix.artichoke.cc
+      restrictRoomCreationToLocalUsers: true
+      livekitAuth:
+        key: artichoke-matrix-rtc
+        secret:
+          secret: matrix-rtc-auth
+          secretKey: livekit-secret
+      sfu:
+        replicas: 1
+        useStunToDiscoverPublicIP: true
+        additional:
+          10-network.yaml:
+            config: |
+              rtc:
+                stun_servers:
+                  - stun.l.google.com:19302
+        exposedServices:
+          rtcTcp:
+            enabled: true
+            portType: NodePort
+            port: 30001
+            nodePort: "30001"
+          rtcMuxedUdp:
+            enabled: true
+            portType: NodePort
+            port: 30002
+            nodePort: "30002"
+          rtcUdp:
+            enabled: false
+          turn:
+            enabled: false
+          turnTLS:
+            enabled: true
+            portType: ClusterIP
+            port: 443
+            domain: turn.matrix.artichoke.cc
+            tlsSecret: matrix-turn-tls
+            tlsTerminationOnPod: true

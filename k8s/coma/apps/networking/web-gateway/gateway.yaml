@@ -3,8 +3,8 @@ kind: Gateway
 metadata:
   name: web-gateway
   namespace: networking
-  annotations:
-    # cert-manager.io/cluster-issuer: letsencrypt-production
+  # annotations:
+  #   # cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   infrastructure:
     parametersRef:
@@ -31,6 +31,40 @@ spec:
         certificateRefs:
           - name: artichokecc-wildcard-cert
             kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: matrix-auth-https
+      port: 443
+      protocol: HTTPS
+      hostname: "auth.matrix.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: matrix-auth-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: matrix-calls-https
+      port: 443
+      protocol: HTTPS
+      hostname: "calls.matrix.artichoke.cc"
+      tls:
+        certificateRefs:
+          - name: matrix-calls-cert
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All
+
+    - name: matrix-turn-tls
+      port: 443
+      protocol: TLS
+      hostname: "turn.matrix.artichoke.cc"
+      tls:
+        mode: Passthrough
       allowedRoutes:
         namespaces:
           from: All
