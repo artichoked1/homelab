@@ -17,7 +17,7 @@ spec:
   values:
     image:
       flavour: fpm
-      tag: 33.0.3-fpm
+      tag: 34.0.5-fpm
     nginx:
       enabled: true
     nextcloud:
@@ -25,7 +25,7 @@ spec:
         runAsUser: 33
         runAsGroup: 33
         fsGroup: 33
-      host: nc.artichoke.ccnnn
+      host: nc.artichoke.cc
       username: admin
       existingSecret:
         enabled: true
