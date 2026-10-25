@@ -12,12 +12,12 @@ spec:
         kind: HelmRepository
         name: nextcloud
         namespace: flux-system
-      version: 9.1.4
+      version: 9.4.1
   interval: 1m0s
   values:
     image:
       flavour: fpm
-      tag: 34.0.5-fpm
+      tag: 35.0.2-fpm
     nginx:
       enabled: true
     nextcloud:
