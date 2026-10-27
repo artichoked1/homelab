@@ -16,3 +16,7 @@ spec:
   interval: 1m0s
   releaseName: vault
   targetNamespace: vault
+  values:
+    server:
+      image:
+        tag: "2.2.1"
