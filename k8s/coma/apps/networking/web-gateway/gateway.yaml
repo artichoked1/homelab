@@ -87,7 +87,7 @@ spec:
       hostname: "*.coma.artichoke.network"
       tls:
         certificateRefs:
-          - name: coma-artichoke-local-wildcard-cert
+          - name: artichoke-infra-wildcard
             kind: Secret
       allowedRoutes:
         namespaces:
