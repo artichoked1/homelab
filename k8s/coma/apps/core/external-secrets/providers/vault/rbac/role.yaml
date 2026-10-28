@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: vault-cupboard-token
+  namespace: external-secrets
+rules:
+  - apiGroups: [""]
+    resources: ["serviceaccounts/token"]
+    resourceNames:
+      - vault-cupboard-reader
+      - vault-cupboard-writer
+    verbs: ["create"]
