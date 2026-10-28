@@ -6,7 +6,7 @@ spec:
   vault:
     server: http://vault.vault.svc.cluster.local:8200
     # Vault PKI signing role
-    path: pki-infra/sign/k8s-ingress
+    path: pki-infra/sign/k8s-gateway
     auth:
       kubernetes:
         mountPath: /v1/auth/kubernetes
