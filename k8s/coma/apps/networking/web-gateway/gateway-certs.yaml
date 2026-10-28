@@ -141,7 +141,7 @@ metadata:
   namespace: networking
 spec:
   commonName: "coma.artichoke.network"
-  secretName: coma-artichoke-local-wildcard-cert
+  secretName: artichoke-infra-wildcard
   dnsNames:
     - "coma.artichoke.network"
     - "*.coma.artichoke.network"
