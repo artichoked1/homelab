@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - ./app/helmrelease.yaml
   - ./issuers/vault/rbac/serviceaccount.yaml
+  - ./issuers/vault/rbac/role.yaml
+  - ./issuers/vault/rbac/rolebinding.yaml
   - ./issuers/vault/rbac/token.yaml
   - ./issuers/vault/vault-issuer-prod.yaml
   - ./issuers/letsencrypt/letsencrypt-issuer-prod.yaml
