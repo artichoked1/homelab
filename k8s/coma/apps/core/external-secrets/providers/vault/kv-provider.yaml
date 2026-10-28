@@ -13,3 +13,24 @@ spec:
           name: "kv-sync"
           namespace: "external-secrets"
           key: "token"
+---
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-cupboard
+spec:
+  provider:
+    vault:
+      server: http://vault.vault.svc.cluster.local:8200
+      path: cupboard
+      version: v2
+
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: coma-eso-reader
+          serviceAccountRef:
+            name: vault-cupboard-reader
+            namespace: external-secrets
+            audiences:
+              - vault
