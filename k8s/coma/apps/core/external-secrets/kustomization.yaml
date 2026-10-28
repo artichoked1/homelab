@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - ./app/helmrelease.yaml
   - ./providers/vault/kv-provider.yaml
+  - ./providers/vault/vault-cupboard.yaml
+  - ./providers/vault/vault-cupboard-writer.yaml
   - ./providers/vault/rbac/serviceaccount.yaml
   - ./providers/vault/rbac/role.yaml
   - ./providers/vault/rbac/rolebinding.yaml

@@ -1,0 +1,26 @@
+apiVersion: external-secrets.io/v1
+kind: ClusterSecretStore
+metadata:
+  name: vault-cupboard-writer
+spec:
+  conditions:
+    - namespaces:
+        - secret-management
+
+  provider:
+    vault:
+      server: http://vault.vault.svc.cluster.local:8200
+      path: cupboard
+      version: v2
+      checkAndSet:
+        required: true
+
+      auth:
+        kubernetes:
+          mountPath: kubernetes
+          role: coma-eso-writer
+          serviceAccountRef:
+            name: vault-cupboard-writer
+            namespace: external-secrets
+            audiences:
+              - vault
