@@ -133,3 +133,18 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: artichoke-infra-wildcard
+  namespace: networking
+spec:
+  commonName: "coma.artichoke.network"
+  secretName: coma-artichoke-local-wildcard-cert
+  dnsNames:
+    - "coma.artichoke.network"
+    - "*.coma.artichoke.network"
+  issuerRef:
+    name: artichoke-infra
+    kind: ClusterIssuer
