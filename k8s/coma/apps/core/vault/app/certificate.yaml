@@ -25,5 +25,5 @@ spec:
     - server auth
 
   issuerRef:
-    name: artichoke-infra
-    kind: ClusterIssuer
+    name: artichoke-vault-server
+    kind: Issuer
