@@ -5,12 +5,12 @@ metadata:
   namespace: vault
 spec:
   secretName: vault-server-tls
-
+  commonName: vault.coma.artichoke.network
   dnsNames:
     - vault.vault.svc
     - vault.vault.svc.cluster.local
-    - vault.coma.artichoke.network
     - vault.artichoke.network
+    - vault.coma.artichoke.network
 
   duration: 2160h
   renewBefore: 720h
