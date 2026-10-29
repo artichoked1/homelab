@@ -4,3 +4,4 @@ resources:
   - ./helmrelease.yaml
   - ./httproute.yaml
   - ./certificate.yaml
+  - ./vault-bootstrap-issuer.yaml
