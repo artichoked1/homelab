@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+namespace: vault
+metadata:
+  name: artichoke-vault-server
+spec:
+  vault:
+    server: http://vault.vault.svc.cluster.local:8200
+    path: pki-infra/sign/vault-server
+    auth:
+      kubernetes:
+        mountPath: /v1/auth/kubernetes
+        role: coma-vault-server
+        serviceAccountRef:
+          name: vault-issuer
