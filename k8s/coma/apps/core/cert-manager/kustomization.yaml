@@ -9,4 +9,3 @@ resources:
   - ./issuers/vault/vault-issuer-prod.yaml
   - ./issuers/vault/vault-bootstrap-issuer.yaml
   - ./issuers/letsencrypt/letsencrypt-issuer-prod.yaml
-namespace: cert-manager
