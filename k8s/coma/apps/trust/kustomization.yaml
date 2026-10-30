@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - ./ks.yaml
   - ./ns.yaml
+  - ./trust-bundles/artichoke-root-ca/configmap.yaml
+  - ./trust-bundles/artichoke-root-ca/bundle.yaml
