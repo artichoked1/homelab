@@ -37,3 +37,7 @@ spec:
     app:
       trust:
         namespace: trust
+    secretTargets:
+      enabled: true
+      authorizedSecrets:
+        - artichoke-root-ca
