@@ -33,4 +33,7 @@ spec:
   dependsOn:
     - name: cert-manager
 
-  # values:
+  values:
+    app:
+      trust:
+        namespace: trust
