@@ -1,0 +1,12 @@
+apiVersion: trust.cert-manager.io/v1alpha1
+kind: Bundle
+metadata:
+  name: artichoke-root-ca
+spec:
+  sources:
+    - configMap:
+        name: artichoke-root-ca
+        key: ca.crt
+  target:
+    configMap:
+      key: trust-bundle.pem
