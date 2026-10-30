@@ -61,6 +61,10 @@ spec:
             tls_cert_file       = "/vault/tls/tls.crt"
             tls_key_file        = "/vault/tls/tls.key"
             tls_reload_interval = "30s"
+            tls_client_ca_file = "/vault/trust/trust-bundle.pem"
+
+            tls_disable_client_certs = false
+            tls_require_and_verify_client_cert = false
           }
 
           storage "file" {
