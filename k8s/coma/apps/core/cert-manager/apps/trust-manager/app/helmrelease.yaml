@@ -29,4 +29,8 @@ spec:
 
   releaseName: trust-manager
   targetNamespace: cert-manager
+
+  dependsOn:
+    - name: cert-manager
+
   # values:
