@@ -4,7 +4,10 @@ metadata:
   name: artichoke-infra
 spec:
   vault:
-    server: http://vault.vault.svc.cluster.local:8200
+    server: https://vault.vault.svc.cluster.local:8200
+    caBundleSecretRef:
+      name: artichoke-root-ca
+      key: trust-bundle.pem
     # Vault PKI signing role
     path: pki-infra/sign/k8s-gateway
     auth:

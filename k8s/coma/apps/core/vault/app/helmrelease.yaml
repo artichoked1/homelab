@@ -4,19 +4,73 @@ metadata:
   name: ${APP}
   namespace: ${NAMESPACE}
 spec:
+  interval: 1m
+  releaseName: vault
+  targetNamespace: vault
+
   chart:
     spec:
       chart: vault
+      version: 0.34.1
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: hashicorp
         namespace: flux-system
-      version: 0.34.1
-  interval: 1m0s
-  releaseName: vault
-  targetNamespace: vault
+
   values:
+    global:
+      tlsDisable: false
+
     server:
       image:
         tag: "2.2.1"
+
+      volumes:
+        - name: vault-server-tls
+          secret:
+            secretName: vault-server-tls
+
+        - name: artichoke-root-ca
+          configMap:
+            name: artichoke-root-ca
+
+      volumeMounts:
+        - name: vault-server-tls
+          mountPath: /vault/tls
+          readOnly: true
+
+        - name: artichoke-root-ca
+          mountPath: /vault/trust
+          readOnly: true
+
+      extraEnvironmentVars:
+        VAULT_ADDR: https://vault.vault.svc.cluster.local:8200
+        VAULT_CACERT: /vault/trust/trust-bundle.pem
+
+      standalone:
+        enabled: true
+        config: |
+          ui = true
+
+          listener "tcp" {
+            address             = "[::]:8200"
+            cluster_address     = "[::]:8201"
+
+            tls_disable         = false
+            tls_cert_file       = "/vault/tls/tls.crt"
+            tls_key_file        = "/vault/tls/tls.key"
+            tls_reload_interval = "30s"
+          }
+
+          storage "file" {
+            path = "/vault/data"
+          }
+
+          # Future Raft migration:
+          #
+          # storage "raft" {
+          #   path    = "/vault/data"
+          #   node_id = "vault-0"
+          # }
+          #

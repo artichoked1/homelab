@@ -199,3 +199,18 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+
+    - name: vault-passthrough
+      port: 443
+      protocol: TLS
+      hostname: vault.coma.artichoke.network
+      tls:
+        mode: Passthrough
+      allowedRoutes:
+        kinds:
+          - kind: TLSRoute
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              vault-tls-route: "true"

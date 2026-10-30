@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: TLSRoute
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  parentRefs:
+    - name: web-gateway
+      namespace: networking
+      sectionName: vault-passthrough
+
+  hostnames:
+    - vault.coma.artichoke.network
+
+  rules:
+    - backendRefs:
+        - name: vault
+          port: 8200
